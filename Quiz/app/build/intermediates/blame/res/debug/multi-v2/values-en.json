@@ -1,0 +1,26 @@
+{
+    "logs": [
+        {
+            "outputFile": "D:\\Git\\DesarrolloMovil\\Quiz\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en\\values-en.xml",
+            "map": [
+                {
+                    "source": "D:\\Git\\DesarrolloMovil\\Quiz\\app\\src\\main\\res\\values-en\\strings.xml",
+                    "from": {
+                        "startLines": "4,5,3,2",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "156,213,100,57",
+                        "endColumns": "55,57,54,41",
+                        "endOffsets": "207,266,150,94"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,111,169,224",
+                        "endColumns": "55,57,54,41",
+                        "endOffsets": "106,164,219,261"
+                    }
+                }
+            ]
+        }
+    ]
+}
