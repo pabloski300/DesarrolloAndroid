@@ -3817,8 +3817,8 @@ public final class R {
     public static final int textView=0x7f0800af;
     public static final int textView1=0x7f0800b0;
     public static final int textView10=0x7f0800b1;
-    public static final int textView3 =0x7f0800b2;
-    public static final int textView2 =0x7f0800b3;
+    public static final int textView2=0x7f0800b2;
+    public static final int textView3=0x7f0800b3;
     public static final int textView4=0x7f0800b4;
     public static final int textView5=0x7f0800b5;
     public static final int textView6=0x7f0800b6;

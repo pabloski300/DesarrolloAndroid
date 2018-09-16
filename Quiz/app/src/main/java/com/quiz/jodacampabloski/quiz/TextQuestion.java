@@ -6,6 +6,7 @@ import android.graphics.drawable.Icon;
 import android.media.Image;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class TextQuestion extends Question {
@@ -40,8 +41,6 @@ public class TextQuestion extends Question {
 
         ImageView image = mainGame.findViewById(R.id.HeaderImage);
         if(HeaderImage == null) {
-            image.setMaxHeight(0);
-            image.setMinimumHeight(0);
             image.setImageResource(0);
         }else{
             int id = mainGame.getResources().getIdentifier(HeaderImage,"drawable",mainGame.getPackageName());

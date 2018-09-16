@@ -1,7 +1,6 @@
 [
   {
     "Answers":["Patata","Tomate","Lechuga","Pepino"],
-    "HeaderImage":"magdalena",
     "QuestionText": "¿Cual es una fruta?",
     "CorrectAnswer": 1
   }

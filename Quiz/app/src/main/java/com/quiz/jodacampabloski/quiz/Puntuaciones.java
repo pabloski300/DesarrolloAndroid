@@ -29,8 +29,8 @@ public class Puntuaciones extends AppCompatActivity{
         TextView texts[] = new TextView[10];
 
         texts[0] = this.findViewById(R.id.textView1);
-        texts[1] = this.findViewById(R.id.textView3);
-        texts[2] = this.findViewById(R.id.textView2);
+        texts[1] = this.findViewById(R.id.textView2);
+        texts[2] = this.findViewById(R.id.textView3);
         texts[3] = this.findViewById(R.id.textView4);
         texts[4] = this.findViewById(R.id.textView5);
         texts[5] = this.findViewById(R.id.textView6);
