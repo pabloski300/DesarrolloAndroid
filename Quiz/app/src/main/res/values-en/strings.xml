@@ -5,4 +5,9 @@
     <string name="ButtonStartText">Start Game!</string>
     <string name="ScoreButton">Check your scores</string>
     <string name="Opciones">Opciones</string>
+    <string name="namescore">Write your name</string>
+    <string name="NoGuardar">Dont Save</string>
+    <string name="guardar2">Save</string>
+    <string name="pointstext">"You Score is: "</string>
+    <string name="backscore">You Score was not saved</string>
 </resources>

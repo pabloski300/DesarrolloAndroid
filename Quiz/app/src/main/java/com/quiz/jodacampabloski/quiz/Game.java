@@ -64,11 +64,11 @@ public class Game extends AppCompatActivity {
                 if(i<questions.size()) {
                     questions.get(i).ShowQuestion(this);
                 }else{
-                    p = new Puntuacion("Pablo", puntuacion);
-                    super.onBackPressed();
+                   EndGame();
+                    //super.onBackPressed();
                 }
             } else {
-                Toast t = Toast.makeText(this, "has fallado", Toast.LENGTH_SHORT);
+                Toast t = Toast.makeText(this, "Has fallado", Toast.LENGTH_SHORT);
                 t.show();
                 questions.get(i).ShowQuestion(this);
             }
@@ -96,8 +96,14 @@ public class Game extends AppCompatActivity {
     }
 
     public void onBackPressed(){
-        Toast t = Toast.makeText(this, "no puedes retroceder durante el cuestionario",Toast.LENGTH_SHORT);
+        Toast t = Toast.makeText(this, "No puedes retroceder durante el quiz",Toast.LENGTH_SHORT);
         t.show();
     }
-
+    public void EndGame(){
+        Toast t = Toast.makeText(this, "Has Terminado la partida", Toast.LENGTH_SHORT);
+        t.show();
+        Intent nextActivty = new Intent(this,SavePuntuation.class);
+        nextActivty.putExtra("Score",puntuacion);
+        startActivity(nextActivty);
+    }
 }

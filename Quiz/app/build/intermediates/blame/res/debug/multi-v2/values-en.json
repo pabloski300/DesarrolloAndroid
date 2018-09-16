@@ -1,23 +1,23 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Git\\DesarrolloAndroid\\Quiz\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en\\values-en.xml",
+            "outputFile": "E:\\Git\\DesarrolloAndroid\\Quiz\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en\\values-en.xml",
             "map": [
                 {
-                    "source": "D:\\Git\\DesarrolloAndroid\\Quiz\\app\\src\\main\\res\\values-en\\strings.xml",
+                    "source": "E:\\Git\\DesarrolloAndroid\\Quiz\\app\\src\\main\\res\\values-en\\strings.xml",
                     "from": {
-                        "startLines": "4,6,5,3,2",
-                        "startColumns": "4,4,4,4,4",
-                        "startOffsets": "156,272,213,100,57",
-                        "endColumns": "55,45,57,54,41",
-                        "endOffsets": "207,313,266,150,94"
+                        "startLines": "-1,8,-1,-1,-1,-1,11,9,7,10",
+                        "startColumns": "-1,4,-1,-1,-1,-1,4,4,4,4",
+                        "startOffsets": "-1,374,-1,-1,-1,-1,523,423,319,466",
+                        "endColumns": "-1,47,-1,-1,-1,-1,61,41,53,55",
+                        "endOffsets": "-1,417,-1,-1,-1,-1,580,460,368,517"
                     },
                     "to": {
-                        "startLines": "2,3,4,5,6",
-                        "startColumns": "4,4,4,4,4",
-                        "startOffsets": "55,111,157,215,270",
-                        "endColumns": "55,45,57,54,41",
-                        "endOffsets": "106,152,210,265,307"
+                        "startLines": "2,3,4,5,6,7,8,9,10,11",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,111,159,205,263,318,360,422,464,518",
+                        "endColumns": "55,47,45,57,54,41,61,41,53,55",
+                        "endOffsets": "106,154,200,258,313,355,417,459,513,569"
                     }
                 }
             ]

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Git\\DesarrolloAndroid\\Quiz\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
+            "outputFile": "E:\\Git\\DesarrolloAndroid\\Quiz\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\pablo\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\998a96422029833bd8efa792ffa60fa8\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\Jose Daniel Campos\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\c3c0aef45e50ec9eeaff88585c4df669\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\pablo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\7f7cd688eac5b618150aba2b352fd139\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\Jose Daniel Campos\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\7b2dfe7bfd9ff916e4a47fa9249e143e\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

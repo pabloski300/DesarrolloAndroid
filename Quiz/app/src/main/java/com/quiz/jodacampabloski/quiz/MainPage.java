@@ -7,6 +7,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.util.Scanner;
 
 public class MainPage extends AppCompatActivity {
 
@@ -15,8 +21,32 @@ public class MainPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
 
+        try {
+        openFileInput("Scores");
 
-    }
+
+        } catch (Exception e) {
+
+        InputStream reader = getResources().openRawResource(R.raw.scores);
+
+        Scanner s = new Scanner(reader).useDelimiter("\\A");
+        String result = s.hasNext() ? s.next() : "";
+
+
+        FileOutputStream outputStream;
+
+
+            try {
+                outputStream = openFileOutput("Score", MODE_PRIVATE);
+                outputStream.write(result.getBytes());
+                outputStream.close();
+            }
+            catch (Exception e1) {
+                e1.printStackTrace();
+            }
+            }
+        }
+
 
     public void StartGame(View v){
         Intent nextActivty = new Intent(this,Game.class);
@@ -34,4 +64,6 @@ public class MainPage extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.mainmenu, menu);
         return true;
     }
+
+
 }

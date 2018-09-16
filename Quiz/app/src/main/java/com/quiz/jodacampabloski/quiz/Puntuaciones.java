@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Scanner;
 
@@ -19,7 +21,14 @@ public class Puntuaciones extends AppCompatActivity{
 
         JSONMapper = new Gson();
         setContentView(R.layout.activity_puntuaciones);
-        InputStream reader = getResources().openRawResource(R.raw.scores);
+
+
+        InputStream reader = null;
+        try {
+            reader = openFileInput("Score");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         Scanner s = new Scanner(reader).useDelimiter("\\A");
         String result = s.hasNext() ? s.next() : "";
