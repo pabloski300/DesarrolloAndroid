@@ -3,4 +3,5 @@
     <string name="TitleText">Bienvenidos a Quiz!</string>
     <string name="ButtonStartText">¡Comenzar juego!</string>
     <string name="ScoreButton">Tus puntuaciones</string>
+    <string name="Opciones">Opciones</string>
 </resources>

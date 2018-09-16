@@ -9,10 +9,16 @@ import com.google.gson.Gson;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Game extends AppCompatActivity {
-    Question[] questions;
+
+
+    List<Question> questions;
+
     Gson JSONMapper;
     int i;
     @Override
@@ -28,19 +34,26 @@ public class Game extends AppCompatActivity {
         Scanner s = new Scanner(reader).useDelimiter("\\A");
         String result = s.hasNext() ? s.next() : "";
 
-        questions = JSONMapper.fromJson(result,TextQuestion[].class);
+        String[] results = result.split("//");
 
-        questions[i].ShowQuestion(this);
+        questions = new ArrayList<Question>();
+        questions.addAll(Arrays.asList(JSONMapper.fromJson(results[0],TextQuestion[].class)));
+
+        questions.addAll(Arrays.asList(JSONMapper.fromJson(results[1],ImageQuestion[].class)));
+        questions.get(i).ShowQuestion(this);
     }
 
     public void Check(View v){
-        if(questions[i].ChechAnswer(Integer.parseInt(v.getTag().toString()))){
+        if(questions.get(i).ChechAnswer(Integer.parseInt(v.getTag().toString()))){
             Toast t = Toast.makeText(this, "has acertado",Toast.LENGTH_SHORT);
             t.show();
+            i++;
+            questions.get(i).ShowQuestion(this);
 
         }else{
             Toast t = Toast.makeText(this, "has fallado",Toast.LENGTH_SHORT);
             t.show();
+            questions.get(i).ShowQuestion(this);
         }
     }
 

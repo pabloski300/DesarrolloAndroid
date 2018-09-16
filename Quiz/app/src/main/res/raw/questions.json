@@ -7,3 +7,13 @@
   }
 
 ]
+//
+[
+  {
+  "Answers":["patata","tomate","lechuga","pepino"],
+  "HeaderImage":"magdalena",
+  "QuestionText": "¿Cual es una fruta?",
+  "CorrectAnswer": 1
+  }
+
+]

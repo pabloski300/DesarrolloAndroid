@@ -13,7 +13,7 @@ public class TextQuestion extends Question {
     public String[] Answers;
     public String HeaderImage;
     public String QuestionText;
-    public Context context;
+
 
 
     public TextQuestion(String[] answers, String headerImage, String questionText,int correctAnswer) {
@@ -46,6 +46,7 @@ public class TextQuestion extends Question {
         }else{
             int id = mainGame.getResources().getIdentifier(HeaderImage,"drawable",mainGame.getPackageName());
             image.setImageResource(id);
+
         }
     }
 }

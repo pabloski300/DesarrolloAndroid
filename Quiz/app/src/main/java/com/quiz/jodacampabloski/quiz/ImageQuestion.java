@@ -11,7 +11,7 @@ public class ImageQuestion extends Question {
     public String[] Answers;
     public String HeaderImage;
     public String QuestionText;
-    Context context;
+
 
 
     public ImageQuestion(String[] answers, String headerImage, String questionText,int correctAnswer) {
@@ -31,10 +31,24 @@ public class ImageQuestion extends Question {
         Button button2 = mainGame.findViewById(R.id.button2);
         Button button3 = mainGame.findViewById(R.id.button3);
 
-        button0.setText(Answers[0]);
-        button1.setText(Answers[1]);
-        button2.setText(Answers[2]);
-        button3.setText(Answers[3]);
-        
+        button0.setBackground(mainGame.getDrawable(getImageIdFromString(Answers[0],mainGame)));
+        button1.setBackground(mainGame.getDrawable(getImageIdFromString(Answers[1],mainGame)));
+        button2.setBackground(mainGame.getDrawable(getImageIdFromString(Answers[2],mainGame)));
+        button3.setBackground(mainGame.getDrawable(getImageIdFromString(Answers[3],mainGame)));
+        button0.setText("");
+        button1.setText("");
+        button2.setText("");
+        button3.setText("");
+
+        ImageView image = mainGame.findViewById(R.id.HeaderImage);
+        if(HeaderImage == null) {
+            image.setMaxHeight(0);
+            image.setMinimumHeight(0);
+            image.setImageResource(0);
+        }else{
+            int id = mainGame.getResources().getIdentifier(HeaderImage,"drawable",mainGame.getPackageName());
+            image.setImageResource(id);
+
+        }
     }
 }
