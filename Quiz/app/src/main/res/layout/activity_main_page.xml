@@ -39,6 +39,7 @@
         android:layout_height="62dp"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="8dp"
+        android:onClick="Scores"
         android:text="@string/ScoreButton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

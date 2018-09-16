@@ -24,6 +24,11 @@ public class MainPage extends AppCompatActivity {
 
     }
 
+    public void Scores(View v){
+        Intent nextActivty = new Intent(this,Puntuaciones.class);
+        startActivity(nextActivty);
+    }
+
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.mainmenu, menu);
