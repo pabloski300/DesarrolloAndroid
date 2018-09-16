@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Git\\DesarrolloMovil\\Quiz\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-fa\\values-fa.xml",
+            "outputFile": "D:\\Git\\DesarrolloAndroid\\Quiz\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-fa\\values-fa.xml",
             "map": [
                 {
                     "source": "C:\\Users\\pablo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\7f7cd688eac5b618150aba2b352fd139\\res\\values-fa\\values-fa.xml",

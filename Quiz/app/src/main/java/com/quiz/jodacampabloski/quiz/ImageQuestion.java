@@ -1,0 +1,40 @@
+package com.quiz.jodacampabloski.quiz;
+
+import android.app.Activity;
+import android.content.Context;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+public class ImageQuestion extends Question {
+
+    public String[] Answers;
+    public String HeaderImage;
+    public String QuestionText;
+    Context context;
+
+
+    public ImageQuestion(String[] answers, String headerImage, String questionText,int correctAnswer) {
+        Answers = answers;
+        HeaderImage = headerImage;
+        QuestionText = questionText;
+        CorrectAnswer = correctAnswer;
+    }
+
+    @Override
+    public void ShowQuestion(Activity mainGame) {
+        TextView questionText = mainGame.findViewById(R.id.QuestionText);
+        questionText.setText(QuestionText);
+
+        Button button0 = mainGame.findViewById(R.id.button0);
+        Button button1 = mainGame.findViewById(R.id.button1);
+        Button button2 = mainGame.findViewById(R.id.button2);
+        Button button3 = mainGame.findViewById(R.id.button3);
+
+        button0.setText(Answers[0]);
+        button1.setText(Answers[1]);
+        button2.setText(Answers[2]);
+        button3.setText(Answers[3]);
+        
+    }
+}
