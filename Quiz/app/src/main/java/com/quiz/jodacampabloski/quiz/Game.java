@@ -74,27 +74,6 @@ public class Game extends AppCompatActivity {
             }
     }
 
-    protected void onPause(){
-        super.onPause();
-        List<Puntuacion> puntuaciones = new ArrayList<>();
-
-        JSONMapper = new Gson();
-        InputStream reader = getResources().openRawResource(R.raw.scores);
-
-        Scanner s = new Scanner(reader).useDelimiter("\\A");
-        String result = s.hasNext() ? s.next() : "";
-
-        puntuaciones.addAll(Arrays.asList(JSONMapper.fromJson(result,Puntuacion[].class)));
-
-        puntuaciones.add(p);
-
-        while(puntuaciones.size() > 10){
-            puntuaciones.remove(puntuaciones.size()-1);
-        }
-
-        String punct = JSONMapper.toJson(puntuaciones);
-    }
-
     public void onBackPressed(){
         Toast t = Toast.makeText(this, "No puedes retroceder durante el quiz",Toast.LENGTH_SHORT);
         t.show();

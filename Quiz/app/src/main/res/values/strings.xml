@@ -4,7 +4,7 @@
     <string name="ButtonStartText">¡Comenzar juego!</string>
     <string name="ScoreButton">Tus puntuaciones</string>
     <string name="Opciones">Opciones</string>
-    <string name="title_activity_save_puntuation">SavePuntuation</string>
+    <string name="title_activity_save_puntuation">Guardar Puntuaciones</string>
 
     <!-- Strings related to login -->
     <string name="namescore">Escribe tu nombre</string>

@@ -15,6 +15,8 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -57,6 +59,8 @@ public class SavePuntuation extends AppCompatActivity {
         puntuaciones.addAll(Arrays.asList(JSONMapper.fromJson(result,Puntuacion[].class)));
 
         puntuaciones.add(new Puntuacion(((TextInputLayout)findViewById(R.id.NameText)).getEditText().getText().toString(),Score));
+
+        Collections.sort(puntuaciones);
 
         while(puntuaciones.size() > 10){
             puntuaciones.remove(puntuaciones.size()-1);

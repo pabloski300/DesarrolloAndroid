@@ -24,8 +24,11 @@
             android:id="@+id/TextInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:inputType="text"
             android:hint="@string/namescore"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:imeOptions="actionDone"/>
     </android.support.design.widget.TextInputLayout>
 
     <TextView
