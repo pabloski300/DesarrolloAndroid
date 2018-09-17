@@ -13,18 +13,22 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainPage">
+        android:theme="@style/AppTheme"
+        >
+        <activity android:name=".MainPage"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Game" android:noHistory ="true"/>
-        <activity android:name=".Puntuaciones" />
+        <activity android:name=".Game" android:noHistory ="true"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Puntuaciones"
+            android:screenOrientation="portrait"/>
         <activity android:name=".SavePuntuation"
-            android:noHistory ="true">
+            android:noHistory ="true"
+            android:screenOrientation="portrait">
 
         </activity>
     </application>

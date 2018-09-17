@@ -36,6 +36,9 @@ public class Game extends AppCompatActivity implements FailDialog.NoticeDialogLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        Toast t = Toast.makeText(this, "Game Start", Toast.LENGTH_SHORT);
+        t.show();
+
         i=0;
         puntuacion = 0;
 

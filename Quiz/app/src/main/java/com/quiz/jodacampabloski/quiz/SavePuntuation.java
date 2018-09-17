@@ -29,8 +29,11 @@ public class SavePuntuation extends AppCompatActivity {
         setContentView(R.layout.activity_save_puntuation);
         JSONMapper = new Gson();
         Score = getIntent().getIntExtra("Score",0);
+        if(Score<0){
+            Score=0;
+        }
         TextView t = findViewById(R.id.TextPoints);
-        String newText =  t.getText().toString() + Score;
+        String newText =  t.getText().toString() +" "+ Score;
         t.setText(newText);
     }
 
