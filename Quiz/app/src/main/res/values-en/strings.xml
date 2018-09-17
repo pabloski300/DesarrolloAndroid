@@ -10,4 +10,7 @@
     <string name="guardar2">Save</string>
     <string name="pointstext">"You Score is: "</string>
     <string name="backscore">You Score was not saved</string>
+    <string name="dialogmessage">You failed ¿Do you want to continue?</string>
+    <string name="ContinueButton">Yes</string>
+    <string name="CancelButton">Yesn\'t</string>
 </resources>

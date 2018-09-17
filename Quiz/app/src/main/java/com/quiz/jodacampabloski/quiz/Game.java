@@ -1,5 +1,6 @@
 package com.quiz.jodacampabloski.quiz;
 
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -17,10 +18,11 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
-public class Game extends AppCompatActivity {
+public class Game extends AppCompatActivity implements FailDialog.NoticeDialogListener {
 
 
     List<Question> questions;
@@ -50,13 +52,14 @@ public class Game extends AppCompatActivity {
         questions.addAll(Arrays.asList(JSONMapper.fromJson(results[0],TextQuestion[].class)));
 
         questions.addAll(Arrays.asList(JSONMapper.fromJson(results[1],ImageQuestion[].class)));
+        Collections.shuffle(questions);
         questions.get(i).ShowQuestion(this);
     }
 
     public void Check(View v){
 
             if (questions.get(i).ChechAnswer(Integer.parseInt(v.getTag().toString()))) {
-                Toast t = Toast.makeText(this, "has acertado", Toast.LENGTH_SHORT);
+                Toast t = Toast.makeText(this, "Has acertado", Toast.LENGTH_SHORT);
                 t.show();
 
                 puntuacion += 100;
@@ -70,7 +73,10 @@ public class Game extends AppCompatActivity {
             } else {
                 Toast t = Toast.makeText(this, "Has fallado", Toast.LENGTH_SHORT);
                 t.show();
-                questions.get(i).ShowQuestion(this);
+                FailDialog d = new FailDialog();
+                d.setCancelable(false);
+                d.show(getFragmentManager(),"Dialog");
+                //questions.get(i).ShowQuestion(this);
             }
     }
 
@@ -84,5 +90,23 @@ public class Game extends AppCompatActivity {
         Intent nextActivty = new Intent(this,SavePuntuation.class);
         nextActivty.putExtra("Score",puntuacion);
         startActivity(nextActivty);
+    }
+
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        i++;
+        puntuacion-=50;
+        if(i>=questions.size()){
+            EndGame();
+        }else
+        {
+            questions.get(i).ShowQuestion(this);
+        }
+
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+
     }
 }

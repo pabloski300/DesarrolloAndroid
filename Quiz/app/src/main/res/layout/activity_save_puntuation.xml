@@ -26,6 +26,7 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:inputType="text"
+            android:maxLength="5"
             android:hint="@string/namescore"
             android:textAlignment="center"
             android:imeOptions="actionDone"/>

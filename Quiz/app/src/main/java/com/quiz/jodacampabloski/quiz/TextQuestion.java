@@ -39,6 +39,13 @@ public class TextQuestion extends Question {
         button2.setText(Answers[2]);
         button3.setText(Answers[3]);
 
+        button0.setBackground(null);
+        button1.setBackground(null);
+        button2.setBackground(null);
+        button3.setBackground(null);
+
+
+
         ImageView image = mainGame.findViewById(R.id.HeaderImage);
         if(HeaderImage == null) {
             image.setImageResource(0);

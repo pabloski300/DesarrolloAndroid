@@ -1,23 +1,23 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Git\\DesarrolloAndroid\\Quiz\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en\\values-en.xml",
+            "outputFile": "C:\\Git\\DesarrolloAndroid\\Quiz\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en\\values-en.xml",
             "map": [
                 {
-                    "source": "D:\\Git\\DesarrolloAndroid\\Quiz\\app\\src\\main\\res\\values-en\\strings.xml",
+                    "source": "C:\\Git\\DesarrolloAndroid\\Quiz\\app\\src\\main\\res\\values-en\\strings.xml",
                     "from": {
-                        "startLines": "4,8,6,5,3,2,11,9,7,10",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "156,374,272,213,100,57,523,423,319,466",
-                        "endColumns": "55,47,45,57,54,41,61,41,53,55",
-                        "endOffsets": "207,417,313,266,150,94,580,460,368,517"
+                        "startLines": "-1,14,13,-1,-1,-1,-1,-1,-1,12,-1,-1,-1",
+                        "startColumns": "-1,4,4,-1,-1,-1,-1,-1,-1,4,-1,-1,-1",
+                        "startOffsets": "-1,714,666,-1,-1,-1,-1,-1,-1,586,-1,-1,-1",
+                        "endColumns": "-1,48,46,-1,-1,-1,-1,-1,-1,78,-1,-1,-1",
+                        "endOffsets": "-1,758,708,-1,-1,-1,-1,-1,-1,660,-1,-1,-1"
                     },
                     "to": {
-                        "startLines": "2,3,4,5,6,7,8,9,10,11",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,111,159,205,263,318,360,422,464,518",
-                        "endColumns": "55,47,45,57,54,41,61,41,53,55",
-                        "endOffsets": "106,154,200,258,313,355,417,459,513,569"
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,111,160,207,255,301,359,414,456,518,597,639,693",
+                        "endColumns": "55,48,46,47,45,57,54,41,61,78,41,53,55",
+                        "endOffsets": "106,155,202,250,296,354,409,451,513,592,634,688,744"
                     }
                 }
             ]

@@ -3,6 +3,11 @@
     "Answers":["Patata","Tomate","Lechuga","Pepino"],
     "QuestionText": "¿Cual es una fruta?",
     "CorrectAnswer": 1
+  },
+  {
+    "Answers":["C++","Java","BrainFuck","PHP"],
+    "QuestionText": "¿A qué lenguaje pertenece std?",
+    "CorrectAnswer": 0
   }
 
 ]

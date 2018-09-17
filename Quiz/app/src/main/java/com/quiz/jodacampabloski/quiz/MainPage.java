@@ -22,7 +22,7 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.activity_main_page);
 
         try {
-        openFileInput("Scores");
+        openFileInput("Score");
 
 
         } catch (Exception e) {

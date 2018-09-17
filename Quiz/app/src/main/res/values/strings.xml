@@ -12,4 +12,7 @@
     <string name="NoGuardar">No guardar</string>
     <string name="guardar2">Guardar</string>
     <string name="backscore">Tu puntuación no ha sido guardada</string>
+    <string name="dialogmessage">Has fallado ¿Quieres continuar?</string>
+    <string name="ContinueButton">Si</string>
+    <string name="CancelButton">No</string>
 </resources>
