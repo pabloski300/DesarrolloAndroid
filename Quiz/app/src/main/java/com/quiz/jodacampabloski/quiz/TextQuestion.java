@@ -39,10 +39,10 @@ public class TextQuestion extends Question {
         button2.setText(Answers[2]);
         button3.setText(Answers[3]);
 
-        button0.setBackground(null);
-        button1.setBackground(null);
-        button2.setBackground(null);
-        button3.setBackground(null);
+        button0.setBackground(mainGame.getDrawable(R.drawable.grey));
+        button1.setBackground(mainGame.getDrawable(R.drawable.grey));
+        button2.setBackground(mainGame.getDrawable(R.drawable.grey));
+        button3.setBackground(mainGame.getDrawable(R.drawable.grey));
 
 
 

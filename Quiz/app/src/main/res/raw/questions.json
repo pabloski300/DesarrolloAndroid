@@ -8,14 +8,33 @@
     "Answers":["C++","Java","BrainFuck","PHP"],
     "QuestionText": "¿A qué lenguaje pertenece std?",
     "CorrectAnswer": 0
+  },
+  {
+    "Answers":["Salado","Agridulce","Umami","Ácido"],
+    "QuestionText": "¿Cual de los siguientes no es un sabor primario?",
+    "CorrectAnswer": 1
+  },
+  {
+    "Answers":["Nilo","Yangtsé","Misisipi","Amazonas"],
+    "QuestionText": "¿Cual es el rio mas largo del mundo?",
+    "CorrectAnswer": 3
+  },
+  {
+    "Answers":["1944","1946","1945","1943"],
+    "QuestionText": "¿En que año acabo la Segunda Guerra Mundial?",
+    "CorrectAnswer": 2
+  },
+  {
+    "Answers":["La Noche Estrellada","El Grito","Guernica","La Gioconda"],
+    "HeaderImage":"noche_estrellada",
+    "QuestionText": "¿Cual es el título del cuadro?",
+    "CorrectAnswer": 0
   }
-
 ]
 //
 [
   {
   "Answers":["patata","tomate","lechuga","pepino"],
-  "HeaderImage":"magdalena",
   "QuestionText": "¿Cual es una fruta?",
   "CorrectAnswer": 1
   }
