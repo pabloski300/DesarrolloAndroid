@@ -29,13 +29,63 @@
     "HeaderImage":"noche_estrellada",
     "QuestionText": "¿Cual es el título del cuadro?",
     "CorrectAnswer": 0
+  },
+  {
+    "Answers":["Índico","Atlántico","Pacífico","Ártico"],
+    "QuestionText": "¿Cuál es el mayor océano del mundo?",
+    "CorrectAnswer": 2
+  },
+  {
+    "Answers":["Cordón","Suela","Hebilla","Herrete"],
+    "HeaderImage":"herrete",
+    "QuestionText": "¿Cuál es el mayor océano del mundo?",
+    "CorrectAnswer": 3
+  },
+  {
+    "Answers":["A","B","C","D"],
+    "HeaderImage":"hiragana",
+    "QuestionText": "¿Con que letra se corresponde el siguiente Hiragana?",
+    "CorrectAnswer": 0
+  },
+  {
+    "Answers":["Un postre","Una tortura","Un pez","Una prenda de ropa"],
+    "QuestionText": "¿Qué es es el Ling Chi?",
+    "CorrectAnswer": 1
+  },
+  {
+    "Answers":["Blanco","Naranja","Azul","Verde"],
+    "QuestionText": "¿Qué color representa la esperanza?",
+    "CorrectAnswer": 3
+  },
+  {
+    "Answers":["Hierro","Cobre","Bronce","Tungsteno"],
+    "QuestionText": "¿Cúal fue el primer metal usado por el hombre?",
+    "CorrectAnswer": 2
+  },
+  {
+    "Answers":["Ciervo","Alce","Bufalo","Ñu"],
+    "HeaderImage":"alce",
+    "QuestionText": "¿Cúal es el siguiente animal?",
+    "CorrectAnswer": 1
+  },
+  {
+    "Answers":["Nimbo","Cumulonimbo","Cirro","Estrato"],
+    "HeaderImage":"cirro",
+    "QuestionText": "¿Qué tipo de nube es la siguiente?",
+    "CorrectAnswer": 2
+  },
+  {
+    "Answers":["Mario 64","Final Fantasy IX","Sonic","Kingdom Hearts"],
+    "HeaderImage":"estrella",
+    "QuestionText": "¿A qué videojuego pertenece el siguiente objeto?",
+    "CorrectAnswer": 0
   }
 ]
 //
 [
   {
-  "Answers":["patata","tomate","lechuga","pepino"],
-  "QuestionText": "¿Cual es una fruta?",
+  "Answers":["noche_estrellada","meninas","gioconda","guernica"],
+  "QuestionText": "¿Cuál de los siguientes cuadros es Las Meninas?",
   "CorrectAnswer": 1
   }
 
