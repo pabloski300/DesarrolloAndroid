@@ -13,4 +13,8 @@
     <string name="dialogmessage">You failed ¿Do you want to continue?</string>
     <string name="ContinueButton">Yes</string>
     <string name="CancelButton">Yesn\'t</string>
+    <string name="npreguntas">Número de preguntas</string>
+    <string name="tipospreguntas">Tipos de preguntas</string>
+    <string name="preguntas5">5 Preguntas</string>
+    <string name="preguntasimagen">Preguntas con imagenes</string>
 </resources>

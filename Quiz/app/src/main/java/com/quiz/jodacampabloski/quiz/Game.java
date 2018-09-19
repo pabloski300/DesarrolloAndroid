@@ -52,9 +52,12 @@ public class Game extends AppCompatActivity implements FailDialog.NoticeDialogLi
         String[] results = result.split("//");
 
         questions = new ArrayList<Question>();
+        if(Opcions.Texto)
         questions.addAll(Arrays.asList(JSONMapper.fromJson(results[0],TextQuestion[].class)));
 
+        if(Opcions.Imagenes)
         questions.addAll(Arrays.asList(JSONMapper.fromJson(results[1],ImageQuestion[].class)));
+        
         Collections.shuffle(questions);
         questions.get(i).ShowQuestion(this);
     }
@@ -67,7 +70,7 @@ public class Game extends AppCompatActivity implements FailDialog.NoticeDialogLi
 
                 puntuacion += 100;
                 i++;
-                if(i<questions.size()) {
+                if(i<Opcions.NumeroPreguntas) {
                     questions.get(i).ShowQuestion(this);
                 }else{
                    EndGame();
@@ -99,7 +102,7 @@ public class Game extends AppCompatActivity implements FailDialog.NoticeDialogLi
     public void onDialogPositiveClick(DialogFragment dialog) {
         i++;
         puntuacion-=50;
-        if(i>=questions.size()){
+        if(i>=Opcions.NumeroPreguntas){
             EndGame();
         }else
         {
