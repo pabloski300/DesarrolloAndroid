@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -23,18 +24,44 @@ public class MainPage extends AppCompatActivity {
         setContentView(R.layout.activity_main_page);
 
         try {
-        openFileInput("Score");
+        InputStream fileInput = openFileInput("Opciones");
+        Scanner s = new Scanner(fileInput).useDelimiter("\\A");
+        String result = s.hasNext() ? s.next() : "";
+
+        String results[] = result.split(",");
+
+        Opcions.NumeroPreguntas = Integer.parseInt(results[0]);
+        Opcions.Imagenes = Boolean.parseBoolean(results[2]);
+        Opcions.Texto = Boolean.parseBoolean(results[1]);
+
+        } catch (Exception e) {
+        FileOutputStream outputStream;
+
+
+            try {
+                outputStream = openFileOutput("Opciones", MODE_PRIVATE);
+                String out = "5,true,true";
+                outputStream.write(out.getBytes());
+                outputStream.close();
+            }
+            catch (Exception e1) {
+                e1.printStackTrace();
+            }
+            }
+
+        try {
+            openFileInput("Score");
 
 
         } catch (Exception e) {
 
-        InputStream reader = getResources().openRawResource(R.raw.scores);
+            InputStream reader = getResources().openRawResource(R.raw.scores);
 
-        Scanner s = new Scanner(reader).useDelimiter("\\A");
-        String result = s.hasNext() ? s.next() : "";
+            Scanner s = new Scanner(reader).useDelimiter("\\A");
+            String result = s.hasNext() ? s.next() : "";
 
 
-        FileOutputStream outputStream;
+            FileOutputStream outputStream;
 
 
             try {
@@ -45,7 +72,9 @@ public class MainPage extends AppCompatActivity {
             catch (Exception e1) {
                 e1.printStackTrace();
             }
-            }
+        }
+
+
         }
 
 

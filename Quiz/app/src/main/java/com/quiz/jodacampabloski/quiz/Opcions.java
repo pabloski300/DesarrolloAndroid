@@ -9,6 +9,10 @@ import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
+import java.io.FileOutputStream;
+
 public class Opcions extends AppCompatActivity {
 
     public static int NumeroPreguntas = 5;
@@ -21,6 +25,23 @@ public class Opcions extends AppCompatActivity {
         RadioGroup r = (RadioGroup) findViewById(R.id.radioGroup);
         Switch s = (Switch) findViewById(R.id.stext);
         Switch si = (Switch) findViewById(R.id.simagenes);
+
+        si.setChecked(Imagenes);
+        s.setChecked(Texto);
+
+        switch (NumeroPreguntas){
+            case 5:
+                r.check(R.id.preguntas5);
+                break;
+            case 10:
+                r.check(R.id.preguntas10);
+                break;
+            case 15:
+                r.check(R.id.preguntas15);
+                break;
+        }
+
+
 
         CompoundButton.OnCheckedChangeListener t = new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -52,6 +73,7 @@ public class Opcions extends AppCompatActivity {
                         }
                         break;
                 }
+                WriteOption();
             }
         } ;
 
@@ -79,6 +101,22 @@ public class Opcions extends AppCompatActivity {
             case R.id.preguntas15:
                     NumeroPreguntas = 15;
                 break;
+        }
+        WriteOption();
+    }
+
+    public void WriteOption(){
+        FileOutputStream outputStream;
+
+
+        try {
+            outputStream = openFileOutput("Opciones", MODE_PRIVATE);
+            String out = NumeroPreguntas+","+String.valueOf(Texto)+","+String.valueOf(Imagenes);
+            outputStream.write(out.getBytes());
+            outputStream.close();
+        }
+        catch (Exception e1) {
+            e1.printStackTrace();
         }
     }
 }

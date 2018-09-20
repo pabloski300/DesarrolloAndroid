@@ -57,7 +57,7 @@ public class Game extends AppCompatActivity implements FailDialog.NoticeDialogLi
 
         if(Opcions.Imagenes)
         questions.addAll(Arrays.asList(JSONMapper.fromJson(results[1],ImageQuestion[].class)));
-        
+
         Collections.shuffle(questions);
         questions.get(i).ShowQuestion(this);
     }
