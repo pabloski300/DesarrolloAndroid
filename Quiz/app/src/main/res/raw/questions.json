@@ -87,6 +87,16 @@
   "Answers":["noche_estrellada","meninas","gioconda","guernica"],
   "QuestionText": "¿Cuál de los siguientes cuadros es Las Meninas?",
   "CorrectAnswer": 1
+  },
+  {
+    "Answers":["loss","bongo_cat","recursive_centaur","tom_nook"],
+    "QuestionText": "¿Cuál de los siguientes memes es Loss?",
+    "CorrectAnswer": 0
+  },
+  {
+    "Answers":["caparazon_rojo","estrella","wumpa","seta_mario"],
+    "QuestionText": "¿Cuál de estos no pertenece a la saga de videojuegos de Mario?",
+    "CorrectAnswer": 2
   }
 
 ]
