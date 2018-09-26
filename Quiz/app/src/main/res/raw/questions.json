@@ -84,9 +84,9 @@
 //
 [
   {
-  "Answers":["noche_estrellada","meninas","gioconda","guernica"],
-  "QuestionText": "¿Cuál de los siguientes cuadros es Las Meninas?",
-  "CorrectAnswer": 1
+    "Answers":["noche_estrellada","meninas","gioconda","guernica"],
+    "QuestionText": "¿Cuál de los siguientes cuadros es Las Meninas?",
+    "CorrectAnswer": 1
   },
   {
     "Answers":["loss","bongo_cat","recursive_centaur","tom_nook"],
@@ -99,7 +99,7 @@
     "CorrectAnswer": 2
   },
   {
-    "Answers":["francia","inglaterra","españa","rusa"],
+    "Answers":["francia","inglaterra","espana","rusia"],
     "QuestionText": "¿Cual es la bandera de Fracia?",
     "CorrectAnswer": 0
   },
@@ -114,9 +114,13 @@
     "CorrectAnswer": 2
   },
   {
-    "Answers":["c","csharp","java","kotlin"],
-    "QuestionText": "¿Con que lenguaje está programado Unity?",
+    "Answers":["diamond","emerald","sapphire","rubi"],
+    "QuestionText": "¿Cuál es un rubí?",
+    "CorrectAnswer": 3
+  },
+  {
+    "Answers":["one","two","four","six"],
+    "QuestionText": "¿Cuál es un numero primo?",
     "CorrectAnswer": 1
   }
-
 ]
