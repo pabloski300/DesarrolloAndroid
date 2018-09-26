@@ -34,7 +34,8 @@
             android:name=".SavePuntuation"
             android:noHistory="true"
             android:screenOrientation="portrait" />
-        <activity android:name=".Opcions"></activity>
+        <activity android:name=".Opcions"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

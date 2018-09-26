@@ -38,11 +38,11 @@
   {
     "Answers":["Cordón","Suela","Hebilla","Herrete"],
     "HeaderImage":"herrete",
-    "QuestionText": "¿Cuál es el mayor océano del mundo?",
+    "QuestionText": "¿Como se llama la parte señalada?",
     "CorrectAnswer": 3
   },
   {
-    "Answers":["A","B","C","D"],
+    "Answers":["A","Ka","Tsu","O"],
     "HeaderImage":"hiragana",
     "QuestionText": "¿Con que letra se corresponde el siguiente Hiragana?",
     "CorrectAnswer": 0
@@ -60,7 +60,7 @@
   {
     "Answers":["Hierro","Cobre","Bronce","Tungsteno"],
     "QuestionText": "¿Cúal fue el primer metal usado por el hombre?",
-    "CorrectAnswer": 2
+    "CorrectAnswer": 1
   },
   {
     "Answers":["Ciervo","Alce","Bufalo","Ñu"],
@@ -97,6 +97,26 @@
     "Answers":["caparazon_rojo","estrella","wumpa","seta_mario"],
     "QuestionText": "¿Cuál de estos no pertenece a la saga de videojuegos de Mario?",
     "CorrectAnswer": 2
+  },
+  {
+    "Answers":["francia","inglaterra","españa","rusa"],
+    "QuestionText": "¿Cual es la bandera de Fracia?",
+    "CorrectAnswer": 0
+  },
+  {
+    "Answers":["c","csharp","java","kotlin"],
+    "QuestionText": "¿Con que lenguaje está programado Unity?",
+    "CorrectAnswer": 1
+  },
+  {
+    "Answers":["jdeep","will","bloom","rock"],
+    "QuestionText": "¿Qué actor participó en El señor de los anillos?",
+    "CorrectAnswer": 2
+  },
+  {
+    "Answers":["c","csharp","java","kotlin"],
+    "QuestionText": "¿Con que lenguaje está programado Unity?",
+    "CorrectAnswer": 1
   }
 
 ]
