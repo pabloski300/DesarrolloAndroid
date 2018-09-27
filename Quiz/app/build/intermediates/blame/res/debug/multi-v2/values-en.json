@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Git\\DesarrolloAndroid\\Quiz\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en\\values-en.xml",
+            "outputFile": "D:\\Git\\DesarrolloAndroid\\Quiz\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en\\values-en.xml",
             "map": [
                 {
-                    "source": "C:\\Git\\DesarrolloAndroid\\Quiz\\app\\src\\main\\res\\values-en\\strings.xml",
+                    "source": "D:\\Git\\DesarrolloAndroid\\Quiz\\app\\src\\main\\res\\values-en\\strings.xml",
                     "from": {
                         "startLines": "4,14,13,8,6,5,3,2,11,12,9,7,15,10,17,18,16",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
