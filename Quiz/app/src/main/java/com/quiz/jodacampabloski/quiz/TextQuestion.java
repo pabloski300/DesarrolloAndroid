@@ -1,26 +1,26 @@
 package com.quiz.jodacampabloski.quiz;
 
 import android.app.Activity;
-import android.content.Context;
-import android.graphics.drawable.Icon;
-import android.media.Image;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.net.Uri;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 public class TextQuestion extends Question {
 
     public String[] Answers;
     public String HeaderImage;
+    public String HeaderVideo;
     public String QuestionText;
 
-
-
-    public TextQuestion(String[] answers, String headerImage, String questionText,int correctAnswer) {
+    public TextQuestion(String[] answers, String headerImage, String headerVideo, String questionText,int correctAnswer) {
         Answers = answers;
         HeaderImage = headerImage;
+        HeaderVideo = headerVideo;
         QuestionText = questionText;
         CorrectAnswer = correctAnswer;
     }
@@ -45,16 +45,35 @@ public class TextQuestion extends Question {
         button2.setBackground(mainGame.getDrawable(R.drawable.grey));
         button3.setBackground(mainGame.getDrawable(R.drawable.grey));
 
-
-
         ImageView image = mainGame.findViewById(R.id.HeaderImage);
-        if(HeaderImage == null) {
-            image.setImageResource(0);
-
-        }else{
+        video = mainGame.findViewById(R.id.videoView);
+        if(HeaderImage == null && HeaderVideo == null) {
+            image.setVisibility(View.GONE);
+            video.setVisibility(View.GONE);
+        }else if(HeaderImage != null){
+            video.setVisibility(View.GONE);
+            image.setVisibility(View.VISIBLE);
             int id = mainGame.getResources().getIdentifier(HeaderImage,"drawable",mainGame.getPackageName());
             image.setImageResource(id);
-
+        }else{
+            image.setVisibility(View.GONE);
+            video.setVisibility(View.VISIBLE);
+            int id = mainGame.getResources().getIdentifier(HeaderVideo,"raw",mainGame.getPackageName());
+            String uriPath = "android.resource://"+mainGame.getPackageName()+"/"+id;
+            Uri uri = Uri.parse(uriPath);
+            video.setVideoURI(uri);
+            video.start();
+            //video.setOnPreparedListener(videoViewListener);
         }
     }
+
+    private transient VideoView video;
+    private transient OnPreparedListener videoViewListener = new OnPreparedListener() {
+
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setLooping(false);
+                video.start();
+            }
+        };
 }

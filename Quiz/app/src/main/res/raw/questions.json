@@ -79,6 +79,12 @@
     "HeaderImage":"estrella",
     "QuestionText": "¿A qué videojuego pertenece el siguiente objeto?",
     "CorrectAnswer": 0
+  },
+  {
+    "Answers":["neko march","megalovania","nyan cat","sanic"],
+    "HeaderVideo":"neko",
+    "QuestionText": "¿Nombre del video?",
+    "CorrectAnswer": 0
   }
 ]
 //

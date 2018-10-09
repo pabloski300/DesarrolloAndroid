@@ -1,22 +1,27 @@
 package com.quiz.jodacampabloski.quiz;
 
 import android.app.Activity;
-import android.content.Context;
+import android.media.MediaPlayer;
+import android.net.Uri;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 public class ImageQuestion extends Question {
 
     public String[] Answers;
     public String HeaderImage;
+    //public String HeaderVideo;
     public String QuestionText;
 
 
 
-    public ImageQuestion(String[] answers, String headerImage, String questionText,int correctAnswer) {
+    public ImageQuestion(String[] answers, String headerImage, /*String headerVideo ,*/String questionText,int correctAnswer) {
         Answers = answers;
         HeaderImage = headerImage;
+        //HeaderVideo = headerVideo;
         QuestionText = questionText;
         CorrectAnswer = correctAnswer;
     }
@@ -41,14 +46,33 @@ public class ImageQuestion extends Question {
         button3.setText("");
 
         ImageView image = mainGame.findViewById(R.id.HeaderImage);
-        if(HeaderImage == null) {
-            image.setMaxHeight(0);
-            image.setMinimumHeight(0);
-            image.setImageResource(0);
-        }else{
+        VideoView video = mainGame.findViewById(R.id.videoView);
+        if(HeaderImage == null /*&& HeaderVideo == null*/) {
+            image.setVisibility(View.GONE);
+            video.setVisibility(View.GONE);
+        }else if(HeaderImage != null){
+            video.setVisibility(View.GONE);
+            image.setVisibility(View.VISIBLE);
             int id = mainGame.getResources().getIdentifier(HeaderImage,"drawable",mainGame.getPackageName());
             image.setImageResource(id);
-
+        }else{
+            /*image.setVisibility(View.GONE);
+            video.setVisibility(View.VISIBLE);
+            int id = mainGame.getResources().getIdentifier(HeaderVideo,"raw",mainGame.getPackageName());
+            String uriPath = "android://"+"/"+id;
+            Uri uri = Uri.parse(uriPath);
+            video.setVideoURI(uri);*/
+            //video.setOnPreparedListener(videoViewListener);
         }
     }
+
+    /*private MediaPlayer.OnPreparedListener videoViewListener =
+            new MediaPlayer.OnPreparedListener(){
+
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    mp.setLooping(false);
+                    video.start();
+                }
+            };*/
 }
