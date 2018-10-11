@@ -46,7 +46,7 @@ public class TextQuestion extends Question {
         button3.setBackground(mainGame.getDrawable(R.drawable.grey));
 
         ImageView image = mainGame.findViewById(R.id.HeaderImage);
-        video = mainGame.findViewById(R.id.videoView);
+        VideoView video = mainGame.findViewById(R.id.videoView);
         if(HeaderImage == null && HeaderVideo == null) {
             image.setVisibility(View.GONE);
             video.setVisibility(View.GONE);
@@ -63,17 +63,9 @@ public class TextQuestion extends Question {
             Uri uri = Uri.parse(uriPath);
             video.setVideoURI(uri);
             video.start();
-            //video.setOnPreparedListener(videoViewListener);
         }
     }
 
-    private transient VideoView video;
-    private transient OnPreparedListener videoViewListener = new OnPreparedListener() {
 
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                mp.setLooping(false);
-                video.start();
-            }
-        };
+
 }

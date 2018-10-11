@@ -13,15 +13,15 @@ public class ImageQuestion extends Question {
 
     public String[] Answers;
     public String HeaderImage;
-    //public String HeaderVideo;
+    public String HeaderVideo;
     public String QuestionText;
 
 
 
-    public ImageQuestion(String[] answers, String headerImage, /*String headerVideo ,*/String questionText,int correctAnswer) {
+    public ImageQuestion(String[] answers, String headerImage, String headerVideo ,String questionText,int correctAnswer) {
         Answers = answers;
         HeaderImage = headerImage;
-        //HeaderVideo = headerVideo;
+        HeaderVideo = headerVideo;
         QuestionText = questionText;
         CorrectAnswer = correctAnswer;
     }
@@ -56,23 +56,14 @@ public class ImageQuestion extends Question {
             int id = mainGame.getResources().getIdentifier(HeaderImage,"drawable",mainGame.getPackageName());
             image.setImageResource(id);
         }else{
-            /*image.setVisibility(View.GONE);
+            image.setVisibility(View.GONE);
             video.setVisibility(View.VISIBLE);
             int id = mainGame.getResources().getIdentifier(HeaderVideo,"raw",mainGame.getPackageName());
             String uriPath = "android://"+"/"+id;
             Uri uri = Uri.parse(uriPath);
-            video.setVideoURI(uri);*/
-            //video.setOnPreparedListener(videoViewListener);
+            video.setVideoURI(uri);
+            video.start();
         }
     }
 
-    /*private MediaPlayer.OnPreparedListener videoViewListener =
-            new MediaPlayer.OnPreparedListener(){
-
-                @Override
-                public void onPrepared(MediaPlayer mp) {
-                    mp.setLooping(false);
-                    video.start();
-                }
-            };*/
 }
