@@ -15,16 +15,24 @@ public class TextQuestion extends Question {
 
 
 
-    public TextQuestion(String[] answers, String headerImage, String headerVideo, String questionText,int correctAnswer) {
+    public TextQuestion(String[] answers, String headerImage, String headerVideo, String questionText,int correctAnswer,String type,String category) {
         Answers = answers;
         HeaderImage = headerImage;
         HeaderVideo = headerVideo;
         QuestionText = questionText;
         CorrectAnswer = correctAnswer;
+        Type = type;
+        Category = category;
     }
 
     public TextQuestion(Cursor r){
-
+        Type = r.getString(1);
+        Category = r.getString(2);
+        Answers = r.getString(3).split(",");
+        HeaderImage = r.getString(4);
+        HeaderVideo = r.getString(5);
+        QuestionText = r.getString(6);
+        CorrectAnswer = r.getInt(7);
     }
 
 

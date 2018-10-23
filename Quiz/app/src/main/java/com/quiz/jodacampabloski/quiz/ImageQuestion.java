@@ -1,6 +1,7 @@
 package com.quiz.jodacampabloski.quiz;
 
 import android.app.Activity;
+import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.view.View;
@@ -11,16 +12,28 @@ import android.widget.VideoView;
 
 public class ImageQuestion extends Question {
 
-    public String HeaderVideo;
 
 
 
-    public ImageQuestion(String[] answers, String headerImage, String headerVideo ,String questionText,int correctAnswer) {
+
+    public ImageQuestion(String[] answers, String headerImage, String headerVideo ,String questionText,int correctAnswer,String  type,String category) {
         Answers = answers;
         HeaderImage = headerImage;
         HeaderVideo = headerVideo;
         QuestionText = questionText;
         CorrectAnswer = correctAnswer;
+        Type = type;
+        Category = category;
+    }
+
+    public ImageQuestion(Cursor r){
+        Type = r.getString(1);
+        Category = r.getString(2);
+        Answers = r.getString(3).split(",");
+        HeaderImage = r.getString(4);
+        HeaderVideo = r.getString(5);
+        QuestionText = r.getString(6);
+        CorrectAnswer = r.getInt(7);
     }
 
     @Override

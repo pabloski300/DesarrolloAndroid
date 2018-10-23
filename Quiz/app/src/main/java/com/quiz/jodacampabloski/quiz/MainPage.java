@@ -17,9 +17,8 @@ public class MainPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        SQLiteOpenHelper db = DataBaseManager.CreateInstance(getApplicationContext());
         super.onCreate(savedInstanceState);
+        DataBaseManager.CreateInstance(getApplicationContext());
         setContentView(R.layout.activity_main_page);
         try {
         InputStream fileInput = openFileInput("Opciones");
