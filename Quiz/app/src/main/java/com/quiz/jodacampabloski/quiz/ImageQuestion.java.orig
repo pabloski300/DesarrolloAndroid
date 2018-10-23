@@ -11,7 +11,13 @@ import android.widget.VideoView;
 
 public class ImageQuestion extends Question {
 
+<<<<<<< HEAD
+=======
+    public String[] Answers;
+    public String HeaderImage;
     public String HeaderVideo;
+    public String QuestionText;
+>>>>>>> 4c6cb6270b8bbd26c6428d4cd57f08aac3ebb2d6
 
 
 
