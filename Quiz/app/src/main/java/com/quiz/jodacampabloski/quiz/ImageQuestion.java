@@ -11,10 +11,6 @@ import android.widget.VideoView;
 
 public class ImageQuestion extends Question {
 
-    public String[] Answers;
-    public String HeaderImage;
-    //public String HeaderVideo;
-    public String QuestionText;
 
 
 

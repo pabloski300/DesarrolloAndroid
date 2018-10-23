@@ -1,6 +1,8 @@
 package com.quiz.jodacampabloski.quiz;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -15,9 +17,10 @@ public class MainPage extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        SQLiteOpenHelper db = DataBaseManager.CreateInstance(getApplicationContext());
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_page);
-
         try {
         InputStream fileInput = openFileInput("Opciones");
         Scanner s = new Scanner(fileInput).useDelimiter("\\A");
