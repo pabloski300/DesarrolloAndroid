@@ -38,6 +38,7 @@ public final class DataBaseManager extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(Question.QuestionEntry.CREATE_DATA_TABLE);
+        db.execSQL(Profile.ProfileSql.CREATE_TABLE);
         JSONMapper = new Gson();
         InputStream reader = c.getResources().openRawResource(R.raw.questions);
 
@@ -46,7 +47,7 @@ public final class DataBaseManager extends SQLiteOpenHelper {
 
         String[] results = result.split("//");
         List<Question> questions;
-        questions = new ArrayList<Question>();
+        questions = new ArrayList<>();
         questions.addAll(Arrays.asList(JSONMapper.fromJson(results[0],TextQuestion[].class)));
         questions.addAll(Arrays.asList(JSONMapper.fromJson(results[1],ImageQuestion[].class)));
         for(Question i: questions){
@@ -57,6 +58,7 @@ public final class DataBaseManager extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(Question.QuestionEntry.DELETE_TABLE);
+        db.execSQL(Profile.ProfileSql.DELETE_TABLE);
         onCreate(db);
     }
 }
