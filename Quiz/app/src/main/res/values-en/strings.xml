@@ -17,4 +17,6 @@
     <string name="tipospreguntas">Tipos de preguntas</string>
     <string name="preguntas5">5 Preguntas</string>
     <string name="preguntasimagen">Preguntas con imagenes</string>
+    <string name="photoPickerText">Elige una foto</string>
+    <string name="confirmarPerfil">Confirmar Perfil</string>
 </resources>

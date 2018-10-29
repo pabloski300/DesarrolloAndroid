@@ -61,7 +61,7 @@ public class Game extends AppCompatActivity implements FailDialog.NoticeDialogLi
 
         }
         if(Opcions.Imagenes) {
-            String queryFormated = String.format(SELECT_QUERY,"imagen");
+            String queryFormated = String.format(SELECT_QUERY,"'imagen'");
             Cursor c = db.rawQuery(queryFormated,null);
             c.moveToFirst();
             do {

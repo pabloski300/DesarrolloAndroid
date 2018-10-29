@@ -1,5 +1,6 @@
 package com.quiz.jodacampabloski.quiz;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -27,10 +28,14 @@ public class ProfileChooser extends AppCompatActivity {
             }
         });
 
+        DataBaseManager db = DataBaseManager.CreateInstance(this.getBaseContext());
+        Cursor c = db.getReadableDatabase().rawQuery("SELECT * FROM " + Profile.ProfileSql.TABLE_NAME,null);
         ListView profileView = findViewById(R.id.profileList);
         int[] views = {R.id.user_name,R.id.profile_image};
-        SimpleCursorAdapter a = new SimpleCursorAdapter(this,R.layout.profile_layout,null,null,views,0);
+        String[] columns = {Profile.ProfileSql.NAME,Profile.ProfileSql.IMAGE};
+        SimpleCursorAdapter a = new SimpleCursorAdapter(this,R.layout.profile_layout,c,null,views,0);
         profileView.setAdapter(a);
+
     }
 
 }

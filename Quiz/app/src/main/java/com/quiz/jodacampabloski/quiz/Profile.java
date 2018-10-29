@@ -1,5 +1,6 @@
 package com.quiz.jodacampabloski.quiz;
 
+import android.content.ContentValues;
 import android.provider.BaseColumns;
 
 public class Profile {
@@ -17,11 +18,18 @@ public class Profile {
 
     String name;
     String imageName;
-    public Profile(String name, String imageName){
+    int id;
+    public Profile(String name, String imageName,int id){
         this.name = name;
         this.imageName = imageName;
+        this.id = id;
     }
-
+    public ContentValues toSQLValue(){
+        ContentValues c = new ContentValues();
+        c.put(ProfileSql.NAME,name);
+        c.put(ProfileSql.IMAGE,imageName);
+        return  c;
+    }
 
 
 
