@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Chronometer;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,28 +25,47 @@ public class Game extends AppCompatActivity implements FailDialog.NoticeDialogLi
 
 
     private final String SELECT_QUERY = "SELECT * FROM " + Question.QuestionEntry.TABLE_NAME +" WHERE " + Question.QuestionEntry.TYPE +" = %s";
-    private  String QUESTION_STRING = "%s/%s";
+    private String QUESTION_STRING = "%s/%s";
+    private String ACIERTOS_FALLOS = "A: %s F: %s";
+    private String TIME_STORED = "%s:%s";
     List<Question> questions;
     Gson JSONMapper;
     int i;
-    TextView TimeView;
+    Chronometer TimeView;
     TextView QuestionView;
     TextView FailsView;
     Puntuacion p;
     int puntuacion;
+    int aciertos = 0;
+    int fallos = 0;
+    int timesec;
+    int timemin;
+    String time;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         TimeView = findViewById(R.id.Timer);
+        TimeView.setFormat("Time: %s");
+        TimeView.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+            @Override
+            public void onChronometerTick(Chronometer chronometer) {
+                timesec++;
+                if(timesec == 60){
+                    timesec = 0;
+                    timemin++;
+                }
+            }
+        });
         FailsView = findViewById(R.id.questionCounter);
         QuestionView = findViewById(R.id.questionCount);
         SQLiteDatabase db = DataBaseManager.Instance.getReadableDatabase();
         Toast t = Toast.makeText(this, "Game Start", Toast.LENGTH_SHORT);
         t.show();
         QUESTION_STRING = String.format(QUESTION_STRING,"%s",Opcions.NumeroPreguntas);
+        FailsView.setText(String.format(ACIERTOS_FALLOS,0,0));
         i=0;
-        QuestionView.setText(String.format(QUESTION_STRING,i));
+        QuestionView.setText(String.format(QUESTION_STRING,i+1));
         puntuacion = 0;
         questions = new ArrayList<Question>();
 
@@ -56,9 +76,6 @@ public class Game extends AppCompatActivity implements FailDialog.NoticeDialogLi
             do {
                 questions.add(new TextQuestion(c));
             }while(c.moveToNext());
-
-
-
         }
         if(Opcions.Imagenes) {
             String queryFormated = String.format(SELECT_QUERY,"'imagen'");
@@ -71,6 +88,7 @@ public class Game extends AppCompatActivity implements FailDialog.NoticeDialogLi
 
 
         Collections.shuffle(questions);
+        TimeView.start();
         questions.get(i).ShowQuestion(this);
     }
 
@@ -80,20 +98,27 @@ public class Game extends AppCompatActivity implements FailDialog.NoticeDialogLi
                 Toast t = Toast.makeText(this, "Has acertado", Toast.LENGTH_SHORT);
                 t.show();
 
+                aciertos++;
+                FailsView.setText(String.format(ACIERTOS_FALLOS,aciertos,fallos));
                 puntuacion += 100;
                 i++;
                 if(i<Opcions.NumeroPreguntas) {
                     questions.get(i).ShowQuestion(this);
-                    QuestionView.setText(String.format(QUESTION_STRING,i));
+                    QuestionView.setText(String.format(QUESTION_STRING,i+1));
                 }else{
-                   EndGame();
+                    TimeView.stop();
+                    time = String.format(TIME_STORED,timemin,timesec);
+                    EndGame();
                     //super.onBackPressed();
                 }
             } else {
                 Toast t = Toast.makeText(this, "Has fallado", Toast.LENGTH_SHORT);
                 t.show();
-                onDialogPositiveClick(null);
-                QuestionView.setText(String.format(QUESTION_STRING,i));
+
+                fallos ++;
+                FailsView.setText(String.format(ACIERTOS_FALLOS,aciertos,fallos));
+                //onDialogPositiveClick(null);
+                QuestionView.setText(String.format(QUESTION_STRING,i+1));
                 //questions.get(i).ShowQuestion(this);
             }
     }
@@ -107,6 +132,7 @@ public class Game extends AppCompatActivity implements FailDialog.NoticeDialogLi
         t.show();
         Intent nextActivty = new Intent(this,SavePuntuation.class);
         nextActivty.putExtra("Score",puntuacion);
+        nextActivty.putExtra("Time",time);
         startActivity(nextActivty);
     }
 

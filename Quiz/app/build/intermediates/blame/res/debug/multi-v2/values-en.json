@@ -1,16 +1,16 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\Git\\DesarrolloAndroid\\Quiz\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en\\values-en.xml",
+            "outputFile": "D:\\Git\\DesarrolloAndroid\\Quiz\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-en\\values-en.xml",
             "map": [
                 {
-                    "source": "E:\\Git\\DesarrolloAndroid\\Quiz\\app\\src\\main\\res\\values-en\\strings.xml",
+                    "source": "D:\\Git\\DesarrolloAndroid\\Quiz\\app\\src\\main\\res\\values-en\\strings.xml",
                     "from": {
-                        "startLines": "-1,-1,-1,-1,-1,-1,-1,-1,-1,20,-1,-1,-1,-1,19,-1,-1,-1,-1",
-                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1,-1,4,-1,-1,-1,-1,4,-1,-1,-1,-1",
-                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,-1,-1,1067,-1,-1,-1,-1,1007,-1,-1,-1,-1",
-                        "endColumns": "-1,-1,-1,-1,-1,-1,-1,-1,-1,60,-1,-1,-1,-1,58,-1,-1,-1,-1",
-                        "endOffsets": "-1,-1,-1,-1,-1,-1,-1,-1,-1,1123,-1,-1,-1,-1,1061,-1,-1,-1,-1"
+                        "startLines": "4,14,13,8,6,5,3,2,11,20,12,9,7,15,19,10,17,18,16",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "156,714,666,374,272,213,100,57,523,1067,586,423,319,764,1007,466,887,939,824",
+                        "endColumns": "55,48,46,47,45,57,54,41,61,60,78,41,53,58,58,55,50,66,61",
+                        "endOffsets": "207,758,708,417,313,266,150,94,580,1123,660,460,368,818,1061,517,933,1001,881"
                     },
                     "to": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",

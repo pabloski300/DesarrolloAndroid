@@ -19,7 +19,10 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainPage"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" ><intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter></activity>
         <activity
             android:name=".Game"
             android:noHistory="true"
@@ -38,10 +41,9 @@
             android:name=".ProfileChooser"
             android:label="@string/title_activity_profile_chooser"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ProfileCreator"><intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+        <activity android:name=".ProfileCreator"/>
+
+
 
         <provider
             android:name="android.support.v4.content.FileProvider"
