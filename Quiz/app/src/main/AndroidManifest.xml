@@ -4,13 +4,14 @@
     package="com.quiz.jodacampabloski.quiz">
 
     <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-    <uses-feature android:name="android.hardware.camera"
+    <uses-feature
+        android:name="android.hardware.camera"
         android:required="true" />
 
     <application
@@ -22,8 +23,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainPage"
-            android:screenOrientation="portrait" >
-           </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".Game"
             android:noHistory="true"
@@ -41,13 +41,10 @@
         <activity
             android:name=".ProfileChooser"
             android:label="@string/title_activity_profile_chooser"
-            android:theme="@style/AppTheme.NoActionBar"><intent-filter>
-        <action android:name="android.intent.action.MAIN" />
-        <category android:name="android.intent.category.LAUNCHER" />
-    </intent-filter></activity>
-        <activity android:name=".ProfileCreator"> </activity>
+            android:theme="@style/AppTheme.NoActionBar">
 
-
+        </activity>
+        <activity android:name=".ProfileCreator"></activity>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -59,6 +56,14 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/picker_provider_paths" />
         </provider>
+
+        <activity android:name=".EnterActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

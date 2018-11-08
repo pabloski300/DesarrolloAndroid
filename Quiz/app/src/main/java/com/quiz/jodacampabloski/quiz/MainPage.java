@@ -47,31 +47,7 @@ public class MainPage extends AppCompatActivity {
             catch (Exception e1) {
                 e1.printStackTrace();
             }
-            }
 
-        try {
-            openFileInput("Score");
-
-
-        } catch (Exception e) {
-
-            InputStream reader = getResources().openRawResource(R.raw.scores);
-
-            Scanner s = new Scanner(reader).useDelimiter("\\A");
-            String result = s.hasNext() ? s.next() : "";
-
-
-            FileOutputStream outputStream;
-
-
-            try {
-                outputStream = openFileOutput("Score", MODE_PRIVATE);
-                outputStream.write(result.getBytes());
-                outputStream.close();
-            }
-            catch (Exception e1) {
-                e1.printStackTrace();
-            }
         }
 
 
@@ -118,7 +94,7 @@ public class MainPage extends AppCompatActivity {
     public void onBackPressed(){
 
         MainPage.actualProfile = null;
-        Intent next = new Intent(this,ProfileChooser.class);
+        Intent next = new Intent(this,EnterActivity.class);
         startActivity(next);
         finish();
     }

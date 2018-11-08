@@ -1,8 +1,11 @@
 package com.quiz.jodacampabloski.quiz;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
@@ -11,6 +14,8 @@ import android.os.Environment;
 import android.provider.DocumentsProvider;
 import android.provider.MediaStore;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.util.TimeUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -60,17 +65,25 @@ public class ProfileCreator extends AppCompatActivity implements IPickResult {
     public void setPhoto(View v){
         final Dialog camera = new Dialog(this);
         camera.requestWindowFeature(Window.FEATURE_NO_TITLE);
-
+        final Activity t = this;
         camera.setContentView(R.layout.camera_dialog);
         camera.findViewById(R.id.cameraButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
-                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-                    camera.dismiss();
-                }
 
+                if (ContextCompat.checkSelfPermission(t,Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+                    Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                        startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                        camera.dismiss();
+                    }
+                }else{
+
+                    ActivityCompat.requestPermissions(t,
+                            new String[]{Manifest.permission.CAMERA},
+                            0);
+
+                }
             }
         });
         camera.findViewById(R.id.cameraButton2).setOnClickListener(new View.OnClickListener() {
@@ -109,37 +122,40 @@ public class ProfileCreator extends AppCompatActivity implements IPickResult {
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Bitmap imageBitmap = Bitmap.createBitmap(480,300, Bitmap.Config.ARGB_8888);
-        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            Bundle extras = data.getExtras();
-            imageBitmap = (Bitmap) extras.get("data");
-        }else if(requestCode == 100 && resultCode == RESULT_OK){
-            Uri selectedImage = data.getData();
-            try {
-                imageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
 
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        try{
-            File image = File.createTempFile(
-                    "Quiz-"+"photo-"+Calendar.getInstance().getTimeInMillis(),  /* prefix */
-                    ".jpg",         /* suffix */
-                    storageDir      /* directory */
-            );
+       if(resultCode != RESULT_CANCELED) {
+           Bitmap imageBitmap = Bitmap.createBitmap(480, 300, Bitmap.Config.ARGB_8888);
+           if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+               Bundle extras = data.getExtras();
+               imageBitmap = (Bitmap) extras.get("data");
+           } else if (requestCode == 100 && resultCode == RESULT_OK) {
+               Uri selectedImage = data.getData();
+               try {
+                   imageBitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), selectedImage);
+               } catch (Exception e) {
+                   e.printStackTrace();
+               }
+           }
 
-            // Save a file: path for use with ACTION_VIEW intents
-            FileOutputStream file = new FileOutputStream(image);
+           File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+           try {
+               File image = File.createTempFile(
+                       "Quiz-" + "photo-" + Calendar.getInstance().getTimeInMillis(),  /* prefix */
+                       ".jpg",         /* suffix */
+                       storageDir      /* directory */
+               );
 
-            imageBitmap.compress(Bitmap.CompressFormat.JPEG,100,file);
-            ImageView view =  findViewById(R.id.imageProfile);
-            view.setImageBitmap(imageBitmap);
-            imageUri = image.getPath();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+               // Save a file: path for use with ACTION_VIEW intents
+               FileOutputStream file = new FileOutputStream(image);
+
+               imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, file);
+               ImageView view = findViewById(R.id.imageProfile);
+               view.setImageBitmap(imageBitmap);
+               imageUri = image.getPath();
+           } catch (Exception e) {
+               e.printStackTrace();
+           }
+       }
     }
 
 
@@ -147,8 +163,8 @@ public class ProfileCreator extends AppCompatActivity implements IPickResult {
     public void EndProfile(View v){
         Profile p;
         String name =((TextInputLayout) findViewById(R.id.inputLayout)).getEditText().getText().toString();
-        if(imageUri == null && !name.isEmpty()){
-            Toast.makeText(this.getBaseContext(),"Tienes que elegir una imagen",Toast.LENGTH_SHORT);
+        if(imageUri == null || name.isEmpty()){
+            Toast.makeText(this.getBaseContext(),"Tienes que elegir una imagen",Toast.LENGTH_SHORT).show();
         }else{
             p = new Profile(name,imageUri,id);
             p.maxScore = MainPage.actualProfile != null ? MainPage.actualProfile.maxScore:0;
