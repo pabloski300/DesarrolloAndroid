@@ -32,4 +32,5 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.3.1'
     implementation 'com.github.jrvansuita:PickImage:2.2.4'
 
+    implementation 'com.android.support:gridlayout-v7:27.1.1'
 }

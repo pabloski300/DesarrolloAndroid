@@ -190,4 +190,8 @@
     <string name="title_activity_main">MainActivity</string>
     <string name="photoPickerText">Elige una foto</string>
     <string name="confirmarPerfil">Confirmar Perfil</string>
+    <string name="cameraText">Camara</string>
+    <string name="galeryText">Galeria</string>
+    <string name="notStore">Tu puntuación era menor a la puntuación maxima</string>
+    <string name="perfileEdit">Editar Perfil</string>
 </resources>

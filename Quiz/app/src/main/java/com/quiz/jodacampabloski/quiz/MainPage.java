@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -15,9 +16,11 @@ import java.util.Scanner;
 
 public class MainPage extends AppCompatActivity {
 
+    public static Profile actualProfile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         DataBaseManager.CreateInstance(getApplicationContext());
         setContentView(R.layout.activity_main_page);
         try {
@@ -95,13 +98,29 @@ public class MainPage extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
+        Intent nextActivty;
         switch (item.getItemId()) {
             case R.id.Opciones:
-                Intent nextActivty = new Intent(this,Opcions.class);
+                 nextActivty = new Intent(this,Opcions.class);
                 startActivity(nextActivty);
+                break;
+            case R.id.perfileEdit:
+                 nextActivty = new Intent(this,ProfileCreator.class);
+                startActivity(nextActivty);
+                break;
             default:
                 return super.onOptionsItemSelected(item);
         }
+        return true;
+    }
+
+
+    public void onBackPressed(){
+
+        MainPage.actualProfile = null;
+        Intent next = new Intent(this,ProfileChooser.class);
+        startActivity(next);
+        finish();
     }
 
 

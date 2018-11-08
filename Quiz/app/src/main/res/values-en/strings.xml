@@ -19,4 +19,9 @@
     <string name="preguntasimagen">Preguntas con imagenes</string>
     <string name="photoPickerText">Elige una foto</string>
     <string name="confirmarPerfil">Confirmar Perfil</string>
+    <string name="cameraText">Camara</string>
+    <string name="galeryText">Galeria</string>
+    <string name="notStore">Your score was lower than your max score</string>
+    <string name="preguntastexto">Text Question</string>
+    <string name="perfileEdit">Editar Perfil</string>
 </resources>

@@ -114,7 +114,7 @@ public abstract class Question {
         public static final String CORRECT_ANSWER = "correct";
 
 
-        public static final String DELETE_TABLE = "DROP TABLE IF EXIST "+ TABLE_NAME;
+        public static final String DELETE_TABLE = "DROP TABLE IF EXISTS "+ TABLE_NAME;
 
         public static  final String CREATE_DATA_TABLE =  "CREATE TABLE " + TABLE_NAME + " (" +
                 _ID + " INTEGER PRIMARY KEY," +

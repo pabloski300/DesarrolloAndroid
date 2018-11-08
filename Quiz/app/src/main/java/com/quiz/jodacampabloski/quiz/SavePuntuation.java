@@ -30,8 +30,8 @@ public class SavePuntuation extends AppCompatActivity {
         if(Score<0){
             Score=0;
         }
-        TextView t = findViewById(R.id.TextPoints);
-        String newText =  t.getText().toString() +" "+ Score;
+        TextView t = findViewById(R.id.NameText);
+        String newText = ""+Score;
         t.setText(newText);
     }
 
@@ -44,43 +44,16 @@ public class SavePuntuation extends AppCompatActivity {
     }
 
     public void Save(View v){
-        List<Puntuacion> puntuaciones = new ArrayList<>();
-
-        JSONMapper = new Gson();
-        InputStream reader = null;
-        try {
-            reader = openFileInput("Score");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        if(Score>MainPage.actualProfile.maxScore) {
+            MainPage.actualProfile.maxScore=Score;
+            DataBaseManager.Instance.getWritableDatabase().update(Profile.ProfileSql.TABLE_NAME,MainPage.actualProfile.toSQLValue(),
+                    Profile.ProfileSql._ID+ "="+MainPage.actualProfile.id,null);
         }
-
-        Scanner s = new Scanner(reader).useDelimiter("\\A");
-        String result = s.hasNext() ? s.next() : "";
-
-        puntuaciones.addAll(Arrays.asList(JSONMapper.fromJson(result,Puntuacion[].class)));
-
-        puntuaciones.add(new Puntuacion(((TextInputLayout)findViewById(R.id.NameText)).getEditText().getText().toString(),Score));
-
-        Collections.sort(puntuaciones);
-
-        while(puntuaciones.size() > 10){
-            puntuaciones.remove(puntuaciones.size()-1);
+        else
+            {
+                Toast t = Toast.makeText(this,getText(R.string.notStore),Toast.LENGTH_SHORT);
+                t.show();
         }
-
-        String punct = JSONMapper.toJson(puntuaciones);
-
-        FileOutputStream outputStream;
-
-
-        try {
-            outputStream = openFileOutput("Score", MODE_PRIVATE);
-            outputStream.write(punct.getBytes());
-            outputStream.close();
-        }
-        catch (Exception e1) {
-            e1.printStackTrace();
-        }
-
         finish();
 
     }

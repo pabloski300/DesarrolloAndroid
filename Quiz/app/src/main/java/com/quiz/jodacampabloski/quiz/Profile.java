@@ -1,6 +1,7 @@
 package com.quiz.jodacampabloski.quiz;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.provider.BaseColumns;
 
 public class Profile {
@@ -8,26 +9,41 @@ public class Profile {
         public static String TABLE_NAME = "profiles";
         public static String NAME = "name";
         public static String IMAGE = "profile_image";
+        public static String MAX_POINTS = "score";
         public static String CREATE_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + _ID +
                " INTEGER PRIMARY KEY,"+
                 NAME + " TEXT,"+
-                IMAGE + " TEXT );";
+                IMAGE + " TEXT, "+
+                MAX_POINTS + " INTEGER );";
 
-        public static String DELETE_TABLE = "DROP TABLE IF EXIST " + TABLE_NAME;
+
+        public static String DELETE_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
     }
 
     String name;
     String imageName;
     int id;
+    public int maxScore;
     public Profile(String name, String imageName,int id){
         this.name = name;
         this.imageName = imageName;
         this.id = id;
+        maxScore = 0;
+    }
+
+    public Profile(Cursor c){
+        id = c.getInt(c.getColumnIndex(ProfileSql._ID));
+        name = c.getString(c.getColumnIndex(ProfileSql.NAME));
+        imageName = c.getString(c.getColumnIndex(ProfileSql.IMAGE));
+        maxScore = c.getInt(c.getColumnIndex(ProfileSql.MAX_POINTS));
+
     }
     public ContentValues toSQLValue(){
         ContentValues c = new ContentValues();
+
         c.put(ProfileSql.NAME,name);
         c.put(ProfileSql.IMAGE,imageName);
+        c.put(ProfileSql.MAX_POINTS,maxScore);
         return  c;
     }
 

@@ -1,5 +1,6 @@
 package com.quiz.jodacampabloski.quiz;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
@@ -17,23 +18,8 @@ public class Puntuaciones extends AppCompatActivity{
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        JSONMapper = new Gson();
         setContentView(R.layout.activity_puntuaciones);
-
-
-        InputStream reader = null;
-        try {
-            reader = openFileInput("Score");
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        Scanner s = new Scanner(reader).useDelimiter("\\A");
-        String result = s.hasNext() ? s.next() : "";
-
-        puntuaciones = JSONMapper.fromJson(result,Puntuacion[].class);
-
+        Cursor c = DataBaseManager.Instance.getReadableDatabase().rawQuery("SELECT " + Profile.ProfileSql.NAME+","+ Profile.ProfileSql.MAX_POINTS +" FROM " + Profile.ProfileSql.TABLE_NAME + " ORDER BY "+Profile.ProfileSql.MAX_POINTS+" DESC LIMIT 10",null);
         TextView texts[] = new TextView[10];
 
         texts[0] = this.findViewById(R.id.textView1);
@@ -47,9 +33,13 @@ public class Puntuaciones extends AppCompatActivity{
         texts[8] = this.findViewById(R.id.textView9);
         texts[9] = this.findViewById(R.id.textView10);
 
-
-        for(int i = 0; i<puntuaciones.length; i++){
-            texts[i].setText((i+1)+". "+puntuaciones[i].name+": "+puntuaciones[i].score);
+        int l = c.getCount();
+        c.moveToFirst();
+        for(int i = 0; i<l; i++){
+            texts[i].setText((i+1)+". "+c.getString(c.getColumnIndex(Profile.ProfileSql.NAME))+": "+c.getInt(c.getColumnIndex(Profile.ProfileSql.MAX_POINTS)));
+            c.moveToNext();
         }
     }
+
+
 }
