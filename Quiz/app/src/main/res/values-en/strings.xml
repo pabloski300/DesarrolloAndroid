@@ -16,12 +16,14 @@
     <string name="npreguntas">Número de preguntas</string>
     <string name="tipospreguntas">Tipos de preguntas</string>
     <string name="preguntas5">5 Preguntas</string>
-    <string name="preguntasimagen">Preguntas con imagenes</string>
+    <string name="preguntasimagen">" Videogames"</string>
     <string name="photoPickerText">Elige una foto</string>
     <string name="confirmarPerfil">Confirmar Perfil</string>
     <string name="cameraText">Camara</string>
     <string name="galeryText">Galeria</string>
     <string name="notStore">Your score was lower than your max score</string>
-    <string name="preguntastexto">Text Question</string>
+    <string name="preguntastexto">General</string>
     <string name="perfileEdit">Editar Perfil</string>
+    <string name="textMemes">Memes</string>
+    <string name="textProgramacion">Programación</string>
 </resources>

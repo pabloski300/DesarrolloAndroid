@@ -24,7 +24,7 @@ import java.util.Scanner;
 public class Game extends AppCompatActivity implements FailDialog.NoticeDialogListener {
 
 
-    private final String SELECT_QUERY = "SELECT * FROM " + Question.QuestionEntry.TABLE_NAME +" WHERE " + Question.QuestionEntry.TYPE +" = %s";
+    private  String SELECT_QUERY = "SELECT * FROM " + Question.QuestionEntry.TABLE_NAME +" WHERE " + Question.QuestionEntry.TYPE +" = %s";
     private String QUESTION_STRING = "%s/%s";
     private String ACIERTOS_FALLOS = "A: %s F: %s";
     private String TIME_STORED = "%s:%s";
@@ -68,23 +68,24 @@ public class Game extends AppCompatActivity implements FailDialog.NoticeDialogLi
         QuestionView.setText(String.format(QUESTION_STRING,i+1));
         puntuacion = 0;
         questions = new ArrayList<Question>();
+        String CategoriesFilter = getCategoriFilter();
 
-        if(Opcions.Texto) {
-            String queryFormated = String.format(SELECT_QUERY,"'texto'");
+            String queryFormated = String.format(SELECT_QUERY,"'texto'") + CategoriesFilter;
+
             Cursor c = db.rawQuery(queryFormated,null);
             c.moveToFirst();
             do {
                 questions.add(new TextQuestion(c));
             }while(c.moveToNext());
-        }
-        if(Opcions.Imagenes) {
-            String queryFormated = String.format(SELECT_QUERY,"'imagen'");
-            Cursor c = db.rawQuery(queryFormated,null);
+
+
+            queryFormated = String.format(SELECT_QUERY,"'imagen'") + CategoriesFilter;
+            c = db.rawQuery(queryFormated,null);
             c.moveToFirst();
             do {
                 questions.add(new ImageQuestion(c));
             }while(c.moveToNext());
-        }
+
 
 
         Collections.shuffle(questions);
@@ -155,9 +156,24 @@ public class Game extends AppCompatActivity implements FailDialog.NoticeDialogLi
 
     }
 
-    public void UpdateTime(){
+    private String getCategoriFilter(){
+            String n = " OR "+ Question.QuestionEntry.CATEGORY + "  = %s ";
+            String nnor= Question.QuestionEntry.CATEGORY + "  = %s ";
+            String query = " AND  ( %s )";
+            String insideQuery = "";
+            for(int i = 0; i<Opcions.CategoriesChecked.length; i++){
+                if(Opcions.CategoriesChecked[i]){
+                    if(insideQuery != "") {
+                        insideQuery += String.format(n, "'" + Opcions.Categories[i] + "'");
+                    } else
+                    {
+                        insideQuery +=String.format(nnor,"'"+Opcions.Categories[i]+"'");
+                    }
+                }
 
-
+            }
+            query = String.format(query,insideQuery);
+            return query;
 
     }
 }

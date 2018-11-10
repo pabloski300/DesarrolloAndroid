@@ -98,13 +98,50 @@
         app:layout_constraintTop_toBottomOf="@+id/stext"
         app:layout_constraintVertical_bias="0.01999998" />
 
+    <Switch
+        android:id="@+id/sipro"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="150dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:checked="true"
+        android:splitTrack="false"
+        android:tag="sipro"
+        android:text="@string/textProgramacion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/simagenes"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Switch
+        android:id="@+id/simemes"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="100dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:checked="true"
+        android:splitTrack="false"
+        android:tag="simemes"
+        android:text="@string/textMemes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sipro"
+        app:layout_constraintVertical_bias="0.86" />
+
     <TextView
         android:id="@+id/textView12"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
         android:text="@string/tipospreguntas"
         android:textAlignment="viewStart"
         android:textColor="@android:color/black"

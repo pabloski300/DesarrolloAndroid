@@ -93,8 +93,8 @@
     <string name="preguntas5">5 Preguntas</string>
     <string name="preguntas10">10 Preguntas</string>
     <string name="preguntas15">15 Preguntas</string>
-    <string name="preguntastexto">Preguntas de texto</string>
-    <string name="preguntasimagen">Preguntas con imagenes</string>
+    <string name="preguntastexto">General</string>
+    <string name="preguntasimagen">Videojuegos</string>
     <string name="title_activity_profile_selection">ProfileSelection</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
@@ -194,4 +194,6 @@
     <string name="galeryText">Galeria</string>
     <string name="notStore">Tu puntuación era menor a la puntuación maxima</string>
     <string name="perfileEdit">Editar Perfil</string>
+    <string name="textMemes">Memes</string>
+    <string name="textProgramacion">Programación</string>
 </resources>

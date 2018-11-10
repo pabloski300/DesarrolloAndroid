@@ -3,105 +3,222 @@
     "Answers":["Patata","Tomate","Lechuga","Pepino"],
     "QuestionText": "¿Cual es una fruta?",
     "CorrectAnswer": 1,
-    "Type": "texto"
+    "Type": "texto",
+    "Category": "General"
 
   },
   {
     "Answers":["C++","Java","BrainFuck","PHP"],
     "QuestionText": "¿A qué lenguaje pertenece std?",
     "CorrectAnswer": 0,
-    "Type": "texto"
+    "Type": "texto",
+    "Category": "Programacion"
   },
   {
     "Answers":["Salado","Agridulce","Umami","Ácido"],
     "QuestionText": "¿Cual de los siguientes no es un sabor primario?",
     "CorrectAnswer": 1,
-    "Type": "texto"
+    "Type": "texto",
+    "Category": "General"
   },
   {
     "Answers":["Nilo","Yangtsé","Misisipi","Amazonas"],
     "QuestionText": "¿Cual es el rio mas largo del mundo?",
     "CorrectAnswer": 3,
-    "Type": "texto"
+    "Type": "texto",
+    "Category": "General"
   },
   {
     "Answers":["1944","1946","1945","1943"],
     "QuestionText": "¿En que año acabo la Segunda Guerra Mundial?",
     "CorrectAnswer": 2,
-    "Type": "texto"
+    "Type": "texto",
+    "Category": "General"
   },
   {
     "Answers":["La Noche Estrellada","El Grito","Guernica","La Gioconda"],
     "HeaderImage":"noche_estrellada",
     "QuestionText": "¿Cual es el título del cuadro?",
     "CorrectAnswer": 0,
-    "Type": "texto"
+    "Category": "General"
   },
   {
     "Answers":["Índico","Atlántico","Pacífico","Ártico"],
     "QuestionText": "¿Cuál es el mayor océano del mundo?",
     "CorrectAnswer": 2,
-    "Type": "texto"
+    "Type": "texto",
+    "Category": "General"
   },
   {
     "Answers":["Cordón","Suela","Hebilla","Herrete"],
     "HeaderImage":"herrete",
     "QuestionText": "¿Como se llama la parte señalada?",
     "CorrectAnswer": 3
-    ,"Type": "texto"
+    ,"Type": "texto",
+    "Category": "General"
   },
   {
     "Answers":["A","Ka","Tsu","O"],
     "HeaderImage":"hiragana",
     "QuestionText": "¿Con que letra se corresponde el siguiente Hiragana?",
     "CorrectAnswer": 0,
-    "Type": "texto"
+    "Type": "texto",
+    "Category": "General"
   },
   {
     "Answers":["Un postre","Una tortura","Un pez","Una prenda de ropa"],
     "QuestionText": "¿Qué es es el Ling Chi?",
     "CorrectAnswer": 1,
-    "Type": "texto"
+    "Type": "texto",
+    "Category": "General"
   },
   {
-    "Answers":["Blanco","Naranja","Azul","Verde"],
-    "QuestionText": "¿Qué color representa la esperanza?",
-    "CorrectAnswer": 3,
-    "Type": "texto"
+    "Answers":["Elisabeth Swan","Leslie Jerrintown","Ada Byron","Jennefer Mennigton"],
+    "QuestionText": "¿Quien fue la primera programadora de la historia?",
+    "CorrectAnswer": 2,
+    "Type": "texto",
+    "Category": "Programacion"
   },
   {
     "Answers":["Hierro","Cobre","Bronce","Tungsteno"],
     "QuestionText": "¿Cúal fue el primer metal usado por el hombre?",
     "CorrectAnswer": 1,
-    "Type": "texto"
+    "Type": "texto",
+    "Category": "General"
   },
   {
     "Answers":["Ciervo","Alce","Bufalo","Ñu"],
     "HeaderImage":"alce",
     "QuestionText": "¿Cúal es el siguiente animal?",
     "CorrectAnswer": 1,
-    "Type": "texto"
+    "Type": "texto",
+    "Category": "General"
   },
   {
     "Answers":["Nimbo","Cumulonimbo","Cirro","Estrato"],
     "HeaderImage":"cirro",
     "QuestionText": "¿Qué tipo de nube es la siguiente?",
     "CorrectAnswer": 2,
-    "Type": "texto"
+    "Type": "texto",
+    "Category": "General"
   },
   {
     "Answers":["Mario 64","Final Fantasy IX","Sonic","Kingdom Hearts"],
     "HeaderImage":"estrella",
     "QuestionText": "¿A qué videojuego pertenece el siguiente objeto?",
     "CorrectAnswer": 0,
-    "Type": "texto"
+    "Type": "texto",
+    "Category": "Videojuego"
   },
   {
     "Answers":["neko march","megalovania","nyan cat","sanic"],
     "HeaderVideo":"neko",
     "QuestionText": "¿Nombre del video?",
     "CorrectAnswer": 0,
-    "Type": "texto"
+    "Type": "texto",
+    "Category": "Memes"
+  },
+  {
+    "Answers":["Zelda","Peach","Link","Sans"],
+    "HeaderVideo":"link",
+    "QuestionText": "¿Quien es el protagonista del video?",
+    "CorrectAnswer": 3,
+    "Type": "texto",
+    "Category": "Videojuegos"
+  },
+  {
+    "Answers":["Ron","Vodka","Barcos","Agua"],
+    "HeaderVideo":"rum",
+    "QuestionText": "¿Por que pregunta Jack Sparow?",
+    "CorrectAnswer": 0,
+    "Type": "texto",
+    "Category": "Memes"
+  },
+  {
+    "Answers":["Patapon","Patapan","Patañen","Patata"],
+    "HeaderVideo":"patapon",
+    "QuestionText": "¿Cual es el videojuego?",
+    "CorrectAnswer": 0,
+    "Type": "texto",
+    "Category": "Videojuegos"
+  },
+  {
+    "Answers": [
+      "General Kenobi",
+      "Hello to",
+      "Ironic",
+      "You're a bold one"
+    ],
+    "HeaderVideo": "hellothere",
+    "QuestionText": "¿Como continua el meme?",
+    "CorrectAnswer": 0,
+    "Type": "texto",
+    "Category": "Memes"
+  },
+  {
+    "Answers": [
+      "2017",
+      "2016",
+      "2006",
+      "2008"
+    ],
+    "HeaderVideo": "isengard",
+    "QuestionText": "¿De que año es este video?",
+    "CorrectAnswer": 2,
+    "Type": "texto",
+    "Category": "Memes"
+  },
+  {
+    "Answers": [
+      "Mass Effect",
+      "DeltaRune",
+      "Space Jam",
+      "Space Invasion"
+    ],
+    "HeaderVideo": "meffect",
+    "QuestionText": "¿A qué Saga de vieojuegos pertenece el trailer?",
+    "CorrectAnswer": 0,
+    "Type": "texto",
+    "Category": "Videojuegos"
+  },
+  {
+    "Answers": [
+      "Kirby",
+      "Mario",
+      "Zelda",
+      "Fox"
+    ],
+    "HeaderVideo": "sbros",
+    "QuestionText": "¿Cual es el unico personaje que escapa?",
+    "CorrectAnswer": 0,
+    "Type": "texto",
+    "Category": "Videojuegos"
+  },
+  {
+    "Answers": [
+      "C",
+      "Java",
+      "C#",
+      "JavaScript"
+    ],
+    "HeaderVideo": "prog",
+    "QuestionText": "¿Que lenguaje hace uso en el video?",
+    "CorrectAnswer": 2,
+    "Type": "texto",
+    "Category": "Programacion"
+  },
+  {
+    "Answers": [
+      "Un bucle for",
+      "Una funcion",
+      "Una llamada recusiva",
+      "En PHP"
+    ],
+    "HeaderVideo": "forb",
+    "QuestionText": "¿Qué estan programando?",
+    "CorrectAnswer": 0,
+    "Type": "texto",
+    "Category": "Programacion"
   }
 ]
 //
@@ -110,48 +227,56 @@
     "Answers":["noche_estrellada","meninas","gioconda","guernica"],
     "QuestionText": "¿Cuál de los siguientes cuadros es Las Meninas?",
     "CorrectAnswer": 1,
-    "Type": "imagen"
+    "Type": "imagen",
+    "Category": "General"
   },
   {
     "Answers":["loss","bongo_cat","recursive_centaur","tom_nook"],
     "QuestionText": "¿Cuál de los siguientes memes es Loss?",
     "CorrectAnswer": 0,
-    "Type": "imagen"
+    "Type": "imagen",
+    "Category": "Memes"
   },
   {
     "Answers":["caparazon_rojo","estrella","wumpa","seta_mario"],
     "QuestionText": "¿Cuál de estos no pertenece a la saga de videojuegos de Mario?",
     "CorrectAnswer": 2,
-    "Type": "imagen"
+    "Type": "imagen",
+    "Category": "Videojuegos"
   },
   {
     "Answers":["francia","inglaterra","espana","rusia"],
     "QuestionText": "¿Cual es la bandera de Fracia?",
     "CorrectAnswer": 0,
-    "Type": "imagen"
+    "Type": "imagen",
+    "Category": "General"
   },
   {
     "Answers":["c","csharp","java","kotlin"],
     "QuestionText": "¿Con que lenguaje está programado Unity?",
     "CorrectAnswer": 1,
-    "Type": "imagen"
+    "Type": "imagen",
+    "Category": "Programacion"
   },
   {
     "Answers":["jdeep","will","bloom","rock"],
     "QuestionText": "¿Qué actor participó en El señor de los anillos?",
     "CorrectAnswer": 2,
-    "Type": "imagen"
+    "Type": "imagen",
+    "Category": "General"
   },
   {
     "Answers":["diamond","emerald","sapphire","rubi"],
     "QuestionText": "¿Cuál es un rubí?",
     "CorrectAnswer": 3,
-    "Type": "imagen"
+    "Type": "imagen",
+    "Category": "General"
   },
   {
     "Answers":["one","two","four","six"],
     "QuestionText": "¿Cuál es un numero primo?",
     "CorrectAnswer": 1,
-    "Type": "imagen"
+    "Type": "imagen",
+    "Category": "General"
   }
 ]

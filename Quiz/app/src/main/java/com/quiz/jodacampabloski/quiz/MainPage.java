@@ -31,8 +31,10 @@ public class MainPage extends AppCompatActivity {
         String results[] = result.split(",");
 
         Opcions.NumeroPreguntas = Integer.parseInt(results[0]);
-        Opcions.Imagenes = Boolean.parseBoolean(results[2]);
-        Opcions.Texto = Boolean.parseBoolean(results[1]);
+        Opcions.CategoriesChecked[1] = Boolean.parseBoolean(results[2]);
+        Opcions.CategoriesChecked[0] = Boolean.parseBoolean(results[1]);
+        Opcions.CategoriesChecked[2] = Boolean.parseBoolean(results[3]);
+        Opcions.CategoriesChecked[3] = Boolean.parseBoolean(results[4]);
 
         } catch (Exception e) {
         FileOutputStream outputStream;
@@ -40,7 +42,7 @@ public class MainPage extends AppCompatActivity {
 
             try {
                 outputStream = openFileOutput("Opciones", MODE_PRIVATE);
-                String out = "5,true,true";
+                String out = "5,true,true,true,true";
                 outputStream.write(out.getBytes());
                 outputStream.close();
             }
