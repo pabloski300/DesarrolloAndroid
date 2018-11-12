@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Quiz</string>
-    <string name="TitleText">Welcome to Quiz!</string>
+    <string name="TitleText">Welcome %s</string>
     <string name="ButtonStartText">Start Game!</string>
     <string name="ScoreButton">Check your scores</string>
     <string name="Opciones">Opciones</string>
@@ -26,4 +26,5 @@
     <string name="perfileEdit">Editar Perfil</string>
     <string name="textMemes">Memes</string>
     <string name="textProgramacion">Programación</string>
+    <string name="confirmar">Confirmar</string>
 </resources>

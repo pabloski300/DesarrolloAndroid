@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.FileOutputStream;
@@ -23,6 +24,8 @@ public class MainPage extends AppCompatActivity {
 
         DataBaseManager.CreateInstance(getApplicationContext());
         setContentView(R.layout.activity_main_page);
+        TextView title = findViewById(R.id.Title);
+        title.setText(String.format(title.getText().toString(),actualProfile.name));
         try {
         InputStream fileInput = openFileInput("Opciones");
         Scanner s = new Scanner(fileInput).useDelimiter("\\A");

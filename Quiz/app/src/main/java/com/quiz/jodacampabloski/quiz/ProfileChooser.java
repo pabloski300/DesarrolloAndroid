@@ -48,6 +48,13 @@ public class ProfileChooser extends AppCompatActivity {
                 finish();
             }
         });
+
+
+    }
+    public void onBackPressed(){
+        Intent next = new Intent(this,EnterActivity.class);
+        startActivity(next);
+        finish();
     }
 
 }

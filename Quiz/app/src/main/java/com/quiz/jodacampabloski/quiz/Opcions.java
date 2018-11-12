@@ -192,4 +192,8 @@ public class Opcions extends AppCompatActivity {
         }
         return n;
     }
+
+    public void Confirm(View view){
+        finish();
+    }
 }
