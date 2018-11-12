@@ -198,4 +198,7 @@
     <string name="textProgramacion">Programación</string>
     <string name="mainText">Bienvenidos a Quiz. Pulse en la pantalla para continuar</string>
     <string name="confirmar">Confirmar</string>
+    <string name="puntuaciones">Puntuacion</string>
+    <string name="partidas">Partidas</string>
+    <string name="ultima">Ultima partida</string>
 </resources>

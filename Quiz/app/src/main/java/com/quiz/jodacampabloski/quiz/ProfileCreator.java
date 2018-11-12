@@ -36,6 +36,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
@@ -44,6 +45,8 @@ import java.util.Timer;
 public class ProfileCreator extends AppCompatActivity implements IPickResult {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     int id;
+    int games;
+    String date;
     String imageUri = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,11 +56,16 @@ public class ProfileCreator extends AppCompatActivity implements IPickResult {
         ImageView view =  findViewById(R.id.imageProfile);
         TextInputLayout textView = (TextInputLayout) findViewById(R.id.inputLayout);
         id = 0;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        games = 0;
+        date = sdf.format(new Date());
         if(MainPage.actualProfile != null) {
             imageUri=MainPage.actualProfile.imageName;
             view.setImageURI(Uri.parse(MainPage.actualProfile.imageName));
             textView.getEditText().setText(MainPage.actualProfile.name);
             id = MainPage.actualProfile.id;
+            games = MainPage.actualProfile.games;
+            date = MainPage.actualProfile.date;
         }
 
     }
@@ -166,7 +174,7 @@ public class ProfileCreator extends AppCompatActivity implements IPickResult {
         if(imageUri == null || name.isEmpty()){
             Toast.makeText(this.getBaseContext(),"Tienes que elegir una imagen",Toast.LENGTH_SHORT).show();
         }else{
-            p = new Profile(name,imageUri,id);
+            p = new Profile(name,imageUri,id,games,date);
             p.maxScore = MainPage.actualProfile != null ? MainPage.actualProfile.maxScore:0;
             ContentValues c = p.toSQLValue();
             if(MainPage.actualProfile != null){

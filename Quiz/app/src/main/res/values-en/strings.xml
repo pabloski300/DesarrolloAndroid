@@ -27,4 +27,6 @@
     <string name="textMemes">Memes</string>
     <string name="textProgramacion">Programación</string>
     <string name="confirmar">Confirmar</string>
+    <string name="partidas">Partidas</string>
+    <string name="ultima">Ultima partida</string>
 </resources>

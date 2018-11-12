@@ -33,8 +33,11 @@ public class ProfileChooser extends AppCompatActivity {
         DataBaseManager db = DataBaseManager.CreateInstance(this.getBaseContext());
         Cursor c = db.getReadableDatabase().rawQuery("SELECT * FROM " + Profile.ProfileSql.TABLE_NAME,null);
         final ListView profileView = findViewById(R.id.profileList);
-        int[] views = {R.id.user_name,R.id.profile_image};
-        String[] columns = {Profile.ProfileSql.NAME,Profile.ProfileSql.IMAGE};
+        int[] views = {R.id.user_name,R.id.profile_image,R.id.scoreText,R.id.partidasText,R.id.dateText};
+
+        String[] columns = {Profile.ProfileSql.NAME,Profile.ProfileSql.IMAGE, Profile.ProfileSql.MAX_POINTS,Profile.ProfileSql.GAMES, Profile.ProfileSql.DATE};
+
+
         SimpleCursorAdapter a = new SimpleCursorAdapter(this,R.layout.profile_layout,c,columns,views,0);
         profileView.setAdapter(a);
         profileView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

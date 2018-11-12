@@ -15,9 +15,11 @@ import com.google.gson.Gson;
 
 import java.io.InputStream;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -133,6 +135,12 @@ public class Game extends AppCompatActivity implements FailDialog.NoticeDialogLi
         Intent nextActivty = new Intent(this,SavePuntuation.class);
         nextActivty.putExtra("Score",puntuacion);
         nextActivty.putExtra("Time",time);
+        MainPage.actualProfile.games++;
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        MainPage.actualProfile.date = sdf.format(new Date());
+        DataBaseManager.Instance.getWritableDatabase().update(Profile.ProfileSql.TABLE_NAME,MainPage.actualProfile.toSQLValue(),
+                Profile.ProfileSql._ID+ "="+MainPage.actualProfile.id,null);
+
         startActivity(nextActivty);
     }
 
