@@ -119,9 +119,7 @@ public class Game extends AppCompatActivity implements FailDialog.NoticeDialogLi
                 fallos ++;
                 FailsView.setText(String.format(ACIERTOS_FALLOS,aciertos,fallos));
                 onDialogPositiveClick(null);
-                QuestionView.setText(String.format(QUESTION_STRING,i+1));
 
-                questions.get(i).ShowQuestion(this);
             }
     }
 
@@ -146,6 +144,8 @@ public class Game extends AppCompatActivity implements FailDialog.NoticeDialogLi
             EndGame();
         }else
         {
+            QuestionView.setText(String.format(QUESTION_STRING,i+1));
+
             questions.get(i).ShowQuestion(this);
         }
 
