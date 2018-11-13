@@ -1,9 +1,11 @@
 package com.quiz.jodacampabloski.quiz;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -88,6 +90,34 @@ public class MainPage extends AppCompatActivity {
             case R.id.perfileEdit:
                  nextActivty = new Intent(this,ProfileCreator.class);
                 startActivity(nextActivty);
+                break;
+            case R.id.salir:
+                MainPage.actualProfile = null;
+                Intent next = new Intent(this,EnterActivity.class);
+                startActivity(next);
+                finish();
+                break;
+            case R.id.deleteProfile:
+                AlertDialog.Builder dialogo = new AlertDialog.Builder(this);
+                dialogo.setTitle(R.string.youSure).setPositiveButton(R.string.ContinueButton, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        DataBaseManager.Instance.getWritableDatabase().delete(Profile.ProfileSql.TABLE_NAME, Profile.ProfileSql._ID+" = "+ MainPage.actualProfile.id,null);
+                        MainPage.actualProfile = null;
+                        Intent next = new Intent(getApplicationContext(),EnterActivity.class);
+                        startActivity(next);
+                        finish();
+                    }
+                }).setNegativeButton(R.string.CancelButton, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                AlertDialog d = dialogo.create();
+
+                d.show();
                 break;
             default:
                 return super.onOptionsItemSelected(item);

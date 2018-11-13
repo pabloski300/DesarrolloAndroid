@@ -201,4 +201,7 @@
     <string name="puntuaciones">Puntuacion</string>
     <string name="partidas">Partidas</string>
     <string name="ultima">Ultima partida</string>
+    <string name="deletePerfil" >Borrar Perfil</string>
+    <string name="salirText">Salir</string>
+    <string name="youSure">¿Estas seguro de que quieres eliminar tu perfil?</string>
 </resources>

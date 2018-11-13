@@ -29,4 +29,7 @@
     <string name="confirmar">Confirmar</string>
     <string name="partidas">Partidas</string>
     <string name="ultima">Ultima partida</string>
+    <string name="deletePerfil" >Erase Profile</string>
+    <string name="salirText">Salir</string>
+    <string name="youSure">Are you sure?</string>
 </resources>

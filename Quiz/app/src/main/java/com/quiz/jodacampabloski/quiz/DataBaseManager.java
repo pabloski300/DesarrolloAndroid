@@ -23,8 +23,10 @@ public final class DataBaseManager extends SQLiteOpenHelper {
 
     public static DataBaseManager CreateInstance(Context context){
 
-        DataBaseManager.Instance = new DataBaseManager(context);
-        DataBaseManager.created = true;
+        if(!created) {
+            DataBaseManager.Instance = new DataBaseManager(context);
+            DataBaseManager.created = true;
+        }
         return Instance;
     }
 

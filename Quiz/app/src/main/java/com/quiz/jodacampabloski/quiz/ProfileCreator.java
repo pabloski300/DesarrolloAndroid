@@ -42,7 +42,7 @@ import java.util.Date;
 import java.util.TimeZone;
 import java.util.Timer;
 
-public class ProfileCreator extends AppCompatActivity implements IPickResult {
+public class ProfileCreator extends AppCompatActivity  {
     static final int REQUEST_IMAGE_CAPTURE = 1;
     int id;
     int games;
@@ -105,28 +105,7 @@ public class ProfileCreator extends AppCompatActivity implements IPickResult {
         });
         camera.show();
 
-        /*PickSetup p = new PickSetup().setWidth(480).setHeight(300);
-        PickImageDialog.build(p).show(this);
-        */
-    }
 
-    @Override
-    public void onPickResult(PickResult r) {
-        if (r.getError() == null) {
-
-            ImageView view =  findViewById(R.id.imageProfile);
-            //If you want the Uri.
-            //Mandatory to refresh image from Uri.
-            view.setImageURI(null);
-
-            //Setting the real returned image
-
-            //If you want the Bitmap.
-            view.setImageBitmap(r.getBitmap());
-
-            //Image path
-            imageUri = r.getPath();
-        }
     }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "D:\\Git\\DesarrolloAndroid\\Quiz\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-nl\\values-nl.xml",
+            "outputFile": "C:\\Git\\DesarrolloAndroid\\Quiz\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-nl\\values-nl.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\pablo\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\d00b710f950a33e0cc57ea90b94cd2f9\\res\\values-nl\\values-nl.xml",
+                    "source": "C:\\Users\\Jodacam\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\382df466326bf56f9b0dbf383f99820d\\res\\values-nl\\values-nl.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\pablo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f5e8aea0f89a0a9e087d8c1882b4ff5f\\res\\values-nl\\values-nl.xml",
+                    "source": "C:\\Users\\Jodacam\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\e50ede34f44b0466568e01cb587a17fb\\res\\values-nl\\values-nl.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
