@@ -47,8 +47,8 @@ public class ProfileChooser extends AppCompatActivity {
                 Cursor c = (Cursor) parent.getItemAtPosition(position);
                 MainPage.actualProfile = new Profile(c);
                 Intent nextActivty = new Intent(getApplicationContext(),MainPage.class);
-                startActivity(nextActivty);
                 finish();
+                startActivity(nextActivty);
             }
         });
 

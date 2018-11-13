@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\Git\\DesarrolloAndroid\\Quiz\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h720dp-v13\\values-h720dp-v13.xml",
+            "outputFile": "D:\\Git\\DesarrolloAndroid\\Quiz\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h720dp-v13\\values-h720dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Jose Daniel Campos\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\0a8dcb8d2976fea29eca2be54d3d6645\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "source": "C:\\Users\\pablo\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\f5e8aea0f89a0a9e087d8c1882b4ff5f\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

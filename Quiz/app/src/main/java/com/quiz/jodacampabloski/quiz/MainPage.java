@@ -98,7 +98,7 @@ public class MainPage extends AppCompatActivity {
 
     public void onBackPressed(){
 
-        MainPage.actualProfile = null;
+        //MainPage.actualProfile = null;
         Intent next = new Intent(this,EnterActivity.class);
         startActivity(next);
         finish();

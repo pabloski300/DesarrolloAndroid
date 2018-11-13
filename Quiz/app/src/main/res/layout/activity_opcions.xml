@@ -4,21 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Opcions">
+    tools:context=".Opcions"
+    android:background="@drawable/fondojuego">
 
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="214dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:checkedButton="@+id/preguntas5"
-        app:layout_constraintBottom_toTopOf="@+id/textView12"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
         app:layout_constraintTop_toBottomOf="@+id/textView11">
 
         <RadioButton
@@ -27,7 +26,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onRadioButtonClicked"
-            android:text="@string/preguntas5" />
+            android:text="@string/preguntas5"
+            android:textSize="18sp" />
 
         <RadioButton
             android:id="@+id/preguntas10"
@@ -35,7 +35,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onRadioButtonClicked"
-            android:text="@string/preguntas10" />
+            android:text="@string/preguntas10"
+            android:textSize="18sp" />
 
         <RadioButton
             android:id="@+id/preguntas15"
@@ -44,13 +45,14 @@
             android:layout_weight="1"
             android:onClick="onRadioButtonClicked"
             android:text="@string/preguntas15"
-            android:textAlignment="viewStart" />
+            android:textAlignment="viewStart"
+            android:textSize="18sp" />
     </RadioGroup>
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="233dp"
+        android:layout_height="32dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:text="@string/npreguntas"
@@ -58,96 +60,85 @@
         android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.56" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Switch
         android:id="@+id/stext"
-        android:layout_width="0dp"
+        android:layout_width="370dp"
         android:layout_height="28dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
         android:checked="true"
         android:splitTrack="false"
         android:tag="stext"
         android:text="@string/preguntastexto"
-        app:layout_constraintBottom_toTopOf="@+id/simagenes"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView12"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <Switch
         android:id="@+id/simagenes"
-        android:layout_width="0dp"
+        android:layout_width="370dp"
         android:layout_height="28dp"
-        android:layout_marginBottom="200dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:checked="true"
         android:splitTrack="false"
         android:tag="simagenes"
         android:text="@string/preguntasimagen"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stext"
-        app:layout_constraintVertical_bias="0.01999998" />
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/stext"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/stext"
+        app:layout_constraintTop_toBottomOf="@+id/stext" />
 
     <Switch
         android:id="@+id/sipro"
-        android:layout_width="0dp"
+        android:layout_width="369dp"
         android:layout_height="28dp"
-        android:layout_marginBottom="150dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:checked="true"
         android:splitTrack="false"
         android:tag="sipro"
         android:text="@string/textProgramacion"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/simagenes"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/simagenes"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toStartOf="@+id/simagenes"
+        app:layout_constraintTop_toBottomOf="@+id/simagenes" />
 
     <Switch
         android:id="@+id/simemes"
-        android:layout_width="0dp"
+        android:layout_width="368dp"
         android:layout_height="25dp"
-        android:layout_marginBottom="100dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:checked="true"
         android:splitTrack="false"
         android:tag="simemes"
         android:text="@string/textMemes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sipro"
-        app:layout_constraintVertical_bias="0.0" />
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/sipro"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/sipro"
+        app:layout_constraintTop_toBottomOf="@+id/sipro" />
 
     <TextView
         android:id="@+id/textView12"
-        android:layout_width="0dp"
-        android:layout_height="53dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="207dp"
+        android:layout_height="35dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
         android:text="@string/tipospreguntas"
         android:textAlignment="viewStart"
         android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/stext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -156,11 +147,11 @@
     <Button
         android:id="@+id/button5"
         android:layout_width="216dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="48dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         android:onClick="Confirm"
         android:text="@string/confirmar"
         app:layout_constraintBottom_toBottomOf="parent"

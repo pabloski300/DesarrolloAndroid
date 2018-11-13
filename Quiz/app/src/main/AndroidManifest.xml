@@ -24,7 +24,7 @@
        >
         <activity
             android:name=".MainPage"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Game"
             android:noHistory="true"
@@ -42,12 +42,13 @@
         <activity
             android:name=".ProfileChooser"
             android:label="@string/title_activity_profile_chooser"
+            android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"/>
 
-        </activity>
+
         <activity android:name=".ProfileCreator"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"
@@ -60,10 +61,11 @@
                 android:resource="@xml/picker_provider_paths" />
         </provider>
 
-        <activity android:name=".EnterActivity">
+        <activity android:name=".EnterActivity"
+            android:noHistory="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
