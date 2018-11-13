@@ -29,20 +29,20 @@ public class MainPage extends AppCompatActivity {
         TextView title = findViewById(R.id.Title);
         title.setText(String.format(title.getText().toString(),actualProfile.name));
         try {
-        InputStream fileInput = openFileInput("Opciones");
-        Scanner s = new Scanner(fileInput).useDelimiter("\\A");
-        String result = s.hasNext() ? s.next() : "";
+            InputStream fileInput = openFileInput("Opciones");
+            Scanner s = new Scanner(fileInput).useDelimiter("\\A");
+            String result = s.hasNext() ? s.next() : "";
 
-        String results[] = result.split(",");
+            String results[] = result.split(",");
 
-        Opcions.NumeroPreguntas = Integer.parseInt(results[0]);
-        Opcions.CategoriesChecked[1] = Boolean.parseBoolean(results[2]);
-        Opcions.CategoriesChecked[0] = Boolean.parseBoolean(results[1]);
-        Opcions.CategoriesChecked[2] = Boolean.parseBoolean(results[3]);
-        Opcions.CategoriesChecked[3] = Boolean.parseBoolean(results[4]);
+            Opcions.NumeroPreguntas = Integer.parseInt(results[0]);
+            Opcions.CategoriesChecked[1] = Boolean.parseBoolean(results[2]);
+            Opcions.CategoriesChecked[0] = Boolean.parseBoolean(results[1]);
+            Opcions.CategoriesChecked[2] = Boolean.parseBoolean(results[3]);
+            Opcions.CategoriesChecked[3] = Boolean.parseBoolean(results[4]);
 
         } catch (Exception e) {
-        FileOutputStream outputStream;
+            FileOutputStream outputStream;
 
 
             try {
@@ -58,7 +58,7 @@ public class MainPage extends AppCompatActivity {
         }
 
 
-        }
+    }
 
 
     public void StartGame(View v){
@@ -84,11 +84,11 @@ public class MainPage extends AppCompatActivity {
         Intent nextActivty;
         switch (item.getItemId()) {
             case R.id.Opciones:
-                 nextActivty = new Intent(this,Opcions.class);
+                nextActivty = new Intent(this,Opcions.class);
                 startActivity(nextActivty);
                 break;
             case R.id.perfileEdit:
-                 nextActivty = new Intent(this,ProfileCreator.class);
+                nextActivty = new Intent(this,ProfileCreator.class);
                 startActivity(nextActivty);
                 break;
             case R.id.salir:

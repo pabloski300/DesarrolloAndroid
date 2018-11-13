@@ -10,8 +10,8 @@
         android:title="@string/perfileEdit" />
     <item
         android:id="@+id/deleteProfile"
-        android:title="@string/deletePerfil" />
+        android:title="@string/deleteProfile" />
     <item
         android:id="@+id/salir"
-        android:title="@string/salirText" />
+        android:title="@string/Exit" />
 </menu>
