@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 
 import java.io.InputStream;
 import java.sql.Time;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,7 +30,6 @@ public class Game extends AppCompatActivity implements FailDialog.NoticeDialogLi
     private  String SELECT_QUERY = "SELECT * FROM " + Question.QuestionEntry.TABLE_NAME +" WHERE " + Question.QuestionEntry.TYPE +" = %s";
     private String QUESTION_STRING = "%s/%s";
     private String ACIERTOS_FALLOS = "A: %s F: %s";
-    private String TIME_STORED = "%s:%s";
     List<Question> questions;
     Gson JSONMapper;
     int i;
@@ -37,12 +37,11 @@ public class Game extends AppCompatActivity implements FailDialog.NoticeDialogLi
     TextView QuestionView;
     TextView FailsView;
     Puntuacion p;
-    int puntuacion;
+    float puntuacion;
+    int finalPuntuacion;
     int aciertos = 0;
     int fallos = 0;
     int timesec;
-    int timemin;
-    String time;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,10 +52,6 @@ public class Game extends AppCompatActivity implements FailDialog.NoticeDialogLi
             @Override
             public void onChronometerTick(Chronometer chronometer) {
                 timesec++;
-                if(timesec == 60){
-                    timesec = 0;
-                    timemin++;
-                }
             }
         });
         FailsView = findViewById(R.id.questionCounter);
@@ -110,7 +105,6 @@ public class Game extends AppCompatActivity implements FailDialog.NoticeDialogLi
                     QuestionView.setText(String.format(QUESTION_STRING,i+1));
                 }else{
                     TimeView.stop();
-                    time = String.format(TIME_STORED,timemin,timesec);
                     EndGame();
                     //super.onBackPressed();
                 }
@@ -130,11 +124,14 @@ public class Game extends AppCompatActivity implements FailDialog.NoticeDialogLi
         t.show();
     }
     public void EndGame(){
+
+        puntuacion = puntuacion * ((Opcions.NumeroPreguntas * 10) / timesec);
+        DecimalFormat df = new DecimalFormat("#");
+        finalPuntuacion = Integer.parseInt(df.format(puntuacion));
         Toast t = Toast.makeText(this, "Has Terminado la partida", Toast.LENGTH_SHORT);
         t.show();
         Intent nextActivty = new Intent(this,SavePuntuation.class);
-        nextActivty.putExtra("Score",puntuacion);
-        nextActivty.putExtra("Time",time);
+        nextActivty.putExtra("Score",finalPuntuacion);
         MainPage.actualProfile.games++;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         MainPage.actualProfile.date = sdf.format(new Date());

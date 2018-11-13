@@ -152,6 +152,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/grey"
         android:onClick="Confirm"
         android:text="@string/confirmar"
         app:layout_constraintBottom_toBottomOf="parent"
