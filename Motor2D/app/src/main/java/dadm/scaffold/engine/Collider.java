@@ -8,7 +8,8 @@ public class Collider {
         Player,
         Enemy,
         Scenario,
-        Bullet
+        Bullet,
+        Meteorite
     }
 
     public List<CollideLayer> collideLayers;

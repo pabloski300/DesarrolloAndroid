@@ -17,12 +17,16 @@ import dadm.scaffold.ScaffoldActivity;
 import dadm.scaffold.counter.GameFragment;
 import dadm.scaffold.space.Enemy;
 import dadm.scaffold.space.EnemyEye;
+import dadm.scaffold.space.Meteorito;
 
 public class GameManager extends GameObject {
 
     protected List<Enemy> EnemyInLevel;
+    protected List<Meteorito> MeteorInLevel;
     protected long TimeBetwenEnemies;
-    protected long ActualTime;
+    protected long ActualTimeBetwenEnemies;
+    protected long TimeBetwenMeteors;
+    protected long ActualTimeBetwenMeteors;
     protected Random r;
     public static GameManager ActualManager;
     public int score;
@@ -34,8 +38,12 @@ public class GameManager extends GameObject {
         EnemyInLevel = new ArrayList<>();
         EnemyInLevel.add(new EnemyEye(engine,0,0,0,1));
         EnemyInLevel.add(new EnemyEye(engine,0,-1,0,1));
+        MeteorInLevel = new ArrayList<>();
+        MeteorInLevel.add(new Meteorito(engine,0,-1,0,1));
         TimeBetwenEnemies = 2000;
-        ActualTime = 0;
+        ActualTimeBetwenEnemies = 0;
+        TimeBetwenMeteors = 10000;
+        ActualTimeBetwenMeteors = 0;
         ActualManager = this;
     }
 
@@ -47,17 +55,30 @@ public class GameManager extends GameObject {
 
     @Override
     public void onUpdate(long elapsedMillis, GameEngine gameEngine) {
-        if(ActualTime >= TimeBetwenEnemies && !EnemyInLevel.isEmpty()){
+        if(ActualTimeBetwenEnemies >= TimeBetwenEnemies && !EnemyInLevel.isEmpty()){
            Enemy e = EnemyInLevel.remove(r.nextInt(EnemyInLevel.size()));
            int h = GameFragment.theGameEngine.height;
            int posy = MathUtils.clamp(r.nextInt(h),128*(int)gameEngine.pixelFactor, h-(128*(int)gameEngine.pixelFactor));
            int posx = GameFragment.theGameEngine.width+(128*(int)gameEngine.pixelFactor);
            e.Init(posx,posy);
            GameFragment.theGameEngine.addGameObject(e);
-           ActualTime = 0;
+           ActualTimeBetwenEnemies = 0;
 
         }else {
-            ActualTime+=elapsedMillis;
+            ActualTimeBetwenEnemies+=elapsedMillis;
+        }
+
+        if(ActualTimeBetwenMeteors >= TimeBetwenMeteors && !MeteorInLevel.isEmpty()){
+            Meteorito m = MeteorInLevel.remove(r.nextInt(MeteorInLevel.size()));
+            int h = GameFragment.theGameEngine.height;
+            int posy = MathUtils.clamp(r.nextInt(h),128*(int)gameEngine.pixelFactor, h-(128*(int)gameEngine.pixelFactor));
+            int posx = GameFragment.theGameEngine.width+(256*(int)gameEngine.pixelFactor);
+            m.Init(posx,posy);
+            GameFragment.theGameEngine.addGameObject(m);
+            ActualTimeBetwenMeteors = 0;
+
+        }else {
+            ActualTimeBetwenMeteors+=elapsedMillis;
         }
     }
 
@@ -70,6 +91,10 @@ public class GameManager extends GameObject {
 
     public void RestoreEnemy(Enemy e){
         EnemyInLevel.add(e);
+    }
+
+    public void RestoreMeteorite(Meteorito m){
+        MeteorInLevel.add(m);
     }
 
     public void Lose(){

@@ -51,7 +51,9 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
         for (int i=0; i<INITIAL_BULLET_POOL_AMOUNT; i++) {
             Bullet v = new Bullet(gameEngine,-1,0,R.drawable.proyectiljugador64x64smooth);
 
-            v.getCollider().collideLayers = l;
+            v.getCollider().collideLayers = new ArrayList<>();
+            v.getCollider().collideLayers.add(Collider.CollideLayer.Meteorite);
+            v.getCollider().collideLayers.add(Collider.CollideLayer.Enemy);
             bullets.add(v);
         }
     }

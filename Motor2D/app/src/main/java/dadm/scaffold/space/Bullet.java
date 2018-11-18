@@ -56,6 +56,10 @@ public class Bullet extends Sprite {
                 Enemy e = (Enemy)otherCollider.Owner;
                 e.life--;
                 break;
+            case Meteorite:
+                Meteorito m = (Meteorito)otherCollider.Owner;
+                m.life--;
+                break;
             case Scenario:
                 break;
             case Bullet:
