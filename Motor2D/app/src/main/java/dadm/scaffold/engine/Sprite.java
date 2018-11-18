@@ -3,9 +3,13 @@ package dadm.scaffold.engine;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
+import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+
+import java.util.List;
 
 public abstract class Sprite extends GameObject {
 
@@ -18,6 +22,41 @@ public abstract class Sprite extends GameObject {
     private final Bitmap bitmap;
     protected final int imageHeight;
     protected final int imageWidth;
+
+
+    public double getPositionX() {
+
+        return positionX;
+    }
+
+
+    public void setPositionX(double positionX) {
+        this.positionX = positionX;
+    }
+
+    public double getPositionY() {
+        return positionY;
+    }
+
+    public void setPositionY(double positionY) {
+        this.positionY = positionY;
+    }
+
+    public double getRotation() {
+        return rotation;
+    }
+
+    public void setRotation(double rotation) {
+        this.rotation = rotation;
+    }
+
+    public int getImageHeight() {
+        return imageHeight;
+    }
+
+    public int getImageWidth() {
+        return imageWidth;
+    }
 
     private final Matrix matrix = new Matrix();
 
@@ -33,6 +72,8 @@ public abstract class Sprite extends GameObject {
         this.bitmap = ((BitmapDrawable) spriteDrawable).getBitmap();
     }
 
+    public abstract void OnCollision(Collider otherCollider);
+
     @Override
     public void onDraw(Canvas canvas) {
         if (positionX > canvas.getWidth()
@@ -46,5 +87,18 @@ public abstract class Sprite extends GameObject {
         matrix.postTranslate((float) positionX, (float) positionY);
         matrix.postRotate((float) rotation, (float) (positionX + imageWidth/2), (float) (positionY + imageHeight/2));
         canvas.drawBitmap(bitmap, matrix, null);
+
+        if(collider != null){
+                Paint p = new Paint();
+                p.setColor(Color.GREEN);
+                canvas.drawCircle((float)collider.getX(),(float)collider.getY(),collider.radius,p);
+            }
     }
+
+    public void CreateNewCollider(double radius, List<Collider.CollideLayer> r ,double offsetx,double offsety){
+
+        this.collider = new Collider((float) (radius*this.pixelFactor),this,r,offsetx,offsety);
+
+    }
+
 }
