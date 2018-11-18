@@ -33,7 +33,7 @@ public class GameManager extends GameObject {
         EnemyInLevel = new ArrayList<>();
         EnemyInLevel.add(new EnemyEye(engine,0,0,0,1));
         EnemyInLevel.add(new EnemyEye(engine,0,-1,0,1));
-        TimeBetwenEnemies = 1000;
+        TimeBetwenEnemies = 2000;
         ActualTime = 0;
         ActualManager = this;
     }

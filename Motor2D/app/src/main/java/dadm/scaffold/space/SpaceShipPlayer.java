@@ -10,13 +10,14 @@ import java.util.List;
 
 import dadm.scaffold.R;
 import dadm.scaffold.counter.GameFragment;
+import dadm.scaffold.engine.BulletHandeler;
 import dadm.scaffold.engine.Collider;
 import dadm.scaffold.engine.GameEngine;
 import dadm.scaffold.engine.GameManager;
 import dadm.scaffold.engine.Sprite;
 import dadm.scaffold.input.InputController;
 
-public class SpaceShipPlayer extends Sprite {
+public class SpaceShipPlayer extends Sprite implements BulletHandeler {
 
     private static final int INITIAL_BULLET_POOL_AMOUNT = 6;
     private static final long TIME_BETWEEN_BULLETS = 250;
@@ -26,6 +27,8 @@ public class SpaceShipPlayer extends Sprite {
     private int maxX;
     private int maxY;
     private double speedFactor;
+    private float invencibleTime;
+    private final float maxInvencible;
 
 
     public SpaceShipPlayer(GameEngine gameEngine){
@@ -39,26 +42,29 @@ public class SpaceShipPlayer extends Sprite {
         this.CreateNewCollider(((this.imageHeight-100)/pixelFactor),Layers,this.imageWidth/2,this.imageHeight/2);
         initBulletPool(gameEngine);
         life = 1;
+        maxInvencible = 0.5f;
     }
 
-    private void initBulletPool(GameEngine gameEngine) {
+    public void initBulletPool(GameEngine gameEngine) {
+        List<Collider.CollideLayer> l = new ArrayList<>();
+        l.add(Collider.CollideLayer.Enemy);
         for (int i=0; i<INITIAL_BULLET_POOL_AMOUNT; i++) {
-            Bullet v = new Bullet(gameEngine,-1,0);
-            List<Collider.CollideLayer> l = new ArrayList<>();
-            l.add(Collider.CollideLayer.Enemy);
-            v.CreateNewCollider(v.getImageWidth()/pixelFactor,l,v.getImageWidth()/2,v.getImageHeight()/2);
+            Bullet v = new Bullet(gameEngine,-1,0,R.drawable.bullet);
+
+            v.getCollider().collideLayers = l;
             bullets.add(v);
         }
     }
-
-    private Bullet getBullet() {
+    @Override
+     public Bullet getBullet() {
         if (bullets.isEmpty()) {
             return null;
         }
         return bullets.remove(0);
     }
 
-    void releaseBullet(Bullet bullet) {
+    @Override
+    public void releaseBullet(Bullet bullet) {
         bullets.add(bullet);
     }
 
@@ -75,6 +81,10 @@ public class SpaceShipPlayer extends Sprite {
         // Get the info from the inputController
         updatePosition(elapsedMillis, gameEngine.theInputController);
         checkFiring(elapsedMillis, gameEngine);
+
+        invencibleTime += elapsedMillis;
+
+
     }
 
     private void updatePosition(long elapsedMillis, InputController inputController) {
@@ -111,19 +121,24 @@ public class SpaceShipPlayer extends Sprite {
 
     @Override
     public void OnCollision(Collider otherCollider) {
-        if(otherCollider.Owner.getLayer() == Collider.CollideLayer.Enemy){
-            life--;
-            if(life == 0){
-               GameFragment.theGameEngine.getMainActivity().runOnUiThread(new Runnable() {
-                   @Override
-                   public void run() {
-                       GameManager.ActualManager.Lose();
-                   }
-               });
-            }
+        if(otherCollider.Owner.getLayer() == Collider.CollideLayer.Enemy && invencibleTime > maxInvencible){
+            invencibleTime = 0;
+            DealDamage(1);
+
         }
     }
 
+    public void DealDamage (int damage){
+        life -= damage;
+        if(life <= 0){
+            GameFragment.theGameEngine.getMainActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    GameManager.ActualManager.Lose();
+                }
+            });
+        }
+    }
 
 
 }

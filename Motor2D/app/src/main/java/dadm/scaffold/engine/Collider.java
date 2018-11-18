@@ -33,7 +33,7 @@ public class Collider {
             double newy = getY()-otherCollider.getY();
             double distance = Math.sqrt(newx*newx+newy*newy);
             if (otherCollider.radius + this.radius >= distance){
-                otherCollider.Owner.OnCollision(this);
+               this.Owner.OnCollision(otherCollider);
             }
         }
     }
@@ -45,5 +45,6 @@ public class Collider {
     public double getY(){
         return Owner.getPositionY()+ypos;
     }
+
 
 }

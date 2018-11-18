@@ -18,6 +18,7 @@ import dadm.scaffold.engine.GameManager;
 import dadm.scaffold.engine.GameView;
 import dadm.scaffold.input.JoystickInputController;
 import dadm.scaffold.space.EnemyEye;
+import dadm.scaffold.space.Fondo;
 import dadm.scaffold.space.SpaceShipPlayer;
 
 
@@ -48,6 +49,7 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
                 observer.removeOnGlobalLayoutListener(this);
                 GameView gameView = (GameView) getView().findViewById(R.id.gameView);
                 theGameEngine = new GameEngine(getActivity(), gameView);
+                theGameEngine.addGameObject(new Fondo(theGameEngine,R.drawable.fondo));
                 theGameEngine.setTheInputController(new JoystickInputController(getView()));
                 theGameEngine.addGameObject(new SpaceShipPlayer(theGameEngine));
                 theGameEngine.addGameObject(new GameManager(theGameEngine));

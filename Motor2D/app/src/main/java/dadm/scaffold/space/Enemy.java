@@ -31,7 +31,9 @@ public abstract class Enemy extends Sprite {
 
     @Override
     public void OnCollision(Collider otherCollider) {
-        life--;
+        if(otherCollider.Owner.getLayer() == Collider.CollideLayer.Player){
+            this.life= 0;
+        }
 
     }
 
@@ -44,6 +46,11 @@ public abstract class Enemy extends Sprite {
     public void onUpdate(long elapsedMillis, GameEngine gameEngine) {
         positionY += speedFactor*elapsedMillis*ySpeed;
         positionX += speedFactor*elapsedMillis*xSpeed;
+        if(positionX <=0){
+            GameFragment.theGameEngine.removeGameObject(this);
+            GameManager.ActualManager.RestoreEnemy(this);
+        }
+
         if(life <= 0){
             GameFragment.theGameEngine.removeGameObject(this);
             GameManager.ActualManager.score+=10;
