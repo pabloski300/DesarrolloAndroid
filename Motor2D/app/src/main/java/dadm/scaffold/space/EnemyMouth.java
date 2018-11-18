@@ -7,7 +7,7 @@ public class EnemyMouth extends Enemy {
 
 
     public EnemyMouth(GameEngine gameEngine, double colliderHold, float xSpeed, float ySpeed, int life) {
-        super(gameEngine, R.drawable.enemigo2, colliderHold, xSpeed, ySpeed, life);
+        super(gameEngine, R.drawable.enemigo264x64smooth, colliderHold, xSpeed, ySpeed, life);
     }
 
     @Override

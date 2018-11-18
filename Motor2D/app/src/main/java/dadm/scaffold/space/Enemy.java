@@ -26,7 +26,7 @@ public abstract class Enemy extends Sprite {
         List<Collider.CollideLayer> layers = new ArrayList<>();
         layers.add(Collider.CollideLayer.Bullet);
         layers.add(Collider.CollideLayer.Player);
-        this.CreateNewCollider(this.imageWidth/pixelFactor-(colliderHold*pixelFactor),layers,this.imageWidth/2,this.imageHeight/2);
+        this.CreateNewCollider(26-(colliderHold*pixelFactor),layers,28*pixelFactor,32*pixelFactor);
     }
 
     @Override
@@ -46,7 +46,7 @@ public abstract class Enemy extends Sprite {
     public void onUpdate(long elapsedMillis, GameEngine gameEngine) {
         positionY += speedFactor*elapsedMillis*ySpeed;
         positionX += speedFactor*elapsedMillis*xSpeed;
-        if(positionX <=0){
+        if(positionX <= -this.imageWidth){
             GameFragment.theGameEngine.removeGameObject(this);
             GameManager.ActualManager.RestoreEnemy(this);
         }

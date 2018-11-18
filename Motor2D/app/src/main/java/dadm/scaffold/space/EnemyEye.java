@@ -17,7 +17,7 @@ public class EnemyEye extends Enemy implements BulletHandeler {
 
 
     public EnemyEye(GameEngine gameEngine, float colliderRadius, float xSpeed, float ySpeed, int life) {
-        super(gameEngine, R.drawable.enemigo1, colliderRadius, xSpeed, ySpeed, life);
+        super(gameEngine, R.drawable.enemigo164x64smooth, colliderRadius, xSpeed, ySpeed, life);
         timeBullets = 0;
         initBulletPool(gameEngine);
     }
@@ -61,7 +61,7 @@ public class EnemyEye extends Enemy implements BulletHandeler {
         super.onUpdate(elapsedMillis,gameEngine);
         if(timeBullets == 0){
             Bullet c = getBullet();
-            c.init(this,this.positionX+ this.imageWidth/2,this.positionY+this.imageHeight/2);
+            c.init(this,this.positionX+ 3*pixelFactor,this.positionY+32*pixelFactor);
             gameEngine.addGameObject(c);
             timeBullets = 3000;
 

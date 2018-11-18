@@ -9,7 +9,7 @@ public class Fondo extends Sprite {
 
     public Fondo(GameEngine gameEngine, int drawableRes) {
         super(gameEngine, drawableRes);
-        pixelFactor *=2;
+        pixelFactor *= 2*(gameEngine.width/gameEngine.height);
     }
 
     @Override

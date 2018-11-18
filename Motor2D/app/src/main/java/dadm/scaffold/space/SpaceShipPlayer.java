@@ -32,14 +32,14 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
 
 
     public SpaceShipPlayer(GameEngine gameEngine){
-        super(gameEngine, R.drawable.ship);
+        super(gameEngine, R.drawable.nave64x64smooth);
         speedFactor = pixelFactor * 100d / 1000d; // We want to move at 100px per second on a 400px tall screen
         maxX = gameEngine.width - imageWidth;
         maxY = gameEngine.height - imageHeight;
         layer = Collider.CollideLayer.Player;
         List<Collider.CollideLayer> Layers = new ArrayList<>();
         Layers.add(Collider.CollideLayer.Enemy);
-        this.CreateNewCollider(((this.imageHeight-100)/pixelFactor),Layers,this.imageWidth/2,this.imageHeight/2);
+        this.CreateNewCollider(10.5, Layers,23.5 * pixelFactor,26*pixelFactor);
         initBulletPool(gameEngine);
         life = 1;
         maxInvencible = 0.5f;
@@ -49,7 +49,7 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
         List<Collider.CollideLayer> l = new ArrayList<>();
         l.add(Collider.CollideLayer.Enemy);
         for (int i=0; i<INITIAL_BULLET_POOL_AMOUNT; i++) {
-            Bullet v = new Bullet(gameEngine,-1,0,R.drawable.bullet);
+            Bullet v = new Bullet(gameEngine,-1,0,R.drawable.proyectiljugador64x64smooth);
 
             v.getCollider().collideLayers = l;
             bullets.add(v);
@@ -110,7 +110,7 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
             if (bullet == null) {
                 return;
             }
-            bullet.init(this, positionX + imageWidth/2, positionY);
+            bullet.init(this, positionX + 23.5*pixelFactor, positionY +26*pixelFactor);
             gameEngine.addGameObject(bullet);
             timeSinceLastFire = 0;
         }

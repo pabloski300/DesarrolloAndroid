@@ -20,7 +20,7 @@ public class Bullet extends Sprite {
         speedFactor = gameEngine.pixelFactor * -300d / 1000d;
         this.xVelocity =xVelocity;
         this.yVelocity = yVelocity;
-        CreateNewCollider(getImageWidth()/pixelFactor,null,getImageWidth()/2,getImageHeight()/2);
+        CreateNewCollider(3,null,20*pixelFactor,3*pixelFactor);
     }
 
     @Override

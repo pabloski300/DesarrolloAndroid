@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.support.v4.math.MathUtils;
 
 import java.security.ProtectionDomain;
 import java.util.ArrayList;
@@ -48,7 +49,10 @@ public class GameManager extends GameObject {
     public void onUpdate(long elapsedMillis, GameEngine gameEngine) {
         if(ActualTime >= TimeBetwenEnemies && !EnemyInLevel.isEmpty()){
            Enemy e = EnemyInLevel.remove(r.nextInt(EnemyInLevel.size()));
-           e.Init(GameFragment.theGameEngine.width-200,r.nextInt(GameFragment.theGameEngine.height-20));
+           int h = GameFragment.theGameEngine.height;
+           int posy = MathUtils.clamp(r.nextInt(h),128*(int)gameEngine.pixelFactor, h-(128*(int)gameEngine.pixelFactor));
+           int posx = GameFragment.theGameEngine.width+(128*(int)gameEngine.pixelFactor);
+           e.Init(posx,posy);
            GameFragment.theGameEngine.addGameObject(e);
            ActualTime = 0;
 

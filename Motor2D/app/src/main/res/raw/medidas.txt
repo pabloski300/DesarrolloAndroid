@@ -1,32 +1,32 @@
 Enemigo1: 
 -Tamaño Imagen: 64x64
--Radio:56px
--Centro:28px desde la izquierda 36px desde la derecha 37px desde arriba 37px desde abajo
+-Radio:28px
+-Centro:28px desde la izquierda 36px desde la derecha 32px desde arriba 32px desde abajo
 
 Enemigo1: 
 -Tamaño Imagen: 64x64
--Radio:56px
+-Radio:28px
 -Centro:28px desde la izquierda 36px desde la derecha 37px desde arriba 37px desde abajo
--Punto de disparo:3px desde la izquierda 67px desde la derecha 37px desde arriba 37 px desde abajo
+-Punto de disparo:3px desde la izquierda 61px desde la derecha 32px desde arriba 32 px desde abajo
 
 Meteorito:
 -Tamaño Imagen: 128x64
 -Radio:64px
--Centro:37px desde la izquierda 91px desde la derecha 37px desde arriba 37px desde abajo
+-Centro:32px desde la izquierda 96px desde la derecha 32px desde arriba 32px desde abajo
 
 Nave:
 -Tamaño Imagen: 47x41
--Radio:21px
+-Radio:10,5px
 -Centro:23,5px desde la izquierda 23,5px desde la derecha 26px desde arriba 15px desde abajo 
 
 Disparo Nave:
 -Tamaño Imagen: 24x8
--Radio:8px
+-Radio:4px
 -Centro: 20px desde la izquierda 4px desde la derecha 4px desde arriba 4px desde abajo 
 
 Disparo Enemigos:
 -Tamaño Imagen: 24x8
--Radio:8px
+-Radio:4px
 -Centro: 4px desde la izquierda 20px desde la derecha 4px desde arriba 4px desde abajo 
 
 Fondo:
