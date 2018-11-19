@@ -203,5 +203,5 @@
     <string name="ultima">Ultima partida</string>
     <string name="deleteProfile">Borrar Perfil</string>
     <string name="Exit">Salir</string>
-    <string name="youSure">Estas seguro</string>
+    <string name="youSure">¿Estas seguro?</string>
 </resources>
