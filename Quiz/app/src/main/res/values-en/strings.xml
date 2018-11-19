@@ -30,5 +30,6 @@
     <string name="partidas">Partidas</string>
     <string name="ultima">Ultima partida</string>
     <string name="deleteProfile">Delete Profile</string>
-    <string name="Exit">Are you sure?</string>
+    <string name="youSure">Are you sure?</string>
+    <string name="Exit">Exit</string>
 </resources>
