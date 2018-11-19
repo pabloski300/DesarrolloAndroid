@@ -21,6 +21,7 @@ public class ScaffoldActivity extends AppCompatActivity {
                     .add(R.id.container, new MainMenuFragment(), TAG_FRAGMENT)
                     .commit();
         }
+
     }
 
     public void startGame() {

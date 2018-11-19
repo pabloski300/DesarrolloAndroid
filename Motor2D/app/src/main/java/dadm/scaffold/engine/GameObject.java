@@ -2,7 +2,35 @@ package dadm.scaffold.engine;
 
 import android.graphics.Canvas;
 
+import java.util.List;
+
 public abstract class GameObject {
+
+    protected Collider collider = null;
+
+    protected Collider.CollideLayer layer;
+
+    public Collider.CollideLayer getLayer() {
+        return layer;
+    }
+
+    public void setLayer(Collider.CollideLayer layer) {
+        this.layer = layer;
+    }
+
+    public Collider getCollider() {
+        return collider;
+    }
+
+    public void setCollider(Collider collider) {
+        this.collider = collider;
+    }
+
+
+
+
+
+
 
     public abstract void startGame();
 

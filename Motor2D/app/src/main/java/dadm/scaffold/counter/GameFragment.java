@@ -14,14 +14,17 @@ import dadm.scaffold.R;
 import dadm.scaffold.ScaffoldActivity;
 import dadm.scaffold.engine.FramesPerSecondCounter;
 import dadm.scaffold.engine.GameEngine;
+import dadm.scaffold.engine.GameManager;
 import dadm.scaffold.engine.GameView;
 import dadm.scaffold.input.JoystickInputController;
+import dadm.scaffold.space.EnemyEye;
+import dadm.scaffold.space.Fondo;
 import dadm.scaffold.space.SpaceShipPlayer;
 
 
 public class GameFragment extends BaseFragment implements View.OnClickListener {
-    private GameEngine theGameEngine;
-
+    public static GameEngine theGameEngine;
+    public static GameFragment actualGameFragment;
     public GameFragment() {
     }
 
@@ -29,6 +32,7 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_game, container, false);
+        actualGameFragment = this;
         return rootView;
     }
 
@@ -45,8 +49,10 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
                 observer.removeOnGlobalLayoutListener(this);
                 GameView gameView = (GameView) getView().findViewById(R.id.gameView);
                 theGameEngine = new GameEngine(getActivity(), gameView);
+                theGameEngine.addGameObject(new Fondo(theGameEngine,R.drawable.fondo1));
                 theGameEngine.setTheInputController(new JoystickInputController(getView()));
                 theGameEngine.addGameObject(new SpaceShipPlayer(theGameEngine));
+                theGameEngine.addGameObject(new GameManager(theGameEngine));
                 theGameEngine.addGameObject(new FramesPerSecondCounter(theGameEngine));
                 theGameEngine.startGame();
             }

@@ -24,6 +24,10 @@ public class GameEngine {
     public int height;
     public double pixelFactor;
 
+    public Activity getMainActivity() {
+        return mainActivity;
+    }
+
     private Activity mainActivity;
 
     public GameEngine(Activity activity, GameView gameView) {
@@ -109,7 +113,16 @@ public class GameEngine {
     public void onUpdate(long elapsedMillis) {
         int numGameObjects = gameObjects.size();
         for (int i = 0; i < numGameObjects; i++) {
-            gameObjects.get(i).onUpdate(elapsedMillis, this);
+            GameObject object = gameObjects.get(i);
+            object.onUpdate(elapsedMillis, this);
+            if(object.collider != null) {
+                for (int j = 0; j < numGameObjects; j++) {
+                    GameObject c = gameObjects.get(j);
+                    if (i != j && c.collider != null) {
+                        object.collider.CheckCollide(c.collider);
+                    }
+                }
+            }
         }
         synchronized (gameObjects) {
             while (!objectsToRemove.isEmpty()) {

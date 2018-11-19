@@ -28,6 +28,7 @@ public class MainMenuFragment extends BaseFragment implements View.OnClickListen
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         view.findViewById(R.id.btn_start).setOnClickListener(this);
+
     }
 
     @Override
