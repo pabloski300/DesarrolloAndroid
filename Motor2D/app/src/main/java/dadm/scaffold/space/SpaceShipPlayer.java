@@ -1,11 +1,6 @@
 package dadm.scaffold.space;
 
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import dadm.scaffold.R;
@@ -20,9 +15,13 @@ import dadm.scaffold.input.InputController;
 public class SpaceShipPlayer extends Sprite implements BulletHandeler {
 
     private static final int INITIAL_BULLET_POOL_AMOUNT = 6;
+    private static final int INITIAL_BOMB_POOL_AMOUNT = 6;
     private static final long TIME_BETWEEN_BULLETS = 250;
+    private static final long TIME_BETWEEN_BOMBS = 2000;
     List<Bullet> bullets = new ArrayList<Bullet>();
+    List<Bomb> bombs = new ArrayList<Bomb>();
     private long timeSinceLastFire;
+    private long timeSinceLastFiredBomb;
     protected int life;
     private int maxX;
     private int maxY;
@@ -32,7 +31,7 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
 
 
     public SpaceShipPlayer(GameEngine gameEngine){
-        super(gameEngine, R.drawable.nave64x64smooth);
+        super(gameEngine, R.drawable.nave64x64smooth, false);
         speedFactor = pixelFactor * 100d / 1000d; // We want to move at 100px per second on a 400px tall screen
         maxX = gameEngine.width - imageWidth;
         maxY = gameEngine.height - imageHeight;
@@ -41,6 +40,7 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
         Layers.add(Collider.CollideLayer.Enemy);
         this.CreateNewCollider(10.5, Layers,23.5 * pixelFactor,26*pixelFactor);
         initBulletPool(gameEngine);
+        initBombPool(gameEngine);
         life = 1;
         maxInvencible = 0.5f;
     }
@@ -57,6 +57,20 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
             bullets.add(v);
         }
     }
+
+    public void initBombPool(GameEngine gameEngine) {
+        List<Collider.CollideLayer> l = new ArrayList<>();
+        l.add(Collider.CollideLayer.Enemy);
+        for (int i=0; i<INITIAL_BOMB_POOL_AMOUNT; i++) {
+            Bomb b = new Bomb(gameEngine,-1,0, R.drawable.bomb);
+
+            b.getCollider().collideLayers = new ArrayList<>();
+            b.getCollider().collideLayers.add(Collider.CollideLayer.Meteorite);
+            b.getCollider().collideLayers.add(Collider.CollideLayer.Enemy);
+            bombs.add(b);
+        }
+    }
+
     @Override
      public Bullet getBullet() {
         if (bullets.isEmpty()) {
@@ -65,10 +79,19 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
         return bullets.remove(0);
     }
 
+    public Bomb getBomb() {
+        if (bombs.isEmpty()) {
+            return null;
+        }
+        return bombs.remove(0);
+    }
+
     @Override
     public void releaseBullet(Bullet bullet) {
         bullets.add(bullet);
     }
+
+    public void releaseBomb(Bomb bomb) { bombs.add(bomb); }
 
 
     @Override
@@ -83,6 +106,7 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
         // Get the info from the inputController
         updatePosition(elapsedMillis, gameEngine.theInputController);
         checkFiring(elapsedMillis, gameEngine);
+        checkBomb(elapsedMillis,gameEngine);
 
         invencibleTime += elapsedMillis;
 
@@ -112,12 +136,27 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
             if (bullet == null) {
                 return;
             }
-            bullet.init(this, positionX + 23.5*pixelFactor, positionY +26*pixelFactor);
+            bullet.init(this, positionX + 23.5* pixelFactor, positionY +26*pixelFactor);
             gameEngine.addGameObject(bullet);
             timeSinceLastFire = 0;
         }
         else {
             timeSinceLastFire += elapsedMillis;
+        }
+    }
+
+    private void checkBomb(long elapsedMillis, GameEngine gameEngine) {
+        if (gameEngine.theInputController.isFiringBomb && timeSinceLastFiredBomb > TIME_BETWEEN_BOMBS) {
+            Bomb bomb = getBomb();
+            if (bomb == null) {
+                return;
+            }
+            bomb.init(this, positionX + 23.5* pixelFactor, positionY +26*pixelFactor);
+            gameEngine.addGameObject(bomb);
+            timeSinceLastFiredBomb = 0;
+        }
+        else {
+            timeSinceLastFiredBomb += elapsedMillis;
         }
     }
 

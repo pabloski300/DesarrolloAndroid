@@ -20,6 +20,7 @@ import dadm.scaffold.input.JoystickInputController;
 import dadm.scaffold.space.EnemyEye;
 import dadm.scaffold.space.Fondo;
 import dadm.scaffold.space.SpaceShipPlayer;
+import dadm.scaffold.space.UITextControls;
 
 
 public class GameFragment extends BaseFragment implements View.OnClickListener {
@@ -50,6 +51,7 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
                 GameView gameView = (GameView) getView().findViewById(R.id.gameView);
                 theGameEngine = new GameEngine(getActivity(), gameView);
                 theGameEngine.addGameObject(new Fondo(theGameEngine,R.drawable.fondo1));
+                theGameEngine.addGameObject(new UITextControls(theGameEngine,R.drawable.ui));
                 theGameEngine.setTheInputController(new JoystickInputController(getView()));
                 theGameEngine.addGameObject(new SpaceShipPlayer(theGameEngine));
                 theGameEngine.addGameObject(new GameManager(theGameEngine));

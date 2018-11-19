@@ -4,13 +4,17 @@ import dadm.scaffold.engine.Collider;
 import dadm.scaffold.engine.GameEngine;
 import dadm.scaffold.engine.Sprite;
 
-public class Fondo extends Sprite {
+public class UITextControls extends Sprite {
 
+    private final long TIME_TO_DISSAPEAR = 2000;
+    private  long currentTime = 0;
 
-    public Fondo(GameEngine gameEngine, int drawableRes) {
+    public UITextControls(GameEngine gameEngine, int drawableRes) {
         super(gameEngine, drawableRes, true);
+
         pixelFactor *= 2;
         pixelFactory *= 2;
+
     }
 
     @Override
@@ -25,6 +29,10 @@ public class Fondo extends Sprite {
 
     @Override
     public void onUpdate(long elapsedMillis, GameEngine gameEngine) {
-
+        if(currentTime >= TIME_TO_DISSAPEAR){
+            gameEngine.removeGameObject(this);
+        }else{
+            currentTime += elapsedMillis;
+        }
     }
 }

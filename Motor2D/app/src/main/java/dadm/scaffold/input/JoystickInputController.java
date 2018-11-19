@@ -15,6 +15,7 @@ public class JoystickInputController extends InputController {
     public JoystickInputController(View view) {
         view.findViewById(R.id.joystick_main).setOnTouchListener(new JoystickTouchListener());
         view.findViewById(R.id.joystick_touch).setOnTouchListener(new FireButtonTouchListener());
+        view.findViewById(R.id.joystick_touch_bomb).setOnTouchListener(new FireButtonBombTouchListener());
 
         double pixelFactor = view.getHeight() / 400d;
         maxDistance = 50*pixelFactor;
@@ -62,6 +63,20 @@ public class JoystickInputController extends InputController {
             }
             else if (action == MotionEvent.ACTION_UP) {
                 isFiring = false;
+            }
+            return true;
+        }
+    }
+
+    private class FireButtonBombTouchListener implements View.OnTouchListener {
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            int action = event.getActionMasked();
+            if (action == MotionEvent.ACTION_DOWN) {
+                isFiringBomb = true;
+            }
+            else if (action == MotionEvent.ACTION_UP) {
+                isFiringBomb = false;
             }
             return true;
         }

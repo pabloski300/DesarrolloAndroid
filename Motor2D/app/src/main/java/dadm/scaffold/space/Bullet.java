@@ -1,6 +1,5 @@
 package dadm.scaffold.space;
 
-import dadm.scaffold.R;
 import dadm.scaffold.counter.GameFragment;
 import dadm.scaffold.engine.BulletHandeler;
 import dadm.scaffold.engine.Collider;
@@ -15,12 +14,12 @@ public class Bullet extends Sprite {
     private BulletHandeler parent;
 
     public Bullet(GameEngine gameEngine,float xVelocity,float yVelocity,int drawResource){
-        super(gameEngine, drawResource);
+        super(gameEngine, drawResource,false);
         this.setLayer(Collider.CollideLayer.Bullet);
         speedFactor = gameEngine.pixelFactor * -300d / 1000d;
         this.xVelocity =xVelocity;
         this.yVelocity = yVelocity;
-        CreateNewCollider(3,null,20*pixelFactor,3*pixelFactor);
+        CreateNewCollider(3,null,20* pixelFactor,3*pixelFactor);
     }
 
     @Override
@@ -30,7 +29,7 @@ public class Bullet extends Sprite {
     public void onUpdate(long elapsedMillis, GameEngine gameEngine) {
         positionY += speedFactor * elapsedMillis*yVelocity;
         positionX += speedFactor*elapsedMillis*xVelocity;
-        if (positionX > gameEngine.width || positionX <0 ) {
+        if (positionX > gameEngine.width || positionX < -this.imageWidth) {
             gameEngine.removeGameObject(this);
             // And return it to the pool
             parent.releaseBullet(this);

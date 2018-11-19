@@ -18,7 +18,7 @@ public class Meteorito extends Sprite {
     protected double speedFactor;
 
     public Meteorito(GameEngine gameEngine, float colliderRadius, float xSpeed, float ySpeed, int life) {
-        super(gameEngine, R.drawable.meterito64x64smooth);
+        super(gameEngine, R.drawable.meterito64x64smooth,false);
         this.xSpeed = xSpeed;
         this.ySpeed = ySpeed;
         this.life = life;
@@ -27,7 +27,7 @@ public class Meteorito extends Sprite {
         List<Collider.CollideLayer> layers = new ArrayList<>();
         layers.add(Collider.CollideLayer.Bullet);
         layers.add(Collider.CollideLayer.Player);
-        this.CreateNewCollider(30-(colliderRadius*pixelFactor),layers,32*pixelFactor,32*pixelFactor);
+        this.CreateNewCollider(30-(colliderRadius* pixelFactor),layers,32* pixelFactor,32*pixelFactor);
     }
 
     @Override

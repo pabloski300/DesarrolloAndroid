@@ -40,9 +40,7 @@ public class GameEngine {
         this.height = theGameView.getHeight()
                 - theGameView.getPaddingTop() - theGameView.getPaddingTop();
 
-        this.pixelFactor = this.height / 400d;
-
-
+        this.pixelFactor = this.width / 800d;
     }
 
     public void setTheInputController(InputController inputController) {

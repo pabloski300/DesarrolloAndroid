@@ -8,6 +8,7 @@ public class InputController {
     public double verticalFactor;
 
     public boolean isFiring;
+    public boolean isFiringBomb;
 
     //endregion
 

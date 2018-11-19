@@ -18,10 +18,11 @@ public abstract class Sprite extends GameObject {
     protected double rotation;
 
     protected double pixelFactor;
+    protected double pixelFactory;
 
     private final Bitmap bitmap;
     protected final int imageHeight;
-    protected final int imageWidth;
+    protected int imageWidth;
 
 
     public double getPositionX() {
@@ -60,7 +61,7 @@ public abstract class Sprite extends GameObject {
 
     private final Matrix matrix = new Matrix();
 
-    protected Sprite (GameEngine gameEngine, int drawableRes) {
+    protected Sprite (GameEngine gameEngine, int drawableRes, boolean resizable) {
         Resources r = gameEngine.getContext().getResources();
         Drawable spriteDrawable = r.getDrawable(drawableRes);
 
@@ -68,6 +69,13 @@ public abstract class Sprite extends GameObject {
 
         this.imageHeight = (int) (spriteDrawable.getIntrinsicHeight() * this.pixelFactor);
         this.imageWidth = (int) (spriteDrawable.getIntrinsicWidth() * this.pixelFactor);
+
+        double factor = ((double)gameEngine.height/(double)gameEngine.width)/(9d/16d);
+        if(resizable) {
+            this.pixelFactory = this.pixelFactor * factor;
+        }else{
+            this.pixelFactory = this.pixelFactor;
+        }
 
         this.bitmap = ((BitmapDrawable) spriteDrawable).getBitmap();
     }
@@ -83,7 +91,7 @@ public abstract class Sprite extends GameObject {
             return;
         }
         matrix.reset();
-        matrix.postScale((float) pixelFactor, (float) pixelFactor);
+        matrix.postScale((float) pixelFactor, (float) pixelFactory);
         matrix.postTranslate((float) positionX, (float) positionY);
         matrix.postRotate((float) rotation, (float) (positionX + imageWidth/2), (float) (positionY + imageHeight/2));
         canvas.drawBitmap(bitmap, matrix, null);

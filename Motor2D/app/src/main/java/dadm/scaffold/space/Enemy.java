@@ -17,7 +17,7 @@ public abstract class Enemy extends Sprite {
     protected int life;
     protected double speedFactor;
     public Enemy(GameEngine gameEngine, int drawableRes, double colliderHold, float xSpeed, float ySpeed, int life){
-        super(gameEngine,drawableRes);
+        super(gameEngine,drawableRes,false);
         this.xSpeed = xSpeed;
         this.ySpeed = ySpeed;
         this.life = life;
@@ -26,7 +26,7 @@ public abstract class Enemy extends Sprite {
         List<Collider.CollideLayer> layers = new ArrayList<>();
         layers.add(Collider.CollideLayer.Bullet);
         layers.add(Collider.CollideLayer.Player);
-        this.CreateNewCollider(26-(colliderHold*pixelFactor),layers,28*pixelFactor,32*pixelFactor);
+        this.CreateNewCollider(26-(colliderHold* pixelFactor),layers,28* pixelFactor,32*pixelFactor);
     }
 
     @Override
