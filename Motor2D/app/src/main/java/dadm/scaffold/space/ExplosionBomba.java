@@ -50,10 +50,13 @@ public class ExplosionBomba extends Sprite {
 
     @Override
     public void onUpdate(long elapsedMillis, GameEngine gameEngine) {
+        double startingRotation = this.getRotation();
         if(currentDuration > DURATION){
             gameEngine.removeGameObject(this);
+            this.setRotation(startingRotation);
             currentDuration = 0;
         }else{
+            this.rotation -= 0.005*elapsedMillis;
             currentDuration += elapsedMillis;
         }
     }
