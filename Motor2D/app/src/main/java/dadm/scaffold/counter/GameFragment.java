@@ -1,7 +1,7 @@
 package dadm.scaffold.counter;
 
-import android.content.DialogInterface;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +17,6 @@ import dadm.scaffold.engine.GameEngine;
 import dadm.scaffold.engine.GameManager;
 import dadm.scaffold.engine.GameView;
 import dadm.scaffold.input.JoystickInputController;
-import dadm.scaffold.space.EnemyEye;
 import dadm.scaffold.space.Fondo;
 import dadm.scaffold.space.SpaceShipPlayer;
 import dadm.scaffold.space.UITextControls;

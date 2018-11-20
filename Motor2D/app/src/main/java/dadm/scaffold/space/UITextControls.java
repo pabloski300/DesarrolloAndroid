@@ -18,7 +18,7 @@ public class UITextControls extends Sprite {
     }
 
     @Override
-    public void OnCollision(Collider otherCollider) {
+    public void OnCollision(Collider otherCollider, GameEngine gameEngine) {
 
     }
 

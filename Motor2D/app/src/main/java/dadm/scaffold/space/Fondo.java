@@ -14,7 +14,7 @@ public class Fondo extends Sprite {
     }
 
     @Override
-    public void OnCollision(Collider otherCollider) {
+    public void OnCollision(Collider otherCollider, GameEngine gameEngine) {
 
     }
 

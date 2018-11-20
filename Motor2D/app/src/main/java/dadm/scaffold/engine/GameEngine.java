@@ -117,7 +117,7 @@ public class GameEngine {
                 for (int j = 0; j < numGameObjects; j++) {
                     GameObject c = gameObjects.get(j);
                     if (i != j && c.collider != null) {
-                        object.collider.CheckCollide(c.collider);
+                        object.collider.CheckCollide(c.collider, this);
                     }
                 }
             }

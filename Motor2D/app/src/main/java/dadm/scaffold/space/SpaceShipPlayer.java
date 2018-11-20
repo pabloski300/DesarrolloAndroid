@@ -161,7 +161,7 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
     }
 
     @Override
-    public void OnCollision(Collider otherCollider) {
+    public void OnCollision(Collider otherCollider, GameEngine gameEngine) {
         if(otherCollider.Owner.getLayer() == Collider.CollideLayer.Enemy && invencibleTime > maxInvencible){
             invencibleTime = 0;
             DealDamage(1);

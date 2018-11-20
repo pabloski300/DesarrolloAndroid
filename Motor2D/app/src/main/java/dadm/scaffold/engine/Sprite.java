@@ -80,7 +80,7 @@ public abstract class Sprite extends GameObject {
         this.bitmap = ((BitmapDrawable) spriteDrawable).getBitmap();
     }
 
-    public abstract void OnCollision(Collider otherCollider);
+    public abstract void OnCollision(Collider otherCollider, GameEngine gameEngine);
 
     @Override
     public void onDraw(Canvas canvas) {
@@ -99,7 +99,7 @@ public abstract class Sprite extends GameObject {
         if(collider != null){
                 Paint p = new Paint();
                 p.setColor(Color.GREEN);
-                canvas.drawCircle((float)collider.getX(),(float)collider.getY(),collider.radius,p);
+                //canvas.drawCircle((float)collider.getX(),(float)collider.getY(),collider.radius,p);
             }
     }
 

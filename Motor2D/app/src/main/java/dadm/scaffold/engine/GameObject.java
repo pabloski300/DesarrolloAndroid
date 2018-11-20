@@ -2,8 +2,6 @@ package dadm.scaffold.engine;
 
 import android.graphics.Canvas;
 
-import java.util.List;
-
 public abstract class GameObject {
 
     protected Collider collider = null;
