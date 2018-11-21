@@ -113,6 +113,10 @@ public class GameEngine {
         for (int i = 0; i < numGameObjects; i++) {
             GameObject object = gameObjects.get(i);
             object.onUpdate(elapsedMillis, this);
+        }
+
+        for (int i = 0; i < numGameObjects; i++) {
+            GameObject object = gameObjects.get(i);
             if(object.collider != null) {
                 for (int j = 0; j < numGameObjects; j++) {
                     GameObject c = gameObjects.get(j);

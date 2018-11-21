@@ -46,9 +46,9 @@ public class DrawThread extends Thread {
                 }
                 currentTimeMillis = System.currentTimeMillis();
             }
-            if (elapsedMillis < 20) { // This is 50 fps
+            if (elapsedMillis < 10) { // This is 50 fps
                 try {
-                    Thread.sleep(20-elapsedMillis);
+                    Thread.sleep(10-elapsedMillis);
                 } catch (InterruptedException e) {
                     // We just continue
                 }
