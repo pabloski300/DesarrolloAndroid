@@ -44,7 +44,7 @@ public class Bullet extends Sprite {
     }
 
     @Override
-    public void OnCollision(Collider otherCollider) {
+    public void OnCollision(Collider otherCollider, GameEngine gameEngine) {
 
         switch (otherCollider.Owner.getLayer()){
             case Player:

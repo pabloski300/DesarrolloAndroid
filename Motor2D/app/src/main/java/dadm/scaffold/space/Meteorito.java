@@ -31,7 +31,7 @@ public class Meteorito extends Sprite {
     }
 
     @Override
-    public void OnCollision(Collider otherCollider) {
+    public void OnCollision(Collider otherCollider, GameEngine gameEngine) {
         if(otherCollider.Owner.getLayer() == Collider.CollideLayer.Player){
             this.life= 0;
         }

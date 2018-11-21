@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="dadm.scaffold">
 
     <uses-permission android:name="android.permission.CAMERA" />
@@ -23,27 +22,27 @@
         >
         <activity
             android:name=".MainPage"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="sensorLandscape"/>
 
         <activity
             android:name=".Puntuaciones"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".ProfileChooser"
             android:label="@string/title_activity_profile_chooser"
             android:noHistory="true"
             android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="sensorLandscape"/>
 
 
         <activity android:name=".ProfileCreator"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="sensorLandscape"/>
 
 
 
         <activity android:name=".EnterActivity"
             android:noHistory="true"
-            android:screenOrientation="portrait">
+            android:screenOrientation="sensorLandscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

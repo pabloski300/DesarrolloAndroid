@@ -28,14 +28,18 @@ public class Collider {
 
     }
 
-    public void CheckCollide(Collider otherCollider){
-        if(collideLayers.contains(otherCollider.Owner.getLayer())) {
-            double newx = getX()-otherCollider.getX();
-            double newy = getY()-otherCollider.getY();
-            double distance = Math.sqrt(newx*newx+newy*newy);
-            if (otherCollider.radius + this.radius >= distance){
-               this.Owner.OnCollision(otherCollider);
+    public void CheckCollide(Collider otherCollider, GameEngine gameEngine){
+        try {
+            if (collideLayers.contains(otherCollider.Owner.getLayer())) {
+                double newx = getX() - otherCollider.getX();
+                double newy = getY() - otherCollider.getY();
+                double distance = Math.sqrt(newx * newx + newy * newy);
+                if (otherCollider.radius + this.radius >= distance) {
+                    this.Owner.OnCollision(otherCollider, gameEngine);
+                }
             }
+        }catch(Exception e){
+            System.out.print(e.getCause());
         }
     }
 

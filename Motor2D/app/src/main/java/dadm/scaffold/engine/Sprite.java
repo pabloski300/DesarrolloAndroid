@@ -80,7 +80,7 @@ public abstract class Sprite extends GameObject {
         this.bitmap = ((BitmapDrawable) spriteDrawable).getBitmap();
     }
 
-    public abstract void OnCollision(Collider otherCollider);
+    public abstract void OnCollision(Collider otherCollider, GameEngine gameEngine);
 
     @Override
     public void onDraw(Canvas canvas) {
