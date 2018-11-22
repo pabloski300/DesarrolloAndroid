@@ -3,6 +3,8 @@ package dadm.scaffold;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 
 import dadm.scaffold.counter.GameFragment;
@@ -24,6 +26,12 @@ public class ScaffoldActivity extends AppCompatActivity {
 
     }
 
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate activity menu items.
+        getMenuInflater().inflate(R.menu.mainmenu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
     public void startGame() {
         // Navigate the the game fragment, which makes the start automatically
         navigateToFragment( new GameFragment());
@@ -71,4 +79,5 @@ public class ScaffoldActivity extends AppCompatActivity {
             }
         }
     }
+
 }

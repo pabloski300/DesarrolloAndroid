@@ -149,7 +149,7 @@ public class ProfileCreator extends AppCompatActivity  {
                     c, SQLiteDatabase.CONFLICT_REPLACE);
             p.id = id;
             MainPage.actualProfile = p;
-            Intent nextActivty = new Intent(this,MainPage.class);
+            Intent nextActivty = new Intent(this,ScaffoldActivity.class);
             startActivity(nextActivty);
             finish();
 

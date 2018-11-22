@@ -26,7 +26,7 @@ public class Profile {
 
     String name;
     String imageName;
-    int id;
+    public int id;
     public int games;
     public String date;
     public int maxScore;

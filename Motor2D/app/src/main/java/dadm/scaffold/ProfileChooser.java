@@ -45,7 +45,7 @@ public class ProfileChooser extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Cursor c = (Cursor) parent.getItemAtPosition(position);
                 MainPage.actualProfile = new Profile(c);
-                Intent nextActivty = new Intent(getApplicationContext(),MainPage.class);
+                Intent nextActivty = new Intent(getApplicationContext(),ScaffoldActivity.class);
                 finish();
                 startActivity(nextActivty);
             }

@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class MainPage extends AppCompatActivity {
-
+    private static final String TAG_FRAGMENT = "content";
     public static Profile actualProfile;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
