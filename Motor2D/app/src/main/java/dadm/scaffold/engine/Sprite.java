@@ -86,7 +86,7 @@ public abstract class Sprite extends GameObject {
     public void onDraw(Canvas canvas) {
         if (positionX > canvas.getWidth()
                 || positionY > canvas.getHeight()
-                || positionX < - imageWidth
+                || positionX < - imageWidth*2
                 || positionY < - imageHeight) {
             return;
         }
@@ -99,7 +99,7 @@ public abstract class Sprite extends GameObject {
         if(collider != null){
                 Paint p = new Paint();
                 p.setColor(Color.GREEN);
-                //canvas.drawCircle((float)collider.getX(),(float)collider.getY(),collider.radius,p);
+                canvas.drawCircle((float)collider.getX(),(float)collider.getY(),collider.radius,p);
             }
     }
 

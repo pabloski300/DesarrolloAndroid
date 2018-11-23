@@ -9,28 +9,29 @@ import dadm.scaffold.engine.Sprite;
 
 public class PowerUp extends Sprite {
 
-
-
-
     private float xvel;
     private float yvel;
+    protected double speedFactor;
     PoweUpInformation powerUp;
+
     protected PowerUp(GameEngine gameEngine, int drawableRes, boolean resizable,int type) {
         super(gameEngine, drawableRes, resizable);
+        speedFactor = pixelFactor * 50d / 1000d;
         switch (type){
             case PoweUpInformation.DOUBLE_SHOOT:
-                powerUp = new PoweUpInformation(1000,0);
-
+                powerUp = new PoweUpInformation(3000,0);
                 break;
             case PoweUpInformation.TRIPLE_SHOOT:
-                powerUp = new PoweUpInformation(1000,1);
+                powerUp = new PoweUpInformation(3000,1);
                 break;
-
+            case PoweUpInformation.BOMB:
+                powerUp = new PoweUpInformation(0,2);
+                break;
 
         }
         ArrayList<Collider.CollideLayer> l = new ArrayList<Collider.CollideLayer>();
         l.add(Collider.CollideLayer.Player);
-        this.CreateNewCollider(8,l,8,7);
+        this.CreateNewCollider(8,l,8*pixelFactor,7*pixelFactor);
     }
 
     @Override
@@ -38,6 +39,7 @@ public class PowerUp extends Sprite {
         if(otherCollider.Owner.getLayer() == Collider.CollideLayer.Player){
             gameEngine.removeGameObject(this);
             ((SpaceShipPlayer)otherCollider.Owner).powerUp = powerUp;
+            GameManager.powerTime = (int)powerUp.time;
         }
     }
 
@@ -48,12 +50,8 @@ public class PowerUp extends Sprite {
 
     @Override
     public void onUpdate(long elapsedMillis, GameEngine gameEngine) {
-
-
-
-
-
-
+        positionY += speedFactor*elapsedMillis*yvel;
+        positionX += speedFactor*elapsedMillis*xvel;
     }
 
     public void Init(float posx, float posy,float vecx, float vecy){

@@ -32,10 +32,15 @@ public class GameManager extends GameObject {
     protected Random r;
     public static GameManager ActualManager;
     public static int score;
+    public static int lifes;
+    public static int bombs;
+    public static int powerTime;
     Paint paint;
     public GameManager(GameEngine engine){
         paint = new Paint();
         score = 0;
+        lifes = 3;
+        bombs = 3;
         r = new Random();
         EnemyInLevel = new ArrayList<>();
         EnemyInLevel.add(new EnemyEye(engine,0,0,0,1));
@@ -82,13 +87,22 @@ public class GameManager extends GameObject {
         }else {
             ActualTimeBetwenMeteors+=elapsedMillis;
         }
+        if(powerTime >= 0){
+            powerTime -= elapsedMillis;
+        }else{
+            powerTime = 0;
+        }
     }
 
     @Override
     public void onDraw(Canvas canvas) {
         paint.setColor(Color.WHITE);
-        paint.setTextSize(100);
-        canvas.drawText("Puntos :" + score,0,100,paint);
+        paint.setTextSize(45);
+        paint.setFakeBoldText(true);
+        canvas.drawText("Puntos :" + score,800,80,paint);
+        canvas.drawText("x" + lifes,100,80,paint);
+        canvas.drawText("x" + bombs,250,80,paint);
+        canvas.drawText("Power Time:" + powerTime,400,80,paint);
     }
 
     public void RestoreEnemy(Enemy e){

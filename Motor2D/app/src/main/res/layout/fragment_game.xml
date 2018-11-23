@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,14 +14,30 @@
         android:layout_height="match_parent" />
 
     <Button
-        android:layout_gravity="top|right"
         android:id="@+id/btn_play_pause"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginRight="@dimen/activity_vertical_margin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_vertical_margin"
         android:text="@string/pause" />
 
-    <include layout="@layout/view_joystick"/>
+    <include layout="@layout/view_joystick" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:src="@drawable/nave64x64smooth" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="18dp"
+        android:layout_height="16dp"
+        android:layout_marginLeft="70dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:src="@drawable/bomb" />
 
 </FrameLayout>

@@ -37,7 +37,7 @@ public class EnemyEye extends Enemy implements BulletHandeler {
         List<Collider.CollideLayer> l = new ArrayList<>();
         l.add(Collider.CollideLayer.Player);
         for(int i = 0; i<MAX_BULLETS_EYE;i++){
-            Bullet b = new Bullet(gameEngine,1,0,R.drawable.proyectilenemigo64x64smooth);
+            Bullet b = new Bullet(gameEngine,1,0,R.drawable.proyectilenemigo64x64smooth,4,3,4);
             b.getCollider().collideLayers = l;
             bullets.add(b);
         }

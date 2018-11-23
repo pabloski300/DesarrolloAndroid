@@ -13,13 +13,13 @@ public class Bullet extends Sprite {
     private float yVelocity;
     private BulletHandeler parent;
 
-    public Bullet(GameEngine gameEngine,float xVelocity,float yVelocity,int drawResource){
+    public Bullet(GameEngine gameEngine,float xVelocity,float yVelocity,int drawResource,float radius , float colloffx, float colloffy){
         super(gameEngine, drawResource,false);
         this.setLayer(Collider.CollideLayer.Bullet);
         speedFactor = gameEngine.pixelFactor * -300d / 1000d;
         this.xVelocity =xVelocity;
         this.yVelocity = yVelocity;
-        CreateNewCollider(3,null,20* pixelFactor,3*pixelFactor);
+        CreateNewCollider(radius,null,colloffx* pixelFactor,colloffy*pixelFactor);
     }
 
     @Override

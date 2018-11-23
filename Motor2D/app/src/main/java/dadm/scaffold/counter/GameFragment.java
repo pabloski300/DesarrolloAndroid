@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import dadm.scaffold.BaseFragment;
 import dadm.scaffold.R;
@@ -25,6 +26,7 @@ import dadm.scaffold.space.UITextControls;
 public class GameFragment extends BaseFragment implements View.OnClickListener {
     public static GameEngine theGameEngine;
     public static GameFragment actualGameFragment;
+    public static ImageView playerImage;
     public GameFragment() {
     }
 
@@ -49,12 +51,17 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
                 observer.removeOnGlobalLayoutListener(this);
                 GameView gameView = (GameView) getView().findViewById(R.id.gameView);
                 theGameEngine = new GameEngine(getActivity(), gameView);
-                theGameEngine.addGameObject(new Fondo(theGameEngine,R.drawable.fondo1));
+                Fondo f1 = new Fondo(theGameEngine,R.drawable.fondo1,-4);
+                f1.init(0,0);
+                theGameEngine.addGameObject(f1);
+                Fondo f2 = new Fondo(theGameEngine,R.drawable.fondo2,-4);
+                f2.init(theGameEngine.width,0);
+                theGameEngine.addGameObject(f2);
                 theGameEngine.addGameObject(new UITextControls(theGameEngine,R.drawable.ui));
                 theGameEngine.setTheInputController(new JoystickInputController(getView()));
                 theGameEngine.addGameObject(new SpaceShipPlayer(theGameEngine));
                 theGameEngine.addGameObject(new GameManager(theGameEngine));
-                theGameEngine.addGameObject(new FramesPerSecondCounter(theGameEngine));
+                //theGameEngine.addGameObject(new FramesPerSecondCounter(theGameEngine));
                 theGameEngine.startGame();
 
             }

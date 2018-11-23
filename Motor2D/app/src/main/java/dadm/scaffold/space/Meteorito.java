@@ -17,6 +17,7 @@ public class Meteorito extends Sprite {
     protected double ySpeed;
     protected int life;
     protected double speedFactor;
+    ExplosionEnemigo e;
 
     public Meteorito(GameEngine gameEngine, float colliderRadius, float xSpeed, float ySpeed, int life) {
         super(gameEngine, R.drawable.meterito64x64smooth,false);
@@ -29,6 +30,7 @@ public class Meteorito extends Sprite {
         layers.add(Collider.CollideLayer.Bullet);
         layers.add(Collider.CollideLayer.Player);
         this.CreateNewCollider(30-(colliderRadius* pixelFactor),layers,32* pixelFactor,32*pixelFactor);
+        e = new ExplosionEnemigo(gameEngine, R.drawable.explosionmeterorito,false);
     }
 
     @Override
@@ -60,32 +62,35 @@ public class Meteorito extends Sprite {
         }
 
         if(life <= 0){
+            Explosion(gameEngine);
             GameFragment.theGameEngine.removeGameObject(this);
             GameManager.ActualManager.score+=10;
             GameManager.ActualManager.RestoreMeteorite(this);
             Random r = new Random();
             switch (r.nextInt(3)){
                 case 0:
-                    PowerUp p = new PowerUp(gameEngine,R.drawable.powerupdoble,true,0);
-                    p.Init((float)(positionX + 32* pixelFactor), (float)(positionY + 32*pixelFactor),0,0);
+                    PowerUp p = new PowerUp(gameEngine,R.drawable.powerupdoble,false,0);
+                    p.Init((float)(positionX + 32* pixelFactor), (float)(positionY + 32*pixelFactor),-1,0);
                     gameEngine.addGameObject(p);
                     break;
                 case 1:
-                    PowerUp powerUp = new PowerUp(gameEngine,R.drawable.poweruptriple,true,0);
-                    powerUp.Init((float)(positionX + 32* pixelFactor), (float)(positionY + 32*pixelFactor),0,0);
+                    PowerUp powerUp = new PowerUp(gameEngine,R.drawable.poweruptriple,false,1);
+                    powerUp.Init((float)(positionX + 32* pixelFactor), (float)(positionY + 32*pixelFactor),-1,0);
                     gameEngine.addGameObject(powerUp);
                     break;
                 case 2:
+                    PowerUp powerUpBomb = new PowerUp(gameEngine,R.drawable.powerupbomba,false,2);
+                    powerUpBomb.Init((float)(positionX + 32* pixelFactor), (float)(positionY + 32*pixelFactor),-1,0);
+                    gameEngine.addGameObject(powerUpBomb);
                     break;
                 case 3:
                     break;
-
-
             }
-
-
-
-
         }
+    }
+
+    private void Explosion(GameEngine gameEngine) {
+        e.init(positionX + 32* pixelFactor, positionY + 32*pixelFactor);
+        gameEngine.addGameObject(e);
     }
 }
