@@ -10,6 +10,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import dadm.scaffold.BaseFragment;
 import dadm.scaffold.DataBaseManager;
@@ -19,6 +20,7 @@ import dadm.scaffold.Profile;
 import dadm.scaffold.ProfileCreator;
 import dadm.scaffold.R;
 import dadm.scaffold.ScaffoldActivity;
+import dadm.scaffold.Scores;
 
 
 public class MainMenuFragment extends BaseFragment implements View.OnClickListener {
@@ -40,7 +42,24 @@ public class MainMenuFragment extends BaseFragment implements View.OnClickListen
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        TextView title = view.findViewById(R.id.Title);
+        title.setText(String.format(title.getText().toString(),MainPage.actualProfile.name));
         view.findViewById(R.id.StartButton).setOnClickListener(this);
+        view.findViewById(R.id.ScoreButtons).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((ScaffoldActivity)getActivity()).navigateToFragment(new Scores());
+            }
+        });
+        view.findViewById(R.id.exitButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainPage.actualProfile = null;
+                Intent next = new Intent(getActivity(), EnterActivity.class);
+                startActivity(next);
+                getActivity().finish();
+            }
+        });
 
        // ((ScaffoldActivity)getActivity()).startGame();
 
@@ -60,7 +79,5 @@ public class MainMenuFragment extends BaseFragment implements View.OnClickListen
         return true;
 
     }
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.mainmenu, menu);
-    }
+
 }

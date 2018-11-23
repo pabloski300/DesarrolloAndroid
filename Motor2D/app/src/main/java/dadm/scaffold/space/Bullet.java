@@ -67,4 +67,9 @@ public class Bullet extends Sprite {
         GameFragment.theGameEngine.removeGameObject(this);
         parent.releaseBullet(this);
     }
+
+    public void initVel(float xVelocity,float yVelocity){
+        this.xVelocity = xVelocity;
+        this.yVelocity = yVelocity;
+    }
 }

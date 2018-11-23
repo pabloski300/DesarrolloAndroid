@@ -11,12 +11,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import dadm.scaffold.BaseFragment;
 import dadm.scaffold.R;
 import dadm.scaffold.ScaffoldActivity;
 import dadm.scaffold.counter.GameFragment;
+import dadm.scaffold.counter.ScoreFragment;
 import dadm.scaffold.space.Enemy;
 import dadm.scaffold.space.EnemyEye;
 import dadm.scaffold.space.Meteorito;
+import dadm.scaffold.space.PowerUp;
 
 public class GameManager extends GameObject {
 
@@ -28,7 +31,7 @@ public class GameManager extends GameObject {
     protected long ActualTimeBetwenMeteors;
     protected Random r;
     public static GameManager ActualManager;
-    public int score;
+    public static int score;
     Paint paint;
     public GameManager(GameEngine engine){
         paint = new Paint();
@@ -83,7 +86,7 @@ public class GameManager extends GameObject {
 
     @Override
     public void onDraw(Canvas canvas) {
-        paint.setColor(Color.BLACK);
+        paint.setColor(Color.WHITE);
         paint.setTextSize(100);
         canvas.drawText("Puntos :" + score,0,100,paint);
     }
@@ -97,37 +100,16 @@ public class GameManager extends GameObject {
     }
 
     public void Lose(){
-        GameFragment.theGameEngine.pauseGame();
-        new AlertDialog.Builder(GameFragment.theGameEngine.getMainActivity())
-                .setTitle(R.string.pause_dialog_title)
-                .setMessage(R.string.pause_dialog_message)
-                .setPositiveButton(R.string.resume, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        GameFragment.theGameEngine.stopGame();
-                        ((ScaffoldActivity) GameFragment.theGameEngine.getMainActivity()).startGame();
-                    }
-                })
-                .setNegativeButton(R.string.stop, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        GameFragment.theGameEngine.stopGame();
-                        ((ScaffoldActivity) GameFragment.theGameEngine.getMainActivity()).navigateBack();
-                    }
-                })
-                .setOnCancelListener(new DialogInterface.OnCancelListener() {
-                    @Override
-                    public void onCancel(DialogInterface dialog) {
-                        GameFragment.theGameEngine.resumeGame();
-                    }
-                })
-                .create()
-                .show();
+        GameFragment.theGameEngine.stopGame();
+        ((ScaffoldActivity)GameFragment.actualGameFragment.getActivity()).navigateToFragment(new ScoreFragment());
+
     }
 
     public void Win(){
 
+    }
+
+
+    public void RestorePowerUp(PowerUp powerUp) {
     }
 }

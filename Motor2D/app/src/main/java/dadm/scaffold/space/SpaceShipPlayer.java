@@ -14,7 +14,7 @@ import dadm.scaffold.input.InputController;
 
 public class SpaceShipPlayer extends Sprite implements BulletHandeler {
 
-    private static final int INITIAL_BULLET_POOL_AMOUNT = 6;
+    private static final int INITIAL_BULLET_POOL_AMOUNT = 70;
     private static final int INITIAL_BOMB_POOL_AMOUNT = 6;
     private static final long TIME_BETWEEN_BULLETS = 250;
     private static final long TIME_BETWEEN_BOMBS = 2000;
@@ -28,7 +28,7 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
     private double speedFactor;
     private float invencibleTime;
     private final float maxInvencible;
-
+    public PoweUpInformation powerUp;
 
     public SpaceShipPlayer(GameEngine gameEngine){
         super(gameEngine, R.drawable.nave64x64smooth, false);
@@ -43,6 +43,7 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
         initBombPool(gameEngine);
         life = 1;
         maxInvencible = 0.5f;
+        powerUp = new PoweUpInformation(10000,0);
     }
 
     public void initBulletPool(GameEngine gameEngine) {
@@ -131,14 +132,57 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
     }
 
     private void checkFiring(long elapsedMillis, GameEngine gameEngine) {
-        if (gameEngine.theInputController.isFiring && timeSinceLastFire > TIME_BETWEEN_BULLETS) {
-            Bullet bullet = getBullet();
-            if (bullet == null) {
-                return;
+        if (timeSinceLastFire > TIME_BETWEEN_BULLETS) {
+
+            if (powerUp == null) {
+                Bullet bullet = getBullet();
+                if (bullet == null) {
+                    return;
+                }
+                bullet.init(this, positionX + 23.5 * pixelFactor, positionY + 26 * pixelFactor);
+                gameEngine.addGameObject(bullet);
+                bullet.initVel(-1,0);
+                timeSinceLastFire = 0;
             }
-            bullet.init(this, positionX + 23.5* pixelFactor, positionY +26*pixelFactor);
-            gameEngine.addGameObject(bullet);
-            timeSinceLastFire = 0;
+            else {
+                switch (powerUp.type) {
+                    case PoweUpInformation.DOUBLE_SHOOT:
+                        if(bullets.size() >1) {
+                            Bullet b1 = getBullet();
+                            Bullet b2 = getBullet();
+                            b1.init(this, positionX + 23.5 * pixelFactor, positionY + 26 * pixelFactor);
+                            b2.init(this, positionX + 23.5 * pixelFactor, positionY + 26 * pixelFactor);
+                            b1.initVel(-1,-0.5f);
+                            b2.initVel(-1,0.5f);
+                            gameEngine.addGameObject(b1);
+                            gameEngine.addGameObject(b2);
+                        }
+                        break;
+                    case PoweUpInformation.TRIPLE_SHOOT:
+                        if(bullets.size() >2) {
+                            Bullet b1 = getBullet();
+                            Bullet b2 = getBullet();
+                            Bullet b3 = getBullet();
+                            b1.init(this, positionX + 23.5 * pixelFactor, positionY + 26 * pixelFactor);
+                            b2.init(this, positionX + 23.5 * pixelFactor, positionY + 26 * pixelFactor);
+                            b3.init(this, positionX + 23.5 * pixelFactor, positionY + 26 * pixelFactor);
+                            b3.initVel(-1,0);
+                            b1.initVel(-1,-0.5f);
+                            b2.initVel(-1,0.5f);
+
+                            gameEngine.addGameObject(b1);
+                            gameEngine.addGameObject(b2);
+                            gameEngine.addGameObject(b3);
+                        }
+                        break;
+
+                }
+                powerUp.time -= timeSinceLastFire;
+                if(powerUp.time <= 0){
+                    powerUp = null;
+                }
+                timeSinceLastFire = 0;
+            }
         }
         else {
             timeSinceLastFire += elapsedMillis;

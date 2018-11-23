@@ -7,25 +7,4 @@
     tools:context=".EnterActivity"
     android:background="@drawable/fondoinicio">
 
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="107dp"
-        android:layout_marginTop="264dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginBottom="3dp"
-        android:text="@string/mainText"
-        android:textAlignment="center"
-        android:textColor="@android:color/white"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.949" />
 </RelativeLayout>

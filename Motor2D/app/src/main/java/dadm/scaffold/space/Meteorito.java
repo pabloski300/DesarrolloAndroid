@@ -2,6 +2,7 @@ package dadm.scaffold.space;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import dadm.scaffold.R;
 import dadm.scaffold.counter.GameFragment;
@@ -62,6 +63,28 @@ public class Meteorito extends Sprite {
             GameFragment.theGameEngine.removeGameObject(this);
             GameManager.ActualManager.score+=10;
             GameManager.ActualManager.RestoreMeteorite(this);
+            Random r = new Random();
+            switch (r.nextInt(3)){
+                case 0:
+                    PowerUp p = new PowerUp(gameEngine,R.drawable.powerupdoble,true,0);
+                    p.Init((float)(positionX + 32* pixelFactor), (float)(positionY + 32*pixelFactor),0,0);
+                    gameEngine.addGameObject(p);
+                    break;
+                case 1:
+                    PowerUp powerUp = new PowerUp(gameEngine,R.drawable.poweruptriple,true,0);
+                    powerUp.Init((float)(positionX + 32* pixelFactor), (float)(positionY + 32*pixelFactor),0,0);
+                    gameEngine.addGameObject(powerUp);
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+
+
+            }
+
+
+
 
         }
     }

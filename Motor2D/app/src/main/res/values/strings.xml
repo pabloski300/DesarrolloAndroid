@@ -4,10 +4,10 @@
     <string name="pause">Game paused</string>
     <string name="start">Start game</string>
     <string name="game_title">game title</string>
-    <string name="pause_dialog_title">pause title</string>
-    <string name="pause_dialog_message">pause message</string>
-    <string name="resume">resume</string>
-    <string name="stop">stop</string>
+    <string name="pause_dialog_title">Menú de Pausa</string>
+    <string name="pause_dialog_message">¿Quieres acabar la partida?</string>
+    <string name="resume">Continuar</string>
+    <string name="stop">Acabar la partida</string>
     <string name="ButtonStartText">¡Comenzar juego!</string>
     <string name="ScoreButton">Tus puntuaciones</string>
     <string name="Opciones">Opciones</string>
@@ -211,4 +211,5 @@
     <string name="deleteProfile">Borrar Perfil</string>
     <string name="Exit">Salir</string>
     <string name="youSure">Estas seguro</string>
+    <string name="defeat">Has sido derrotado, tu puntuación ha sido de:</string>
 </resources>

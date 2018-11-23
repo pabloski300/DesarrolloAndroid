@@ -37,7 +37,7 @@ public class ScaffoldActivity extends AppCompatActivity {
         navigateToFragment( new GameFragment());
     }
 
-    private void navigateToFragment(BaseFragment dst) {
+    public void navigateToFragment(BaseFragment dst) {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.container, dst, TAG_FRAGMENT)

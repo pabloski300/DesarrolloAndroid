@@ -24,7 +24,7 @@ public class Profile {
         public static String DELETE_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
     }
 
-    String name;
+    public String name;
     String imageName;
     public int id;
     public int games;

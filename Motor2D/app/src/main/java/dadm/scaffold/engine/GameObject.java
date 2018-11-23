@@ -2,6 +2,8 @@ package dadm.scaffold.engine;
 
 import android.graphics.Canvas;
 
+import dadm.scaffold.space.PowerUp;
+
 public abstract class GameObject {
 
     protected Collider collider = null;
@@ -55,5 +57,6 @@ public abstract class GameObject {
 
     public void onRemovedFromGameUiThread(){
     }
+
 
 }
