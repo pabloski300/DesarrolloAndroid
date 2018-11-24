@@ -1,6 +1,7 @@
 package dadm.scaffold.space;
 
 import dadm.scaffold.R;
+import dadm.scaffold.counter.GameFragment;
 import dadm.scaffold.engine.GameEngine;
 
 public class EnemyMouth extends Enemy {
@@ -19,7 +20,7 @@ public class EnemyMouth extends Enemy {
 
     @Override
     public void onUpdate(long elapsedMillis, GameEngine gameEngine) {
-        time += elapsedMillis/1000;
+        time += (float)elapsedMillis/1000;
         ySpeed = Math.sin(time);
         super.onUpdate(elapsedMillis,gameEngine);
     }

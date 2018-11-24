@@ -18,6 +18,7 @@ import dadm.scaffold.counter.GameFragment;
 import dadm.scaffold.counter.ScoreFragment;
 import dadm.scaffold.space.Enemy;
 import dadm.scaffold.space.EnemyEye;
+import dadm.scaffold.space.EnemyMouth;
 import dadm.scaffold.space.Meteorito;
 import dadm.scaffold.space.PowerUp;
 
@@ -45,6 +46,8 @@ public class GameManager extends GameObject {
         EnemyInLevel = new ArrayList<>();
         EnemyInLevel.add(new EnemyEye(engine,0,0,0,1));
         EnemyInLevel.add(new EnemyEye(engine,0,-1,0,1));
+        EnemyInLevel.add(new EnemyMouth(engine,0,-1,0,1));
+        EnemyInLevel.add(new EnemyMouth(engine,0,-1,0,1));
         MeteorInLevel = new ArrayList<>();
         MeteorInLevel.add(new Meteorito(engine,0,-1,0,1));
         TimeBetwenEnemies = 2000;

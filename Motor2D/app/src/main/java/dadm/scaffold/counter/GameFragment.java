@@ -26,7 +26,8 @@ import dadm.scaffold.space.UITextControls;
 public class GameFragment extends BaseFragment implements View.OnClickListener {
     public static GameEngine theGameEngine;
     public static GameFragment actualGameFragment;
-    public static ImageView playerImage;
+    public ImageView playerImage;
+
     public GameFragment() {
     }
 
@@ -42,6 +43,7 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
     public void onViewCreated( View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         view.findViewById(R.id.btn_play_pause).setOnClickListener(this);
+        playerImage = view.findViewById(R.id.imageView2);
         final ViewTreeObserver observer = view.getViewTreeObserver();
         observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener(){
             @Override
