@@ -32,10 +32,12 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
     private double speedFactor;
     private float invencibleTime;
     private final float maxInvencible;
+    protected int  bulletDrawableRes;
     public PoweUpInformation powerUp;
 
-    public SpaceShipPlayer(GameEngine gameEngine,int player){
+    public SpaceShipPlayer(GameEngine gameEngine,int player,int bullet){
         super(gameEngine, player, false);
+        bulletDrawableRes = bullet;
         speedFactor = pixelFactor * 100d / 1000d; // We want to move at 100px per second on a 400px tall screen
         currentBombAmount = BOMBS_NUM;
         maxX = gameEngine.width - imageWidth;
@@ -54,7 +56,7 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
         List<Collider.CollideLayer> l = new ArrayList<>();
         l.add(Collider.CollideLayer.Enemy);
         for (int i=0; i<INITIAL_BULLET_POOL_AMOUNT; i++) {
-            Bullet v = new Bullet(gameEngine,-1,0,R.drawable.proyectiljugador64x64smooth,3,20,3);
+            Bullet v = new Bullet(gameEngine,-1,0,bulletDrawableRes,3,20,3);
 
             v.getCollider().collideLayers = new ArrayList<>();
             v.getCollider().collideLayers.add(Collider.CollideLayer.Meteorite);
