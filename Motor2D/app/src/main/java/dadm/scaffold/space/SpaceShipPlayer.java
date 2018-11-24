@@ -34,8 +34,8 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
     private final float maxInvencible;
     public PoweUpInformation powerUp;
 
-    public SpaceShipPlayer(GameEngine gameEngine){
-        super(gameEngine, R.drawable.nave64x64smooth, false);
+    public SpaceShipPlayer(GameEngine gameEngine,int player){
+        super(gameEngine, player, false);
         speedFactor = pixelFactor * 100d / 1000d; // We want to move at 100px per second on a 400px tall screen
         currentBombAmount = BOMBS_NUM;
         maxX = gameEngine.width - imageWidth;

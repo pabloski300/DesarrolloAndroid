@@ -2,6 +2,7 @@ package dadm.scaffold.counter;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,7 +28,7 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
     public static GameEngine theGameEngine;
     public static GameFragment actualGameFragment;
     public ImageView playerImage;
-
+    public static int playerResourceId;
     public GameFragment() {
     }
 
@@ -44,6 +45,7 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
         super.onViewCreated(view, savedInstanceState);
         view.findViewById(R.id.btn_play_pause).setOnClickListener(this);
         playerImage = view.findViewById(R.id.imageView2);
+        playerImage.setImageDrawable(getActivity().getResources().getDrawable(playerResourceId));
         final ViewTreeObserver observer = view.getViewTreeObserver();
         observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener(){
             @Override
@@ -61,7 +63,7 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
                 theGameEngine.addGameObject(f2);
                 theGameEngine.addGameObject(new UITextControls(theGameEngine,R.drawable.ui));
                 theGameEngine.setTheInputController(new JoystickInputController(getView()));
-                theGameEngine.addGameObject(new SpaceShipPlayer(theGameEngine));
+                theGameEngine.addGameObject(new SpaceShipPlayer(theGameEngine,playerResourceId));
                 theGameEngine.addGameObject(new GameManager(theGameEngine));
                 //theGameEngine.addGameObject(new FramesPerSecondCounter(theGameEngine));
                 theGameEngine.startGame();
@@ -119,7 +121,7 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                         theGameEngine.stopGame();
-                        ((ScaffoldActivity)getActivity()).navigateBack();
+                        ((ScaffoldActivity)getActivity()).navigateToFragment(new MainMenuFragment());
                     }
                 })
                 .setOnCancelListener(new DialogInterface.OnCancelListener() {
