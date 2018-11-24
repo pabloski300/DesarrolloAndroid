@@ -50,7 +50,7 @@ public abstract class Enemy extends Sprite {
     public void onUpdate(long elapsedMillis, GameEngine gameEngine) {
         positionY += speedFactor*elapsedMillis*ySpeed;
         positionX += speedFactor*elapsedMillis*xSpeed;
-        if(positionX <= 0){
+        if(positionX <= -this.imageWidth){
             GameFragment.theGameEngine.removeGameObject(this);
             GameManager.ActualManager.RestoreEnemy(this);
         }

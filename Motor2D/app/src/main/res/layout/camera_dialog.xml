@@ -18,7 +18,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@color/ic_launcher_background" />
+        app:srcCompat="@android:color/black" />
 
     <ImageView
         android:id="@+id/cameraImage"
@@ -34,7 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.276"
-        app:srcCompat="@drawable/camera" />
+        app:srcCompat="@drawable/camara" />
 
     <ImageView
         android:id="@+id/cameraImage2"
@@ -49,11 +49,11 @@
         app:layout_constraintStart_toStartOf="@+id/cameraImage"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.794"
-        app:srcCompat="@drawable/gallery" />
+        app:srcCompat="@drawable/galeria" />
 
     <Button
         android:id="@+id/cameraButton"
-        android:layout_width="225dp"
+        android:layout_width="210dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -63,25 +63,21 @@
         android:text="@string/cameraText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.875"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cameraImage"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.276" />
 
     <Button
         android:id="@+id/cameraButton2"
-        android:layout_width="225dp"
+        android:layout_width="210dp"
         android:layout_height="48dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/grey"
         android:text="@string/galeryText"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.875"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.794" />
+        app:layout_constraintStart_toEndOf="@+id/cameraImage2"
+        app:layout_constraintTop_toBottomOf="@+id/cameraButton" />
 </android.support.constraint.ConstraintLayout>

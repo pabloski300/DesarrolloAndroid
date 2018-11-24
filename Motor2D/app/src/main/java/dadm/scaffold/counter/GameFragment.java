@@ -59,7 +59,7 @@ public class GameFragment extends BaseFragment implements View.OnClickListener {
                 Fondo f2 = new Fondo(theGameEngine,R.drawable.fondo2,-4);
                 f2.init(theGameEngine.width,0);
                 theGameEngine.addGameObject(f2);
-                theGameEngine.addGameObject(new UITextControls(theGameEngine,R.drawable.ui));
+                theGameEngine.addGameObject(new UITextControls(theGameEngine,R.drawable.ui2));
                 theGameEngine.setTheInputController(new JoystickInputController(getView()));
                 theGameEngine.addGameObject(new SpaceShipPlayer(theGameEngine));
                 theGameEngine.addGameObject(new GameManager(theGameEngine));
