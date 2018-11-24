@@ -1,23 +1,15 @@
 package dadm.scaffold.counter;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import dadm.scaffold.BaseFragment;
-import dadm.scaffold.DataBaseManager;
 import dadm.scaffold.EnterActivity;
 import dadm.scaffold.MainPage;
-import dadm.scaffold.Profile;
-import dadm.scaffold.ProfileCreator;
 import dadm.scaffold.R;
 import dadm.scaffold.ScaffoldActivity;
 import dadm.scaffold.Scores;
@@ -68,7 +60,7 @@ public class MainMenuFragment extends BaseFragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        ((ScaffoldActivity)getActivity()).startGame();
+        ((ScaffoldActivity)getActivity()).navigateToFragment(new ShipChooser());
     }
 
     @Override
