@@ -14,6 +14,7 @@ public class EnemyEye extends Enemy implements BulletHandeler {
     public List<Bullet> bullets;
     public final int MAX_BULLETS_EYE = 5;
     public float timeBullets;
+    public float timeBetweenBullets;
 
 
     public EnemyEye(GameEngine gameEngine, float colliderRadius, float xSpeed, float ySpeed, int life) {
@@ -25,10 +26,11 @@ public class EnemyEye extends Enemy implements BulletHandeler {
 
 
     @Override
-    public void Init(int xPos, int yPos) {
+    public void Init(int xPos, int yPos, int life, float speed) {
         this.positionX = xPos;
         this.positionY = yPos;
-        life = 1;
+        this.life = life;
+        this.xSpeed = speed;
     }
 
     @Override
@@ -37,7 +39,7 @@ public class EnemyEye extends Enemy implements BulletHandeler {
         List<Collider.CollideLayer> l = new ArrayList<>();
         l.add(Collider.CollideLayer.Player);
         for(int i = 0; i<MAX_BULLETS_EYE;i++){
-            Bullet b = new Bullet(gameEngine,1,0,R.drawable.proyectilenemigo64x64smooth,4,3,4);
+            Bullet b = new Bullet(gameEngine,1,0,R.drawable.proyectilenemigo64x64smooth,4,3,4,1);
             b.getCollider().collideLayers = l;
             bullets.add(b);
         }
