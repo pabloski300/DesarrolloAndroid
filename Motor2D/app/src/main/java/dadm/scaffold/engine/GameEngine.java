@@ -6,6 +6,7 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
+import dadm.scaffold.ScaffoldActivity;
 import dadm.scaffold.input.InputController;
 
 public class GameEngine {
@@ -150,5 +151,9 @@ public class GameEngine {
 
     public Context getContext() {
         return theGameView.getContext();
+    }
+
+    public void PlaySound(SoundManager.FXSounds type){
+        ((ScaffoldActivity) mainActivity).soundManager.PlayFX(type);
     }
 }

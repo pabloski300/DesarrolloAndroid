@@ -19,7 +19,7 @@ public class EnterActivity extends AppCompatActivity {
             Intent nextActivty = new Intent(this, ProfileChooser.class);
             startActivity(nextActivty);
         }else{
-            Intent nextActivty = new Intent(this,MainPage.class);
+            Intent nextActivty = new Intent(this,ScaffoldActivity.class);
             startActivity(nextActivty);
         }
     }

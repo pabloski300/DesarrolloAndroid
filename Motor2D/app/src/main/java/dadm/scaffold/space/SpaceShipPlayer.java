@@ -11,6 +11,7 @@ import dadm.scaffold.engine.BulletHandeler;
 import dadm.scaffold.engine.Collider;
 import dadm.scaffold.engine.GameEngine;
 import dadm.scaffold.engine.GameManager;
+import dadm.scaffold.engine.SoundManager;
 import dadm.scaffold.engine.Sprite;
 import dadm.scaffold.input.InputController;
 
@@ -141,6 +142,7 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
 
     private void checkFiring(long elapsedMillis, GameEngine gameEngine) {
         if (timeSinceLastFire > TIME_BETWEEN_BULLETS) {
+            gameEngine.PlaySound(SoundManager.FXSounds.Fire);
             if (powerUp == null) {
                 Bullet bullet = getBullet();
                 if (bullet == null) {

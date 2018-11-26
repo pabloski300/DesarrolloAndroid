@@ -1,5 +1,6 @@
 package dadm.scaffold;
 
+import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,11 +10,12 @@ import android.view.View;
 
 import dadm.scaffold.counter.GameFragment;
 import dadm.scaffold.counter.MainMenuFragment;
+import dadm.scaffold.engine.SoundManager;
 
 public class ScaffoldActivity extends AppCompatActivity {
 
     private static final String TAG_FRAGMENT = "content";
-
+    public SoundManager soundManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +25,8 @@ public class ScaffoldActivity extends AppCompatActivity {
                     .add(R.id.container, new MainMenuFragment(), TAG_FRAGMENT)
                     .commit();
         }
-
+        setVolumeControlStream(AudioManager.STREAM_MUSIC);
+        soundManager = new SoundManager(getApplicationContext());
     }
 
 
@@ -79,5 +82,16 @@ public class ScaffoldActivity extends AppCompatActivity {
             }
         }
     }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        soundManager.pauseBgMusic();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        soundManager.resumeBgMusic();
+    }
+
 
 }

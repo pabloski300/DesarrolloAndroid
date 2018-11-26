@@ -8,6 +8,7 @@ import dadm.scaffold.counter.GameFragment;
 import dadm.scaffold.engine.Collider;
 import dadm.scaffold.engine.GameEngine;
 import dadm.scaffold.engine.GameManager;
+import dadm.scaffold.engine.SoundManager;
 import dadm.scaffold.engine.Sprite;
 
 public abstract class Enemy extends Sprite {
@@ -68,6 +69,7 @@ public abstract class Enemy extends Sprite {
 
     private void Explosion(GameEngine gameEngine) {
         e.init(positionX + 32* pixelFactor, positionY + 32*pixelFactor);
+        gameEngine.PlaySound(SoundManager.FXSounds.Explosion);
         gameEngine.addGameObject(e);
     }
 }

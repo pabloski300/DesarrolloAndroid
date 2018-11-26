@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import dadm.scaffold.engine.Collider;
 import dadm.scaffold.engine.GameEngine;
 import dadm.scaffold.engine.GameManager;
+import dadm.scaffold.engine.SoundManager;
 import dadm.scaffold.engine.Sprite;
 
 public class PowerUp extends Sprite {
@@ -40,6 +41,7 @@ public class PowerUp extends Sprite {
             gameEngine.removeGameObject(this);
             ((SpaceShipPlayer)otherCollider.Owner).powerUp = powerUp;
             GameManager.powerTime = (int)powerUp.time;
+            gameEngine.PlaySound(SoundManager.FXSounds.GetPowerUp);
         }
     }
 
