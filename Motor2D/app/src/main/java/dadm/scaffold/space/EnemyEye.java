@@ -7,6 +7,7 @@ import dadm.scaffold.R;
 import dadm.scaffold.engine.BulletHandeler;
 import dadm.scaffold.engine.Collider;
 import dadm.scaffold.engine.GameEngine;
+import dadm.scaffold.engine.SoundManager;
 
 public class EnemyEye extends Enemy implements BulletHandeler {
 
@@ -39,7 +40,7 @@ public class EnemyEye extends Enemy implements BulletHandeler {
         List<Collider.CollideLayer> l = new ArrayList<>();
         l.add(Collider.CollideLayer.Player);
         for(int i = 0; i<MAX_BULLETS_EYE;i++){
-            Bullet b = new Bullet(gameEngine,1,0,R.drawable.proyectilenemigo64x64smooth,4,3,4,1);
+            Bullet b = new Bullet(gameEngine,2,0,R.drawable.proyectilenemigo64x64smooth,4,3,4,1);
             b.getCollider().collideLayers = l;
             bullets.add(b);
         }
@@ -61,8 +62,9 @@ public class EnemyEye extends Enemy implements BulletHandeler {
     @Override
     public void onUpdate(long elapsedMillis, GameEngine gameEngine) {
         super.onUpdate(elapsedMillis,gameEngine);
-        if(timeBullets == 0){
+        if(timeBullets <= 0){
             Bullet c = getBullet();
+            //gameEngine.PlaySound(SoundManager.FXSounds.Fire);
             c.init(this,this.positionX+ 3* pixelFactor,this.positionY+32*pixelFactor);
             gameEngine.addGameObject(c);
             timeBullets = 3000;

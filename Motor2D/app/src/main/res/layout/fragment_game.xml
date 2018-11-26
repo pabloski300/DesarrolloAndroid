@@ -15,12 +15,12 @@
 
     <Button
         android:id="@+id/btn_play_pause"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:layout_gravity="top|right"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginRight="@dimen/activity_vertical_margin"
-        android:text="@string/pause" />
+        android:background="@drawable/pause" />
 
     <include layout="@layout/view_joystick" />
 

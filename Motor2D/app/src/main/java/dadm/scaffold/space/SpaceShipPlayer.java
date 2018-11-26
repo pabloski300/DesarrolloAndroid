@@ -37,10 +37,11 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
     public PoweUpInformation powerUp;
     protected int bulletDamage;
 
-    public SpaceShipPlayer(GameEngine gameEngine,int player,int bullet, float speed, int  bulletDamage, long timeBetweenBullets,int bombNumber){
+    public SpaceShipPlayer(GameEngine gameEngine,int player,int bullet, float speed, int  bulletDamage, long timeBetweenBullets,int bombNumber, int  life){
         super(gameEngine, player, false);
         bulletDrawableRes = bullet;
         speedFactor = pixelFactor * (100d / 1000d) * speed; // We want to move at 100px per second on a 400px tall screen
+        BOMBS_NUM = bombNumber;
         currentBombAmount = BOMBS_NUM;
         maxX = gameEngine.width - imageWidth;
         maxY = gameEngine.height - imageHeight;
@@ -51,10 +52,9 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
         this.bulletDamage = bulletDamage;
         initBulletPool(gameEngine);
         initBombPool(gameEngine);
-        life = 1;
+        this.life = life;
         maxInvencible = 1f;
         TIME_BETWEEN_BULLETS = timeBetweenBullets;
-        BOMBS_NUM = bombNumber;
     }
 
     public void initBulletPool(GameEngine gameEngine) {

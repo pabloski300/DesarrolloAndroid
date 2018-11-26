@@ -7,6 +7,7 @@ import dadm.scaffold.R;
 import dadm.scaffold.counter.GameFragment;
 import dadm.scaffold.engine.Collider;
 import dadm.scaffold.engine.GameEngine;
+import dadm.scaffold.engine.SoundManager;
 import dadm.scaffold.engine.Sprite;
 
 public class Bomb extends Sprite {
@@ -73,7 +74,8 @@ public class Bomb extends Sprite {
     }
 
     private void Explosion(GameEngine gameEngine) {
-            e.init(positionX + 5* pixelFactor, positionY + 5*pixelFactor);
-            gameEngine.addGameObject(e);
+        e.init(positionX + 5* pixelFactor, positionY + 5*pixelFactor);
+        gameEngine.PlaySound(SoundManager.FXSounds.Explosion);
+        gameEngine.addGameObject(e);
     }
 }

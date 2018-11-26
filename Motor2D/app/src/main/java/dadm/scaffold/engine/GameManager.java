@@ -73,7 +73,7 @@ public class GameManager extends GameObject {
         ActualTimeBetwenEnemieMouths = 0;
         TimeBetwenMeteors = 10000;
         ActualTimeBetwenMeteors = 0;
-        TimeBetweenIncrements = 15000;
+        TimeBetweenIncrements = 30000;
         Increments = 5;
         ActualTimeToIncrement = 0;
         ActualManager = this;
@@ -139,9 +139,14 @@ public class GameManager extends GameObject {
             enemyMouthHealth ++;
             enemyEyeHealth++;
             enemyMouthSpeed --;
-            enemyEyeSpeed --;
-            TimeBetwenEnemieMouths -= 250;
-            TimeBetwenEnemieEyes -= 250;
+            enemyEyeSpeed -= 1/5;
+            numEnemieMouthsAtTime ++;
+            numEnemieEyesAtTime ++;
+            TimeBetwenEnemieMouths -= 100;
+            TimeBetwenEnemieEyes -= 100;
+            ActualTimeToIncrement = 0;
+        }else{
+            ActualTimeToIncrement += elapsedMillis;
         }
     }
 

@@ -75,7 +75,7 @@ public class SoundManager {
         try {
             backgroundPlayer = new MediaPlayer();
             AssetFileDescriptor afd = actualContext.getAssets()
-                    .openFd("sfx/main.mp3");
+                    .openFd("sfx/main.wav");
             backgroundPlayer.setDataSource(
                     afd.getFileDescriptor(),
                     afd.getStartOffset(),
