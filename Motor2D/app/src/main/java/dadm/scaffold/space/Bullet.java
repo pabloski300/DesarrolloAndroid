@@ -12,13 +12,15 @@ public class Bullet extends Sprite {
     private float xVelocity;
     private float yVelocity;
     private BulletHandeler parent;
+    private int damage;
 
-    public Bullet(GameEngine gameEngine,float xVelocity,float yVelocity,int drawResource,float radius , float colloffx, float colloffy){
+    public Bullet(GameEngine gameEngine,float xVelocity,float yVelocity,int drawResource,float radius , float colloffx, float colloffy, int bulletDamage){
         super(gameEngine, drawResource,false);
         this.setLayer(Collider.CollideLayer.Bullet);
-        speedFactor = gameEngine.pixelFactor * -300d / 1000d;
+        speedFactor = gameEngine.pixelFactor * -400d / 1000d;
         this.xVelocity =xVelocity;
         this.yVelocity = yVelocity;
+        this.damage = bulletDamage;
         CreateNewCollider(radius,null,colloffx* pixelFactor,colloffy*pixelFactor);
     }
 
@@ -53,11 +55,11 @@ public class Bullet extends Sprite {
                 break;
             case Enemy:
                 Enemy e = (Enemy)otherCollider.Owner;
-                e.life--;
+                e.life -= damage;
                 break;
             case Meteorite:
                 Meteorito m = (Meteorito)otherCollider.Owner;
-                m.life--;
+                m.life -= damage;
                 break;
             case Scenario:
                 break;

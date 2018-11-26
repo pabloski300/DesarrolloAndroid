@@ -64,7 +64,7 @@ public abstract class Enemy extends Sprite {
 
     }
 
-    public abstract void Init(int xPos, int yPos);
+    public abstract void Init(int xPos, int yPos,int life, float speed);
 
     private void Explosion(GameEngine gameEngine) {
         e.init(positionX + 32* pixelFactor, positionY + 32*pixelFactor);

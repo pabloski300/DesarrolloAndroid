@@ -18,9 +18,9 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
 
     private static final int INITIAL_BULLET_POOL_AMOUNT = 150;
     private static final int INITIAL_BOMB_POOL_AMOUNT = 6;
-    private static final long TIME_BETWEEN_BULLETS = 250;
+    private static long TIME_BETWEEN_BULLETS;
     private static final long TIME_BETWEEN_BOMBS = 2000;
-    private static final int BOMBS_NUM = 3;
+    private static int BOMBS_NUM = 3;
     private static int currentBombAmount;
     List<Bullet> bullets = new ArrayList<Bullet>();
     List<Bomb> bombs = new ArrayList<Bomb>();
@@ -34,11 +34,12 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
     private final float maxInvencible;
     protected int  bulletDrawableRes;
     public PoweUpInformation powerUp;
+    protected int bulletDamage;
 
-    public SpaceShipPlayer(GameEngine gameEngine,int player,int bullet){
+    public SpaceShipPlayer(GameEngine gameEngine,int player,int bullet, float speed, int  bulletDamage, long timeBetweenBullets,int bombNumber){
         super(gameEngine, player, false);
         bulletDrawableRes = bullet;
-        speedFactor = pixelFactor * 100d / 1000d; // We want to move at 100px per second on a 400px tall screen
+        speedFactor = pixelFactor * (100d / 1000d) * speed; // We want to move at 100px per second on a 400px tall screen
         currentBombAmount = BOMBS_NUM;
         maxX = gameEngine.width - imageWidth;
         maxY = gameEngine.height - imageHeight;
@@ -46,17 +47,20 @@ public class SpaceShipPlayer extends Sprite implements BulletHandeler {
         List<Collider.CollideLayer> Layers = new ArrayList<>();
         Layers.add(Collider.CollideLayer.Enemy);
         this.CreateNewCollider(10.5, Layers,23.5 * pixelFactor,26*pixelFactor);
+        this.bulletDamage = bulletDamage;
         initBulletPool(gameEngine);
         initBombPool(gameEngine);
         life = 1;
-        maxInvencible = 0.5f;
+        maxInvencible = 1f;
+        TIME_BETWEEN_BULLETS = timeBetweenBullets;
+        BOMBS_NUM = bombNumber;
     }
 
     public void initBulletPool(GameEngine gameEngine) {
         List<Collider.CollideLayer> l = new ArrayList<>();
         l.add(Collider.CollideLayer.Enemy);
         for (int i=0; i<INITIAL_BULLET_POOL_AMOUNT; i++) {
-            Bullet v = new Bullet(gameEngine,-1,0,bulletDrawableRes,3,20,3);
+            Bullet v = new Bullet(gameEngine,-1,0,bulletDrawableRes,3,20,3, bulletDamage);
 
             v.getCollider().collideLayers = new ArrayList<>();
             v.getCollider().collideLayers.add(Collider.CollideLayer.Meteorite);

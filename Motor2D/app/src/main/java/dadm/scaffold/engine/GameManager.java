@@ -1,7 +1,5 @@
 package dadm.scaffold.engine;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -11,8 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import dadm.scaffold.BaseFragment;
-import dadm.scaffold.R;
 import dadm.scaffold.ScaffoldActivity;
 import dadm.scaffold.counter.GameFragment;
 import dadm.scaffold.counter.ScoreFragment;
@@ -24,10 +20,22 @@ import dadm.scaffold.space.PowerUp;
 
 public class GameManager extends GameObject {
 
-    protected List<Enemy> EnemyInLevel;
+    protected int Increments;
+    protected long TimeBetweenIncrements;
+    protected long ActualTimeToIncrement;
+    protected List<Enemy> EnemyInLevelEyes;
+    protected List<Enemy> EnemyInLevelMouths;
     protected List<Meteorito> MeteorInLevel;
-    protected long TimeBetwenEnemies;
-    protected long ActualTimeBetwenEnemies;
+    protected long TimeBetwenEnemieEyes;
+    protected long ActualTimeBetwenEnemieEyes;
+    protected int enemyEyeHealth;
+    protected int numEnemieEyesAtTime;
+    protected float enemyEyeSpeed;
+    protected long TimeBetwenEnemieMouths;
+    protected long ActualTimeBetwenEnemieMouths;
+    protected int enemyMouthHealth;
+    protected int numEnemieMouthsAtTime;
+    protected float enemyMouthSpeed;
     protected long TimeBetwenMeteors;
     protected long ActualTimeBetwenMeteors;
     protected Random r;
@@ -40,20 +48,34 @@ public class GameManager extends GameObject {
     public GameManager(GameEngine engine){
         paint = new Paint();
         score = 0;
-        lifes = 3;
-        bombs = 3;
+        lifes = 0;
+        bombs = 0;
         r = new Random();
-        EnemyInLevel = new ArrayList<>();
-        EnemyInLevel.add(new EnemyEye(engine,0,0,0,1));
-        EnemyInLevel.add(new EnemyEye(engine,0,-1,0,1));
-        EnemyInLevel.add(new EnemyMouth(engine,0,-1,0,1));
-        EnemyInLevel.add(new EnemyMouth(engine,0,-1,0,1));
+        EnemyInLevelEyes = new ArrayList<>();
+        EnemyInLevelMouths = new ArrayList<>();
+        for(int i=0;i<40; i++) {
+            EnemyInLevelEyes.add(new EnemyEye(engine, 0, 0, 0, 1));
+        }
+        for(int i=0;i<40; i++) {
+            EnemyInLevelMouths.add(new EnemyMouth(engine, 0, -1, 0, 1));
+        }
         MeteorInLevel = new ArrayList<>();
         MeteorInLevel.add(new Meteorito(engine,0,-1,0,1));
-        TimeBetwenEnemies = 2000;
-        ActualTimeBetwenEnemies = 0;
+        TimeBetwenEnemieEyes = 2000;
+        enemyEyeHealth = 2;
+        numEnemieEyesAtTime = 2;
+        enemyEyeSpeed = -1;
+        ActualTimeBetwenEnemieEyes = 0;
+        TimeBetwenEnemieMouths = 3000;
+        enemyMouthHealth = 3;
+        numEnemieMouthsAtTime = 1;
+        enemyMouthSpeed = -2;
+        ActualTimeBetwenEnemieMouths = 0;
         TimeBetwenMeteors = 10000;
         ActualTimeBetwenMeteors = 0;
+        TimeBetweenIncrements = 15000;
+        Increments = 5;
+        ActualTimeToIncrement = 0;
         ActualManager = this;
     }
 
@@ -65,17 +87,32 @@ public class GameManager extends GameObject {
 
     @Override
     public void onUpdate(long elapsedMillis, GameEngine gameEngine) {
-        if(ActualTimeBetwenEnemies >= TimeBetwenEnemies && !EnemyInLevel.isEmpty()){
-           Enemy e = EnemyInLevel.remove(r.nextInt(EnemyInLevel.size()));
-           int h = GameFragment.theGameEngine.height;
-           int posy = MathUtils.clamp(r.nextInt(h),128*(int)gameEngine.pixelFactor, h-(128*(int)gameEngine.pixelFactor));
-           int posx = GameFragment.theGameEngine.width+(128*(int)gameEngine.pixelFactor);
-           e.Init(posx,posy);
-           GameFragment.theGameEngine.addGameObject(e);
-           ActualTimeBetwenEnemies = 0;
-
+        if(ActualTimeBetwenEnemieEyes >= TimeBetwenEnemieEyes && !EnemyInLevelEyes.isEmpty()){
+            for(int i= 0; i< numEnemieEyesAtTime; i++) {
+                Enemy e = EnemyInLevelEyes.remove(r.nextInt(EnemyInLevelEyes.size()));
+                int h = GameFragment.theGameEngine.height;
+                int posy = MathUtils.clamp(r.nextInt(h), 64 * (int) gameEngine.pixelFactor, h - (64 * (int) gameEngine.pixelFactor));
+                int posx = GameFragment.theGameEngine.width + (128 * (int) gameEngine.pixelFactor);
+                e.Init(posx, posy, enemyEyeHealth,enemyEyeSpeed);
+                GameFragment.theGameEngine.addGameObject(e);
+                ActualTimeBetwenEnemieEyes = 0;
+            }
         }else {
-            ActualTimeBetwenEnemies+=elapsedMillis;
+            ActualTimeBetwenEnemieEyes+=elapsedMillis;
+        }
+
+        if(ActualTimeBetwenEnemieMouths >= TimeBetwenEnemieMouths && !EnemyInLevelMouths.isEmpty()){
+            for(int i= 0; i< numEnemieMouthsAtTime; i++) {
+                Enemy e = EnemyInLevelMouths.remove(r.nextInt(EnemyInLevelMouths.size()));
+                int h = GameFragment.theGameEngine.height;
+                int posy = MathUtils.clamp(r.nextInt(h), 210 * (int) gameEngine.pixelFactor, h - (210 * (int) gameEngine.pixelFactor));
+                int posx = GameFragment.theGameEngine.width + (128 * (int) gameEngine.pixelFactor);
+                e.Init(posx, posy, enemyMouthHealth,enemyMouthSpeed);
+                GameFragment.theGameEngine.addGameObject(e);
+                ActualTimeBetwenEnemieMouths = 0;
+            }
+        }else {
+            ActualTimeBetwenEnemieMouths+=elapsedMillis;
         }
 
         if(ActualTimeBetwenMeteors >= TimeBetwenMeteors && !MeteorInLevel.isEmpty()){
@@ -90,10 +127,21 @@ public class GameManager extends GameObject {
         }else {
             ActualTimeBetwenMeteors+=elapsedMillis;
         }
-        if(powerTime >= 0){
+
+        if(powerTime > 0){
             powerTime -= elapsedMillis;
         }else{
             powerTime = 0;
+        }
+
+        if(ActualTimeToIncrement >= TimeBetweenIncrements && Increments>0){
+            Increments--;
+            enemyMouthHealth ++;
+            enemyEyeHealth++;
+            enemyMouthSpeed --;
+            enemyEyeSpeed --;
+            TimeBetwenEnemieMouths -= 250;
+            TimeBetwenEnemieEyes -= 250;
         }
     }
 
@@ -109,7 +157,7 @@ public class GameManager extends GameObject {
     }
 
     public void RestoreEnemy(Enemy e){
-        EnemyInLevel.add(e);
+        EnemyInLevelEyes.add(e);
     }
 
     public void RestoreMeteorite(Meteorito m){

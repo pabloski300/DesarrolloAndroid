@@ -12,10 +12,11 @@ public class EnemyMouth extends Enemy {
     }
 
     @Override
-    public void Init(int xPos, int yPos) {
+    public void Init(int xPos, int yPos, int life, float speed) {
         this.positionX = xPos;
         this.positionY = yPos;
-        life = 2;
+        this.life = life;
+        this.xSpeed = speed;
     }
 
     @Override
